@@ -14,7 +14,7 @@
 
 <script setup>
 const input = ref(null);
-/* eslint-disable */
+
 const emit = defineEmits(['update:modelValue']);
 const props = defineProps({
   modelValue: {
@@ -43,7 +43,7 @@ const onInput = (event) => {
   if (type === 'tel') {
     let numbers = value.replace(/\D/g, '');
     let length = numbers.length;
-    if (length < 12) {
+    if (length < 12 && event.inputType !== 'deleteContentBackward') {
       formattedDigits.value =
         '+7 ' +
         numbers.slice(1, 4) +
@@ -56,7 +56,13 @@ const onInput = (event) => {
 
       emit('update:modelValue', {
         text: formattedDigits.value,
-        textLength: numbers.length,
+        textLength: length,
+      });
+    } else if (event.inputType === 'deleteContentBackward') {
+      formattedDigits.value = formattedDigits.value.slice(0, -1);
+      emit('update:modelValue', {
+        text: formattedDigits.value,
+        textLength: length,
       });
     } else {
       event.target.value = formattedDigits.value;
@@ -69,17 +75,22 @@ const onInput = (event) => {
 };
 
 const onFocus = () => {
-  input.value.style.border = '0.2rem solid rgba(19, 20, 75, 0.2)';
+  input.value.classList.add('focus');
 };
 const onBlur = () => {
-  input.value.style.border = '';
+  input.value.classList.remove('focus');
 };
 </script>
 
 <style lang="scss" scoped>
-input:active {
-  font-size: 16px; /* disable iphone zoom */
+/* disable iphone zoom */
+/* input:active {
+  font-size: 16px; 
+} */
+.focus {
+  border: 0.2rem solid rgba(19, 20, 75, 0.2) !important;
 }
+
 .input {
   color: #13144b;
   font-family: 'Onest';
@@ -97,8 +108,7 @@ input:active {
   box-sizing: border-box;
 
   @include mq(768) {
-    padding: 2rem;
-    height: 5.9rem;
+    height: 4.9rem;
     font-size: 1.6rem;
   }
 
@@ -122,11 +132,8 @@ input:active {
     letter-spacing: -0.032rem;
   }
   @include mq(1440) {
+    font-size: 1.8rem;
     letter-spacing: -0.064rem;
-  }
-  @include mq(1920) {
-    font-size: 2.1rem;
-    letter-spacing: -0.0853rem;
   }
 }
 

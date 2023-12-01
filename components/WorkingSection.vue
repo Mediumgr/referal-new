@@ -42,15 +42,12 @@ const handleScroll = () => {
     title.value.style.opacity = '0.4';
   } else if (viewportTop <= 300) {
     title.value.style.opacity = '0';
-    setTimeout(() => {
-      title.value.style.visibility = 'hidden';
-    }, 1000);
   }
 };
 
 const intersection = () => {
   let options = {
-    rootMargin: '0px 0px -50px 0px',
+    rootMargin: '0px 0px -250px 0px',
   };
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -59,14 +56,11 @@ const intersection = () => {
         target.classList.add('active');
       }
     });
-    setTimeout(() => {
-      handleScroll();
-    }, 500);
   }, options);
 
   let commonStyle = document.querySelectorAll('.commonStyle');
-  observer.observe(title.value);
   commonStyle.forEach((el) => observer.observe(el));
+  observer.observe(title.value);
 };
 
 const showMoreBlocks = () => {
@@ -81,30 +75,20 @@ const showMoreBlocks = () => {
 onMounted(() => {
   intersection();
   showMoreBlocks();
+  window.addEventListener('scroll', () => {
+    handleScroll();
+  });
   window.addEventListener('resize', () => showMoreBlocks());
 });
 </script>
 
 <style lang="scss" scoped>
-.activeFrame {
-  position: relative;
-  z-index: 1;
-  transform: translateY(-15rem) !important;
-  @include mq(768) {
-    transform: translateY(-20rem) !important;
-  }
-  @include mq(1440) {
-    transform: translateY(-40rem) !important;
-  }
-}
 .frame__wrapper {
   color: var(--eggplant);
-  grid-gap: 0.5rem;
+  grid-gap: 2.5rem;
   justify-items: center;
   align-items: center;
   flex-direction: column;
-  transform: translateY(1210px);
-  transition: all 2s ease;
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-template-areas:
@@ -130,7 +114,7 @@ onMounted(() => {
       'credit products';
   }
   @include mq(1440) {
-    width: 144rem;
+    width: 140rem;
     grid-gap: 2.8rem;
     grid-template-columns: repeat(3, auto);
     grid-template-areas:
@@ -173,9 +157,18 @@ onMounted(() => {
 }
 
 .working {
+  &__section {
+    padding-top: 20rem;
+    @include mq(768) {
+      padding-top: 22rem;
+    }
+    @include mq(1440) {
+      padding-top: 28rem;
+    }
+  }
   &__title {
     position: sticky;
-    top: 10rem;
+    top: 25rem;
     opacity: 0;
     transition: opacity 0.2s ease-out;
     font-weight: 500;
@@ -185,23 +178,18 @@ onMounted(() => {
     font-style: normal;
     line-height: 90%;
     letter-spacing: -0.288rem;
-    padding-bottom: 2rem;
+    padding: 0 calc(50% - 14rem) 3rem;
 
-    @include mq(375) {
-      margin: 0 auto;
-      width: 33.5rem;
-    }
     @include mq(768) {
-      width: 72.8rem;
       font-size: 9.6rem;
-      font-weight: 500;
       letter-spacing: -0.576rem;
-      padding-bottom: 4rem;
+      padding: 0 calc(50% - 28rem) 4rem;
     }
     @include mq(1440) {
-      width: 90rem;
+      top: 15rem;
       font-size: 15rem;
       letter-spacing: -0.9rem;
+      padding: 0 calc(50% - 43rem) 4rem;
     }
   }
 

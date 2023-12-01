@@ -10,7 +10,7 @@
       <div class="wrapper-dropdown_select">
         <p class="wrapper-dropdown_title">{{ data[index].title }}</p>
         <svg
-          :class="['wrapper-dropdown_arrow', checked[index] ? 'active' : '']"
+          :class="['wrapper-dropdown_arrow', { active: checked[index] }]"
           width="40"
           height="40"
           viewBox="0 0 40 40"
@@ -52,44 +52,14 @@
 </template>
 
 <script setup>
+import options from '@/assets/data/select-option.json';
+const data = options.content;
+
 const hiddenWrapper = ref(null);
 const hiddenText = ref(null);
 const checked = ref({});
-const data = ref([
-  {
-    title: 'Какие этапы отбора нужно пройти моему другу?',
-    text: 'После того, как друг трудоустроится и\u00A0пройдет испытательный срок, в\u00A0течение 2\u00A0недель тебе нужно будет подписать договор об\u00A0оказании услуг. Выплата начислится в\u00A0течение 7\u00A0рабочих дней после подписания договора',
-  },
-  {
-    title:
-      'Как отслеживать статус заявки?',
-    text: 'По\u00A0электронной почте, которую вы\u00A0оставили в\u00A0анкете, вы\u00A0будете получать уведомления об\u00A0итогах каждого этапа.',
-  },
-  {
-    title: 'Когда я\u00A0получу 100\u00A0000\u00A0рублей?',
-    text: 'После трудоустройства друга и\u00A0прохождения им\u00A0испытательного срока, вы\u00A0в\u00A0течение 2\u00A0недель подписываете договор об\u00A0оказании услуг. Выплата в\u00A0течение 7\u00A0рабочих дней после подписания договора.',
-  },
-  {
-    title: 'Как мне оплатить налог с\u00A0выплаты?',
-    text: 'Мы\u00A0перечислим его за\u00A0вас, вы\u00A0получите сумму в\u00A0100\u00A0000\u00A0руб.\u00A0за\u00A0вычетом НДФЛ в\u00A0размере\u00A013% на\u00A0указанный счет.',
-  },
-  {
-    title: 'Могу\u00A0ли я\u00A0рекомендовать себя?',
-    text: 'По\u00A0правилам программы, вы\u00A0не\u00A0можете рекомендовать самого себя. Но\u00A0вы\u00A0можете обратиться к\u00A0своему другу, который вас порекомендует :)',
-  },
-  {
-    title:
-      'Могу\u00A0ли я\u00A0рекомендовать несколько кандидатов?',
-    text: 'Можете.',
-  },
-  {
-    title:
-      'В\u00A0программе может участвовать IT-рекрутер?',
-    text: 'Можете.',
-  },
-]);
 
-for (let i = 0; i < data.value.length; i++) {
+for (let i = 0; i < data.length; i++) {
   checked.value[i] = false;
 }
 
@@ -97,7 +67,7 @@ const showHiddenText = (index) => {
   checked.value[index] = !checked.value[index];
   let hiddenNode = hiddenWrapper.value[index];
   if (hiddenNode.clientHeight) {
-    hiddenNode.style.height = 0;
+    hiddenNode.style.height = 0 + 'rem';
   } else {
     let hiddenTextHeight = hiddenText.value[index].clientHeight;
     hiddenNode.style.height = hiddenTextHeight / 10 + 'rem';
@@ -107,18 +77,14 @@ const showHiddenText = (index) => {
 
 <style lang="scss" scoped>
 .section {
-  max-width: 100%;
-
   @include mq(375) {
-    padding: 0 calc(50% - 17.7rem) 6rem;
+    padding: 12rem calc(50% - 17.7rem) 12rem;
   }
-
   @include mq(768) {
-    padding: 0 calc(50% - 34.4rem) 6rem;
+    padding: 16rem calc(50% - 34.4rem) 16rem;
   }
-
   @include mq(1440) {
-    padding: 0 calc(50% - 53rem) 6rem;
+    padding: 20rem calc(50% - 53rem) 16rem;
   }
 
   &_title {
@@ -127,18 +93,18 @@ const showHiddenText = (index) => {
     align-items: center;
     text-align: center;
     color: var(--eggplant);
-    font-size: 2.8rem;
+    font-size: 4.8rem;
     line-height: 90%;
     letter-spacing: -0.288rem;
-    padding: 2rem 0 1rem;
+    padding-bottom: 6rem;
 
     @include mq(768) {
-      font-size: 3.6rem;
-      padding: 2rem 0 1rem;
+      font-size: 9.6rem;
+      letter-spacing: -0.576rem;
     }
-
     @include mq(1440) {
-      font-size: 7.6rem;
+      font-size: 15rem;
+      letter-spacing: -0.9rem;
     }
   }
 }
@@ -152,26 +118,18 @@ const showHiddenText = (index) => {
   padding: 2.2rem 2rem;
 
   &:not(:last-child) {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   @include mq(768) {
     padding: 2rem 2rem;
-    &:not(:last-child) {
-      margin-bottom: 1.5rem;
-    }
-  }
-  @include mq(1440) {
-    &:not(:last-child) {
-      margin-bottom: 2rem;
-    }
   }
 
   &_select {
-    align-items: center;
     display: grid;
     grid-template-columns: 1fr 4rem;
     grid-column-gap: 2rem;
+    align-items: center;
 
     @include mq(768) {
       grid-template-columns: 1fr 7rem;
@@ -199,10 +157,12 @@ const showHiddenText = (index) => {
     display: flex;
     align-items: center;
     transform: rotate(0deg);
-    transition: transform 0.5s ease;
+    transition: transform 0.4s linear;
+    width: 4rem;
+    height: 4rem;
 
     &.active {
-      transform: rotate(180deg);
+      transform: rotate(-180deg);
     }
     @include mq(768) {
       width: 7rem;
@@ -225,7 +185,7 @@ const showHiddenText = (index) => {
 
     @include mq(768) {
       font-size: 1.8rem;
-      padding: 1rem 6rem 0 0;
+      padding: 1rem 6.5rem 0 0;
     }
 
     @include mq(1440) {

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <GradientColor/>
+    <GradientColor />
     <header>
       <nav class="navbar">
         <div class="navbar__container">
@@ -60,42 +60,45 @@
       <div class="recommend__content">
         <h1 class="recommend__title">Получи 100&nbsp;000&nbsp;₽</h1>
         <p class="recommend__sub-title">Рекомендуй друга в IT</p>
-        <button
-          class="recommend__button"
-          @mousemove="mousemove($event)"
-          @touchmove="mousemove($event)"
-        >
+        <BaseButton @click.stop="scrollTo()">
           <span class="recommend__button_container">
             <span class="recommend__button_text">Заполнить заявку</span>
             <img
               class="recommend__button_img"
               alt="Frame"
               src="@/assets/images/header/arrow_right.svg"
-            />
-          </span>
-        </button>
+            /> </span
+        ></BaseButton>
       </div>
     </header>
   </div>
 </template>
 
 <script setup>
-const mousemove = (e) => {
-  let btn = document.querySelector('.recommend__button');
-  let x = e.pageX - btn.offsetLeft;
-  let y = e.pageY - btn.offsetTop;
-  btn.style.setProperty('--x', x / 10 + 'rem');
-  btn.style.setProperty('--y', y / 1000 + 'rem');
+const scrollTo = () => {
+  let form = document.querySelector('.form-section');
+  let offsetForm = form.getBoundingClientRect().top;
+  let scrollToForm = offsetForm + window.scrollY;
+  window.scrollTo({
+    top: scrollToForm,
+    behavior: 'smooth',
+  });
 };
 </script>
 
 <style lang="scss" scoped>
 .container {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  overflow: hidden;
+  height: 66.7rem;
+  box-sizing: border-box;
+  padding: 4rem 2rem 0;
+
+  @include mq(768) {
+    height: 102.4rem;
+    padding: 2rem 4rem 0;
+  }
+  @include mq(1440) {
+    padding: 4rem 8rem 0;
+  }
 }
 
 .navbar {
@@ -104,14 +107,6 @@ const mousemove = (e) => {
   align-items: center;
   opacity: 0;
   animation: opacityShow 800ms ease-out forwards;
-  margin: 4rem 2rem;
-
-  @include mq(768) {
-    margin: 2rem 4rem 0;
-  }
-  @include mq(1440) {
-    margin: 4rem 8rem 0;
-  }
 
   &__container {
     display: grid;
@@ -148,16 +143,18 @@ const mousemove = (e) => {
     align-items: center;
     /*   width: 27rem; */ // не использовать т.к. отпадет ховер у кнопки
     margin: 0 auto;
-    padding: 10rem 3.5rem 14rem;
+    padding: 14rem 0 0;
     @include mq(768) {
-      padding: 24rem 15rem 12rem;
+      padding: 24rem 0 12rem;
     }
     @include mq(1024) {
       padding: 14rem 40rem 12rem;
     }
     @include mq(1440) {
-      //   padding: 24rem 38.5rem 9.5rem;
-      padding: 0 38.5rem 9.5rem;
+      padding: 18rem 35rem 0;
+    }
+    @include mq(2560) {
+      padding: 4rem 60rem 0;
     }
   }
 
@@ -202,72 +199,22 @@ const mousemove = (e) => {
       opacity: 0.7;
     }
   }
-
   &__button {
-    transition: all 200ms ease;
-    position: relative;
-    overflow: hidden;
-    width: 23.3rem;
-    height: 6rem;
-    padding: 1rem 1rem 1rem 2rem;
-    border-radius: 7.3rem;
-    border: none;
-    outline: none;
-    color: var(--color-white);
-    background: #4958ff;
-    cursor: pointer;
-
-    &:hover {
-      box-shadow: 0 1.1rem 3rem rgba(25, 25, 25, 0.25);
-      background: #424ed1;
-
-      &::before {
-        --size: 70vw;
-      }
-    }
-
-    &::before {
-      --size: 0;
-      content: '';
-      position: absolute;
-      left: var(--x);
-      top: var(--y);
-      width: var(--size);
-      height: var(--size);
-      background: radial-gradient(
-          15% 88.6% at 40.5% 80.85%,
-          #ff4236 0%,
-          rgba(142, 84, 245, 0) 155%
-        ),
-        #424ed1;
-      transform: translate(-50%, -50%);
-    }
-
-    & > .recommend__button_container {
+    &_container {
       position: relative;
       display: flex;
       grid-gap: 1rem;
       align-items: center;
+
       @include mq(768) {
         grid-gap: 2rem;
       }
     }
-
-    @include mq(768) {
-      width: 34.3rem;
-      height: 8.9rem;
-      padding: 1rem 2rem 1rem 3rem;
-    }
-    @include mq(1440) {
-      width: 40.6rem;
-      height: 10.1rem;
-      padding: 1.6rem 1.6rem 1.6rem 3.6rem;
-    }
-
     &_text {
       text-align: center;
       font-size: 1.8rem;
       letter-spacing: -0.036rem;
+
       @include mq(768) {
         font-size: 2.4rem;
         letter-spacing: -0.048rem;
@@ -277,10 +224,10 @@ const mousemove = (e) => {
         letter-spacing: -0.096rem;
       }
     }
-
     &_img {
       width: 4rem;
       height: 4rem;
+
       @include mq(768) {
         width: 7rem;
         height: 7rem;

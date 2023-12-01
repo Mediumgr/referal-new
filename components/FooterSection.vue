@@ -1,6 +1,6 @@
 <template>
   <footer class="digital-laboratory">
-    <GradientColor />
+    <GradientColor :gradientStyle="gradientStyle"></GradientColor>
     <h2 class="digital-laboratory__title">
       ПСБ цифровая <br />
       лаборатория
@@ -8,7 +8,13 @@
   </footer>
 </template>
 
-<script setup></script>
+<script setup>
+const gradientStyle = ref({
+  height: '20rem',
+  top: '0rem',
+  transform: 'rotate(0deg)',
+});
+</script>
 
 <style lang="scss" scoped>
 .digital-laboratory {

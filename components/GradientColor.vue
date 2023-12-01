@@ -4,14 +4,21 @@
     <div class="gradient__purple"></div>
     <div class="gradient__red"></div>
     <div class="gradient__yellow"></div>
+    <div class="gradient__grey" :style="gradientStyle"></div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const props = defineProps({
+  gradientStyle: {
+    type: Object,
+    required: false,
+  },
+});
+</script>
 
 <style lang="scss" scoped>
 .gradient {
-  z-index: -1;
   position: absolute;
   top: 0;
   left: 0;
@@ -19,6 +26,39 @@
   bottom: 0;
   overflow: hidden;
   pointer-events: none;
+  height: inherit;
+
+  &__grey {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 38rem;
+    transform: rotate(180deg);
+    background: linear-gradient(
+      180deg,
+      #f7f7f7 0%,
+      rgba(247, 247, 247, 0.99) 11.79%,
+      rgba(247, 247, 247, 0.97) 21.38%,
+      rgba(247, 247, 247, 0.93) 29.12%,
+      rgba(247, 247, 247, 0.88) 35.34%,
+      rgba(247, 247, 247, 0.82) 40.37%,
+      rgba(247, 247, 247, 0.75) 44.56%,
+      rgba(247, 247, 247, 0.67) 48.24%,
+      rgba(247, 247, 247, 0.59) 51.76%,
+      rgba(247, 247, 247, 0.5) 55.44%,
+      rgba(247, 247, 247, 0.41) 59.63%,
+      rgba(247, 247, 247, 0.33) 64.66%,
+      rgba(247, 247, 247, 0.24) 70.88%,
+      rgba(247, 247, 247, 0.15) 78.62%,
+      rgba(247, 247, 247, 0.07) 88.21%,
+      rgba(247, 247, 247, 0) 100%
+    );
+
+    @include mq(1440) {
+      height: 30rem;
+    }
+  }
 
   &__blue {
     background-color: #733ff5;
@@ -95,22 +135,6 @@
       animation: slideInGradient 1.5s ease forwards,
         gradientPurple_1440 8s ease infinite;
     }
-
-    @include mq(1920) {
-      height: 300rem;
-      width: 300rem;
-      top: -80rem;
-      left: -30rem;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientPurple_1920 8s ease infinite;
-    }
-
-    @include mq(2560) {
-      top: -110rem;
-      left: -60rem;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientPurple_2560 8s ease infinite;
-    }
   }
 
   &__red {
@@ -174,22 +198,6 @@
       left: 35rem;
       animation: slideInGradient 1.5s ease forwards,
         gradientRed_1440 8s ease infinite;
-    }
-
-    @include mq(1920) {
-      width: 240rem;
-      height: 240rem;
-      top: -60rem;
-      left: 10rem;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientRed_1920 8s ease infinite;
-    }
-
-    @include mq(2560) {
-      top: -70rem;
-      left: 80rem;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientRed_2560 8s ease infinite;
     }
   }
 
@@ -256,15 +264,6 @@
       left: 95rem;
       animation: slideInGradient 1.5s ease forwards,
         gradientYellow_1440 8s ease infinite;
-    }
-
-    @include mq(1920) {
-      width: 150rem;
-      height: 150rem;
-      top: 30rem;
-      left: 100rem;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientYellow_1920 8s ease infinite;
     }
 
     @include mq(2560) {
@@ -381,24 +380,7 @@
     left: -50rem;
   }
 }
-@keyframes gradientPurple_1920 {
-  0% {
-    top: -80rem;
-    left: -30rem;
-  }
-  25% {
-    top: -130rem;
-    left: -45rem;
-  }
-  50% {
-    top: -130rem;
-    left: -85rem;
-  }
-  75% {
-    top: -80rem;
-    left: -45rem;
-  }
-}
+
 @keyframes gradientPurple_2560 {
   0% {
     top: -110rem;
@@ -490,24 +472,7 @@
     left: -5rem;
   }
 }
-@keyframes gradientRed_1920 {
-  0% {
-    top: -60rem;
-    left: 10rem;
-  }
-  25% {
-    top: -100rem;
-    left: -30rem;
-  }
-  50% {
-    top: -70rem;
-    left: -50rem;
-  }
-  75% {
-    top: -55rem;
-    left: -20rem;
-  }
-}
+
 @keyframes gradientRed_2560 {
   0% {
     top: -70rem;
@@ -526,7 +491,6 @@
     left: 20rem;
   }
 }
-
 @keyframes gradientYellow_375 {
   0% {
     top: 40rem;
@@ -600,25 +564,6 @@
     left: 35rem;
   }
 }
-@keyframes gradientYellow_1920 {
-  0% {
-    top: 30rem;
-    left: 100rem;
-  }
-  25% {
-    top: -51rem;
-    left: 100rem;
-  }
-  50% {
-    top: -10rem;
-    left: -80rem;
-  }
-  75% {
-    top: -10rem;
-    left: 20rem;
-  }
-}
-
 @keyframes gradientYellow_2560 {
   0% {
     top: 30rem;

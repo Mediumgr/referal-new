@@ -34,7 +34,7 @@
 .participation {
   padding: 1rem 2rem 4rem;
   @include mq(768) {
-    padding: 6rem 2rem 8rem;
+    padding: 6rem 2rem 6rem;
   }
   @include mq(1440) {
     padding: 10rem 8rem 8rem;
@@ -57,7 +57,7 @@
     @include mq(1440) {
       font-size: 15rem;
       letter-spacing: -0.9rem;
-      padding: 0 0 8rem;
+      padding: 0 0 10rem;
     }
   }
   &__content {
