@@ -56,7 +56,7 @@ const props = defineProps({
   &__container {
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     height: 50rem;
     max-height: 750px;
     row-gap: 4rem;
