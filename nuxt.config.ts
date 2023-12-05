@@ -14,12 +14,12 @@ export default defineNuxtConfig({
           content: '100 000 по программе приведи в IT · Бонусы для сотрудников',
         },
       ],
-      /*   script: [
+      script: [
         {
           src: '/ya.metrika.js',
           defer: true,
         },
-      ], */
+      ],
       link: [
         {
           rel: 'icon',

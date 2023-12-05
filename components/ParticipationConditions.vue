@@ -34,7 +34,7 @@
 .participation {
   padding: 1rem 2rem 4rem;
   @include mq(768) {
-    padding: 6rem 2rem 6rem;
+    padding: 6rem 3rem 6rem;
   }
   @include mq(1440) {
     padding: 10rem 8rem 8rem;
@@ -68,7 +68,6 @@
     grid-gap: 2rem;
 
     @include mq(768) {
-      width: 100%;
       margin: 0 auto;
     }
     @include mq(1024) {
@@ -85,7 +84,6 @@
       justify-content: flex-start;
       align-items: flex-start;
       padding: 2rem;
-      width: 33.5rem;
       border-radius: 2rem;
       background: var(--color-white);
       box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
@@ -93,9 +91,9 @@
       box-sizing: border-box;
 
       @include mq(768) {
-        width: 34.3rem;
-        align-items: flex-start;
+        width: 83.8rem;
         height: 21.6rem;
+        align-items: flex-start;
         padding: 3rem;
       }
       @include mq(1440) {
@@ -105,13 +103,11 @@
       }
     }
     &_second {
-      width: 34.3rem;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
       padding: 2rem;
-      width: 33.5rem;
       border-radius: 2rem;
       background: var(--color-white);
       box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
@@ -133,8 +129,8 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
+      width: 100%;
       padding: 2rem;
-      width: 33.5rem;
       border-radius: 2rem;
       background: var(--color-white);
       box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
@@ -143,7 +139,6 @@
 
       @include mq(768) {
         padding: 3rem;
-        width: 97%;
       }
       @include mq(1440) {
         width: 41.3rem;
@@ -195,12 +190,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
     grid-gap: 2rem;
 
     @include mq(768) {
       flex-direction: row;
       justify-content: space-between;
-      width: 97%;
     }
     @include mq(1440) {
       width: auto;

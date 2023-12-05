@@ -3,157 +3,184 @@
     <section class="form-section">
       <p class="form-section_title">Заявка на рекомендацию</p>
       <template class="form-section-flex">
-        <form @submit.stop.prevent="submit()" class="form">
-          <div class="form__wrapper form__wrapper_recommender">
-            <h3 class="form__wrapper_title">Рекомендатель</h3>
-            <div class="form__inputs">
-              <BaseInput
-                v-model="recommenderName"
-                type="text"
-                :error="errors['recommenderName']"
-                placeholder="Имя Фамилия"
-              >
-              </BaseInput>
-              <BaseInput
-                v-model="recommenderEmail"
-                type="email"
-                :error="errors['recommenderEmail']"
-                placeholder="Email"
-              >
-              </BaseInput>
-              <BaseInput
-                v-model="recommenderPhone"
-                type="tel"
-                :error="errors['recommenderPhone']"
-                placeholder="Телефон"
-              >
-              </BaseInput>
-            </div>
-            <div class="form__checkboxes">
-              <BaseCheckbox
-                v-model="checked[0]"
-                :error="errors['recommenderParticipation']"
-                id="recParticipation"
-              >
-                Я&nbsp;даю согласие на&nbsp;участие в&nbsp;Программе
-                &#171;Приведи друга в&nbsp;ИТ&#187;&nbsp;ООО &#171;ПСБ
-                Лаб&#187;, с&nbsp;условиями
-                <a
-                  class="link"
-                  href="/docs/rules.docx"
-                  target="_blank"
-                  download
+        <transition name="form-fade" mode="out-in">
+          <form v-if="status.form" @submit.stop.prevent="submit()" class="form">
+            <div class="form__wrapper form__wrapper_recommender">
+              <h3 class="form__wrapper_title">Рекомендатель</h3>
+              <div class="form__inputs">
+                <BaseInput
+                  v-model="recommenderName"
+                  type="text"
+                  :error="errors['recommenderName']"
+                  placeholder="Имя Фамилия"
                 >
-                  Программы
-                </a>
-                ознакомлен
-              </BaseCheckbox>
-              <BaseCheckbox
-                v-model="checked[1]"
-                :error="errors['recommenderProcessing']"
-                id="recProcessing"
-              >
-                Я&nbsp;даю свое согласие на&nbsp;обработку своих персональных
-                данных ООО &#171;ПСБ Лаб&#187; и&nbsp;ПАО
-                &#171;Промсвязьбанк&#187;. С&nbsp;&#171;
-                <a
-                  class="link"
-                  href="/docs/confirm_recomend.docx"
-                  target="_blank"
-                  download
+                </BaseInput>
+                <BaseInput
+                  v-model="recommenderEmail"
+                  type="email"
+                  :error="errors['recommenderEmail']"
+                  placeholder="Email"
                 >
-                  Согласием
-                </a>
-                на&nbsp;обработку персональных данных Рекомендателя Программы
-                &#171;Приведи друга в&nbsp;ИТ&#187;&nbsp;ООО &#171;ПСБ Лаб&#187;
-                ознакомлен
-              </BaseCheckbox>
-              <BaseCheckbox
-                v-model="checked[2]"
-                :error="errors['recommenderSigning']"
-                id="recSigning"
-              >
-                Я&nbsp;даю согласие на&nbsp;подписание договора об&nbsp;оказании
-                услуг для выплаты вознаграждения простой электронной подписью
-                и&nbsp;предоставление данных для его заключения, если
-                рекомендованный мною Кандидат будет принят на&nbsp;работу
-                и&nbsp;успешно пройдет испытательный срок в&nbsp;ООО &#171;ПСБ
-                Лаб&#187;
-              </BaseCheckbox>
-            </div>
-          </div>
-          <div class="form__divider"></div>
-          <div class="form__wrapper form__wrapper_candidate">
-            <h3 class="form__wrapper_title">Кандидат</h3>
-            <div class="form__inputs">
-              <BaseInput
-                v-model="candidateName"
-                type="text"
-                :error="errors['candidateName']"
-                placeholder="Имя Фамилия"
-              >
-              </BaseInput>
-              <BaseInput
-                v-model="candidateEmail"
-                type="email"
-                :error="errors['candidateEmail']"
-                placeholder="Email"
-              >
-              </BaseInput>
-              <BaseInput
-                v-model="candidatePhone"
-                type="tel"
-                :error="errors['candidatePhone']"
-                placeholder="Телефон"
-              >
-              </BaseInput>
-              <BaseFileInput></BaseFileInput>
-            </div>
-            <div class="form__checkboxes">
-              <BaseCheckbox
-                v-model="checked[3]"
-                :error="errors['candidateParticipation']"
-                id="candParticipation"
-              >
-                Я&nbsp;даю согласие на&nbsp;участие в&nbsp;Программе
-                &#171;Приведи друга в&nbsp;ИТ&#187;&nbsp;ООО &#171;ПСБ
-                Лаб&#187;, с&nbsp;условиями
-                <a
-                  class="link"
-                  href="/docs/rules.docx"
-                  target="_blank"
-                  download
+                </BaseInput>
+                <BaseInput
+                  v-model="recommenderPhone"
+                  type="tel"
+                  :error="errors['recommenderPhone']"
+                  placeholder="Телефон"
                 >
-                  Программы
-                </a>
-                ознакомлен
-              </BaseCheckbox>
-              <BaseCheckbox
-                v-model="checked[4]"
-                :error="errors['candidateProcessing']"
-                id="candProcessing"
-              >
-                Я&nbsp;даю свое согласие на&nbsp;обработку своих персональных
-                данных ООО &#171;ПСБ Лаб&#187; и&nbsp;ПАО
-                &#171;Промсвязьбанк&#187;. С&nbsp;&#171;
-                <a
-                  class="link"
-                  href="/docs/confirm_candidate.docx"
-                  target="_blank"
-                  download
+                </BaseInput>
+              </div>
+              <div class="form__checkboxes">
+                <BaseCheckbox
+                  v-model="checked[0]"
+                  :error="errors['recParticipation']"
+                  id="recParticipation"
                 >
-                  Согласием
-                </a>
-                на&nbsp;обработку персональных данных Рекомендателя Программы
-                &#171;Приведи друга в&nbsp;ИТ&#187;&nbsp;ООО &#171;ПСБ Лаб&#187;
-                ознакомлен
-              </BaseCheckbox>
+                  Я&nbsp;даю согласие на&nbsp;участие в&nbsp;Программе
+                  &#171;Приведи друга в&nbsp;ИТ&#187;&nbsp;ООО &#171;ПСБ
+                  Лаб&#187;, с&nbsp;условиями
+                  <a
+                    :class="[
+                      'link',
+                      { errorLink: errors['recParticipation'] === 'error' },
+                    ]"
+                    href="/docs/rules.docx"
+                    target="_blank"
+                    download
+                  >
+                    Программы
+                  </a>
+                  ознакомлен
+                </BaseCheckbox>
+                <BaseCheckbox
+                  v-model="checked[1]"
+                  :error="errors['recProcessing']"
+                  id="recProcessing"
+                >
+                  Я&nbsp;даю свое согласие на&nbsp;обработку своих персональных
+                  данных ООО &#171;ПСБ Лаб&#187; и&nbsp;ПАО
+                  &#171;Промсвязьбанк&#187;. С&nbsp;&#171;
+                  <a
+                    :class="[
+                      'link',
+                      { errorLink: errors['recProcessing'] === 'error' },
+                    ]"
+                    href="/docs/confirm_recomend.docx"
+                    target="_blank"
+                    download
+                  >
+                    Согласием
+                  </a>
+                  на&nbsp;обработку персональных данных Рекомендателя Программы
+                  &#171;Приведи друга в&nbsp;ИТ&#187;&nbsp;ООО &#171;ПСБ
+                  Лаб&#187; ознакомлен
+                </BaseCheckbox>
+                <BaseCheckbox
+                  v-model="checked[2]"
+                  :error="errors['recSigning']"
+                  id="recSigning"
+                >
+                  Я&nbsp;даю согласие на&nbsp;подписание договора
+                  об&nbsp;оказании услуг для выплаты вознаграждения простой
+                  электронной подписью и&nbsp;предоставление данных для его
+                  заключения, если рекомендованный мною Кандидат будет принят
+                  на&nbsp;работу и&nbsp;успешно пройдет испытательный срок
+                  в&nbsp;ООО &#171;ПСБ Лаб&#187;
+                </BaseCheckbox>
+              </div>
             </div>
-          </div>
-          <BaseButton class="form__button">
-            <span class="form__button_text">Отправить</span>
-          </BaseButton>
-        </form>
+            <div class="form__divider"></div>
+            <div class="form__wrapper form__wrapper_candidate">
+              <h3 class="form__wrapper_title">Кандидат</h3>
+              <div class="form__inputs">
+                <BaseInput
+                  v-model="candidateName"
+                  type="text"
+                  :error="errors['candidateName']"
+                  placeholder="Имя Фамилия"
+                >
+                </BaseInput>
+                <BaseInput
+                  v-model="candidateEmail"
+                  type="email"
+                  :error="errors['candidateEmail']"
+                  placeholder="Email"
+                >
+                </BaseInput>
+                <BaseInput
+                  v-model="candidatePhone"
+                  type="tel"
+                  :error="errors['candidatePhone']"
+                  placeholder="Телефон"
+                >
+                </BaseInput>
+                <BaseAttachFile
+                  :error="errors['file']"
+                  @attachedFile="attachedFile($event)"
+                ></BaseAttachFile>
+              </div>
+              <div class="form__checkboxes">
+                <BaseCheckbox
+                  v-model="checked[3]"
+                  :error="errors['candParticipation']"
+                  id="candParticipation"
+                >
+                  Я&nbsp;даю согласие на&nbsp;участие в&nbsp;Программе
+                  &#171;Приведи друга в&nbsp;ИТ&#187;&nbsp;ООО &#171;ПСБ
+                  Лаб&#187;, с&nbsp;условиями
+                  <a
+                    :class="[
+                      'link',
+                      { errorLink: errors['candParticipation'] === 'error' },
+                    ]"
+                    href="/docs/rules.docx"
+                    target="_blank"
+                    download
+                  >
+                    Программы
+                  </a>
+                  ознакомлен
+                </BaseCheckbox>
+                <BaseCheckbox
+                  v-model="checked[4]"
+                  :error="errors['candProcessing']"
+                  id="candProcessing"
+                >
+                  Я&nbsp;даю свое согласие на&nbsp;обработку своих персональных
+                  данных ООО &#171;ПСБ Лаб&#187; и&nbsp;ПАО
+                  &#171;Промсвязьбанк&#187;. С&nbsp;&#171;
+                  <a
+                    :class="[
+                      'link',
+                      { errorLink: errors['candProcessing'] === 'error' },
+                    ]"
+                    href="/docs/confirm_candidate.docx"
+                    target="_blank"
+                    download
+                  >
+                    Согласием
+                  </a>
+                  на&nbsp;обработку персональных данных Рекомендателя Программы
+                  &#171;Приведи друга в&nbsp;ИТ&#187;&nbsp;ООО &#171;ПСБ
+                  Лаб&#187; ознакомлен
+                </BaseCheckbox>
+              </div>
+            </div>
+            <BaseButton class="form__button" v-if="!loader">
+              <span class="form__button_text">Отправить</span>
+            </BaseButton>
+            <span class="loader" v-if="loader"></span>
+          </form>
+          <FormStatus
+            v-else
+            :status="status"
+            @resend="
+              () => {
+                status.form = true;
+              }
+            "
+          ></FormStatus>
+        </transition>
       </template>
     </section>
   </ClientOnly>
@@ -167,18 +194,54 @@ let recommenderPhone = ref({ text: '', textLength: '' });
 let candidateName = ref({ text: '' });
 let candidateEmail = ref({ text: '' });
 let candidatePhone = ref({ text: '', textLength: '' });
-let errors = ref({});
+let file = ref({});
+const loader = ref(false);
+const regExp = reactive({
+  name: /^[A-Za-zА-Яа-я]+(?: [A-Za-zА-Яа-я]+)?(?: [A-Za-zА-Яа-я]+)?$/,
 
-/* watch(
-  () => errors.value.file,
-  (error) => {
-    if (error === 'error') {
-      placeholderNode.value.classList.add('fileError');
-      titleNode.value.classList.add('fileError');
-      resumeNode.value.classList.add('borderError');
-    }
-  }
-); */
+  phone: /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/,
+  email: /^[\w._-]+@\w+\.[a-z]{2,4}$/i,
+});
+let errors = reactive({});
+const status = reactive({
+  form: true,
+  connection: true,
+  server: { failure: false, message: '' },
+});
+
+const attachedFile = (resume) => {
+  file.value = resume;
+};
+
+const submit = async () =>
+  await useSubmit({
+    errors,
+    loader,
+    recommenderName,
+    recommenderEmail,
+    recommenderPhone,
+    checked,
+    candidateName,
+    candidateEmail,
+    candidatePhone,
+    file,
+    status,
+    regExp,
+  });
+
+useWatchers({
+  errors,
+  recommenderName,
+  recommenderEmail,
+  recommenderPhone,
+  checked,
+  candidateName,
+  candidateEmail,
+  candidatePhone,
+  file,
+  status,
+  regExp,
+});
 </script>
 
 <style lang="scss" scoped>
@@ -328,18 +391,29 @@ let errors = ref({});
 
 .link {
   color: var(--eggplant);
+  text-decoration-line: underline;
+}
+.errorLink {
+  color: #f00;
 }
 .loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 4.8rem;
   height: 4.8rem;
   border-radius: 50%;
-  display: inline-block;
-  position: relative;
   border: 0.3rem solid;
   border-color: #424ed1 #424ed1 transparent transparent;
   box-sizing: border-box;
-  margin: 0 auto;
+  margin: 0 auto 4rem;
   animation: rotation 1s linear infinite;
+
+  @include mq(1440) {
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto 5.5rem;
+  }
 }
 
 .loader::after,
@@ -387,5 +461,15 @@ let errors = ref({});
   100% {
     transform: rotate(-360deg);
   }
+}
+
+.form-fade-enter-from,
+.form-fade-leave-to {
+  opacity: 0;
+}
+
+.form-fade-enter-active,
+.form-fade-leave-active {
+  transition: opacity 0.25s ease-out;
 }
 </style>

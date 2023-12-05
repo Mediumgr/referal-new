@@ -70,27 +70,24 @@ html {
 }
 
 body {
-  /* Text/Phone */
   font-family: Onest, Helvetica, serif;
   font-size: 1.3rem;
   font-style: normal;
   font-weight: 500;
-  line-height: 120%; /* 15.6px */
+  line-height: 120%;
   letter-spacing: -0.026rem;
   margin: 0;
   background-color: var(--bg);
   color: var(--eggplant);
 
   @include mq(768) {
-    /* Text/Tablet */
     font-size: 1.6rem;
     letter-spacing: -0.032rem;
   }
 
   @include mq(1200) {
-    /* Text/Desktop */
     font-size: 1.6rem;
-    line-height: 140%; /* 22.4px */
+    line-height: 140%;
     letter-spacing: -0.064rem;
   }
 }

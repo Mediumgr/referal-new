@@ -6,9 +6,12 @@
       :checked="modelValue"
       @change="(event) => emit('update:modelValue', event.target.checked)"
     />
-    <label :for="id" :class="['checkboxLabel', { errorCheckbox: error }]">
+    <label
+      :for="id"
+      :class="['checkboxLabel', { errorCheckbox: error === 'error' }]"
+    >
     </label>
-    <label :for="id" :class="['textLabel', { error: error }]">
+    <label :for="id" :class="['textLabel', { errorText: error === 'error' }]">
       <slot></slot>
     </label>
   </div>
@@ -53,10 +56,6 @@ input {
       center/1rem 0.8rem;
   }
 }
-
-.checkboxLabel {
-  position: relative;
-}
 .checkboxLabel {
   position: relative;
   margin-right: 1rem;
@@ -69,12 +68,10 @@ input {
   outline: 0.1rem solid var(--eggplant);
   cursor: pointer;
 }
-.errorCheckbox::before {
-  outline: 0.1rem solid red;
-}
 .textLabel {
   color: var(--eggplant);
   font-size: 1.3rem;
+  line-height: 140%;
   letter-spacing: -0.026rem;
   opacity: 0.5;
 
@@ -83,11 +80,10 @@ input {
     letter-spacing: -0.032rem;
   }
 }
-.error {
-  opacity: 0.5;
+.errorCheckbox {
+  outline: 0.1rem solid red;
+}
+.errorText {
   color: #f00;
-  font-size: 1.6rem;
-  line-height: 140%;
-  letter-spacing: -0.064rem;
 }
 </style>

@@ -1,21 +1,26 @@
 <template>
   <input
     type="file"
+    ref="inputNode"
     accept=".pdf, .doc, .docx"
     @change="change($event)"
-    ref="inputNode"
   />
   <div
-    class="resume"
+    :class="['resume', { borderError: error === 'error' }]"
     ref="resumeNode"
     @click.stop="attachResume()"
     @dragover="handleDragOver($event)"
     @dragleave="handleDragLeave($event)"
     @drop="handleDrop($event)"
   >
-    <p class="resume__title" ref="titleNode">{{ resumeTitle }}</p>
     <p
-      class="resume__placeholder"
+      :class="['resume__title', { fileError: error === 'error' }]"
+      ref="titleNode"
+    >
+      {{ resumeTitle }}
+    </p>
+    <p
+      :class="['resume__placeholder', { fileError: error === 'error' }]"
       ref="placeholderNode"
       @click="removeFile($event)"
     >
@@ -25,6 +30,14 @@
 </template>
 
 <script setup>
+const emit = defineEmits(['attachedFile']);
+const props = defineProps({
+  error: {
+    type: String,
+    required: false,
+  },
+});
+
 const inputNode = ref(null);
 const placeholderNode = ref(null);
 const titleNode = ref(null);
@@ -62,6 +75,7 @@ const handleFile = () => {
     placeholderNode.value.classList.remove('fileError');
     titleNode.value.classList.remove('fileError');
     resumeNode.value.classList.remove('borderError');
+    emit('attachedFile', file.value);
   }
 };
 
@@ -180,13 +194,7 @@ input {
 
 .fileError {
   color: #f00;
-
-  @include mq(1440) {
-    text-align: center;
-    padding: 0 3rem;
-  }
 }
-
 .borderError {
   border: 0.1rem dashed #f00;
 }

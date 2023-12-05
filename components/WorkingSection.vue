@@ -85,7 +85,8 @@ onMounted(() => {
 <style lang="scss" scoped>
 .frame__wrapper {
   color: var(--eggplant);
-  grid-gap: 2.5rem;
+  grid-row-gap: 2.5rem;
+  grid-column-gap: 2.5rem;
   justify-items: center;
   align-items: center;
   flex-direction: column;
@@ -101,9 +102,8 @@ onMounted(() => {
     'projects projects';
 
   @include mq(768) {
-    width: 76.8rem;
     margin: 0 auto;
-    grid-template-columns: 43rem auto;
+    grid-template-columns: 40rem 1fr;
     grid-row-gap: 2.5rem;
     grid-column-gap: 2.8rem;
     grid-template-areas:
@@ -112,6 +112,9 @@ onMounted(() => {
       'factory eco'
       'substitution projects'
       'credit products';
+  }
+  @include mq(1024) {
+    width: 73rem;
   }
   @include mq(1440) {
     width: 140rem;
@@ -158,12 +161,13 @@ onMounted(() => {
 
 .working {
   &__section {
-    padding-top: 20rem;
+    padding: 20rem 2rem 0;
+
     @include mq(768) {
-      padding-top: 22rem;
+      padding: 22rem 2rem 0;
     }
     @include mq(1440) {
-      padding-top: 28rem;
+      padding: 28rem 2rem 0;
     }
   }
   &__title {
@@ -291,7 +295,7 @@ onMounted(() => {
       width: 29.3rem;
       height: 7.8rem;
       position: relative;
-      right: 10rem;
+      right: 8rem;
     }
     @include mq(1440) {
       right: -4.5rem;
@@ -351,7 +355,7 @@ onMounted(() => {
 
     @include mq(768) {
       position: relative;
-      left: -6.5rem;
+      left: -5rem;
       height: 8.8rem;
       justify-self: start;
     }

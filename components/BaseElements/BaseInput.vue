@@ -1,29 +1,32 @@
 <template>
-  <input
-    class="input"
-    ref="input"
-    :value="modelValue.text"
-    :type="type"
-    :placeholder="placeholder"
-    :class="{ errorClass: error === 'error' }"
-    @input="onInput($event)"
-    @focus="onFocus()"
-    @blur="onBlur()"
-  />
+  <div class="wrapper-input">
+    <input
+      class="input"
+      ref="input"
+      :value="modelValue.text"
+      :type="type"
+      :class="{ errorClass: error === 'error' }"
+      @input="onInput($event)"
+      @focus="onFocus()"
+      @blur="onBlur()"
+    />
+    <label ref="label" :class="labelClasses">{{ placeholder }}</label>
+  </div>
 </template>
 
 <script setup>
 const input = ref(null);
+const label = ref(null);
 
 const emit = defineEmits(['update:modelValue']);
 const props = defineProps({
   modelValue: {
     type: Object,
-    default: '',
+    default: () => ({}),
   },
   placeholder: {
     type: String,
-    required: true,
+    required: false,
   },
   type: {
     type: String,
@@ -80,6 +83,16 @@ const onFocus = () => {
 const onBlur = () => {
   input.value.classList.remove('focus');
 };
+
+const labelClasses = computed(() => {
+  return [
+    'placeholder-label',
+    {
+      errorLabel: props.error === 'error',
+      hidden: props.modelValue.text.length > 0,
+    },
+  ];
+});
 </script>
 
 <style lang="scss" scoped>
@@ -87,6 +100,10 @@ const onBlur = () => {
 /* input:active {
   font-size: 16px; 
 } */
+
+.wrapper-input {
+  position: relative;
+}
 .focus {
   border: 0.2rem solid rgba(19, 20, 75, 0.2) !important;
 }
@@ -118,7 +135,13 @@ const onBlur = () => {
   }
 }
 
-::placeholder {
+.placeholder-label {
+  position: absolute;
+  top: 4.9rem;
+  left: 2rem;
+  transform: translateY(-135%);
+  pointer-events: none;
+  transition: all 0.3s ease-out;
   color: #13144b;
   font-family: 'Onest', serif;
   font-size: 1.3rem;
@@ -127,7 +150,9 @@ const onBlur = () => {
   opacity: 0.5;
   line-height: 140%;
   letter-spacing: -0.064rem;
+
   @include mq(768) {
+    transform: translateY(-100%);
     font-size: 1.6rem;
     letter-spacing: -0.032rem;
   }
@@ -135,10 +160,16 @@ const onBlur = () => {
     font-size: 1.8rem;
     letter-spacing: -0.064rem;
   }
+  &.hidden {
+    opacity: 0;
+  }
 }
-
 .errorClass {
   border: 0.1rem solid #f00;
+  color: #f00;
+}
+
+.errorLabel {
   color: #f00;
 }
 </style>
