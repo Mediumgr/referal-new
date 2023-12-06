@@ -41,12 +41,12 @@ export const useSubmit = async (options) => {
 
     let formData = new FormData();
 
-    formData.append('recommender[NAME]', recommenderName.value);
-    formData.append('recommender[EMAIL]', recommenderEmail.value);
-    formData.append('recommender[PHONE]', recommenderPhone.value);
-    formData.append('candidate[NAME]', candidateName.value);
-    formData.append('candidate[EMAIL]', candidateEmail.value);
-    formData.append('candidate[PHONE]', candidatePhone.value);
+    formData.append('recommender[NAME]', recommenderName.value.text);
+    formData.append('recommender[EMAIL]', recommenderEmail.value.text);
+    formData.append('recommender[PHONE]', recommenderPhone.value.text);
+    formData.append('candidate[NAME]', candidateName.value.text);
+    formData.append('candidate[EMAIL]', candidateEmail.value.text);
+    formData.append('candidate[PHONE]', candidatePhone.value.text);
     formData.append('userfile', file.value);
     formData.append('recommender[check_order]', agreementSign);
     formData.append('utm[utm_source]', utmSource);
@@ -70,10 +70,6 @@ export const useSubmit = async (options) => {
       yaReachGoal('target');
     }
 
-    // setTimeout(() => {
-    //   status.form = false;
-    //   loader.value = false;
-    // }, 2000);
     status.form = false;
     loader.value = false;
   }

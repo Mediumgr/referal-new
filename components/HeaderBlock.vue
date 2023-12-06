@@ -4,7 +4,7 @@
     <header>
       <nav class="navbar">
         <div class="navbar__container">
-          <img src="@/assets/images/header/logo_1.svg" alt="logo" />
+          <img src="~/assets/images/header/logo_1.svg" alt="logo" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"
@@ -25,7 +25,7 @@
               fill="white"
             />
           </svg>
-          <img src="@/assets/images/header/logo_2.svg" alt="logo" />
+          <img src="~/assets/images/header/logo_2.svg" alt="logo" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="95"
@@ -40,7 +40,7 @@
               fill="white"
             />
           </svg>
-          <img src="@/assets/images/header/logo_3.svg" alt="logo" />
+          <img src="~/assets/images/header/logo_3.svg" alt="logo" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="126"
@@ -66,7 +66,7 @@
             <img
               class="recommend__button_img"
               alt="Frame"
-              src="@/assets/images/header/arrow_right.svg"
+              src="~/assets/images/header/arrow_right.svg"
             /> </span
         ></BaseButton>
       </div>

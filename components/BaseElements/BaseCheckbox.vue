@@ -52,20 +52,17 @@ input {
   opacity: 0;
   visibility: hidden;
   &:checked ~ .checkboxLabel {
-    background: url('/assets/images/formData/checked.svg') no-repeat center
+    background: url('~/assets/images/formData/checked.svg') no-repeat center
       center/1rem 0.8rem;
   }
 }
 .checkboxLabel {
   position: relative;
   margin-right: 1rem;
-  width: 2rem;
-  height: 2rem;
-  padding-right: 2rem;
-  display: block;
-  border-radius: 25%;
-  text-align: center;
-  outline: 0.1rem solid var(--eggplant);
+  height: 1.9rem;
+  padding-right: 1.75rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--eggplant);
   cursor: pointer;
 }
 .textLabel {
@@ -81,7 +78,7 @@ input {
   }
 }
 .errorCheckbox {
-  outline: 0.1rem solid red;
+  border: 0.1rem solid red;
 }
 .errorText {
   color: #f00;

@@ -26,6 +26,50 @@
       </div>
     </div>
   </div>
+  <div class="wrapper__expectations">
+    <div class="expectations">
+      <p class="expectations__title">Что ждет друга после трудоустройства</p>
+      <div class="expectations__content">
+        <div class="expectations__info">
+          <img src="~/assets/images/participation/poster.jpg" alt="photo" />
+          <div class="expectations__info_overlay"></div>
+          <p class="expectations__info_title">
+            Конкурентная зарплата и&nbsp;премии
+          </p>
+        </div>
+        <div class="expectations__advantages">
+          <div class="expectations__advantages_firstBlock advantage">
+            <p class="expectations__advantages_textInGradient">
+              Техника <br />для работы
+            </p>
+            <img
+              class="laptop"
+              src="~/assets/images/participation/laptop.png"
+              alt="photo"
+            />
+          </div>
+          <div class="expectations__advantages_thirdBlock advantage">
+            <img src="~/assets/images/participation/cross.svg" alt="photo" />
+            <p class="expectations__advantages_text">
+              Льготные условия по&nbsp;продуктам банка
+            </p>
+          </div>
+          <div class="expectations__advantages_secondBlock advantage_lower">
+            <img src="~/assets/images/participation/cross.svg" alt="photo" />
+            <p class="expectations__advantages_text">
+              ДМС со&nbsp;стоматологией
+            </p>
+          </div>
+          <div class="expectations__advantages_forthBlock advantage_lower">
+            <img src="~/assets/images/participation/cross.svg" alt="photo" />
+            <p class="expectations__advantages_text">
+              Компенсация фитнеса и&nbsp;путешествий
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup></script>
@@ -33,8 +77,12 @@
 <style lang="scss" scoped>
 .participation {
   padding: 1rem 2rem 4rem;
+
   @include mq(768) {
     padding: 6rem 3rem 6rem;
+  }
+  @include mq(1024) {
+    padding: 6rem calc(50% - 34.8rem) 6rem;
   }
   @include mq(1440) {
     padding: 10rem 8rem 8rem;
@@ -69,9 +117,6 @@
 
     @include mq(768) {
       margin: 0 auto;
-    }
-    @include mq(1024) {
-      width: 57%;
     }
     @include mq(1440) {
       flex-direction: row;
@@ -199,6 +244,286 @@
     }
     @include mq(1440) {
       width: auto;
+    }
+  }
+}
+
+.wrapper__expectations {
+  padding: 0 2rem 12rem;
+
+  @include mq(768) {
+    padding: 0 3rem 16rem;
+  }
+  @include mq(1024) {
+    padding: 0 calc(50% - 34.8rem) 16rem;
+  }
+  @include mq(1440) {
+    padding: 0 calc(50% - 64rem) 16rem;
+  }
+}
+.expectations {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  grid-row-gap: 2rem;
+  border-radius: 4rem;
+  background: var(--color-white);
+  box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
+
+  @include mq(768) {
+    grid-row-gap: 3rem;
+    padding: 4rem;
+  }
+
+  @include mq(1440) {
+    grid-row-gap: 5rem;
+    padding: 4rem 6rem;
+  }
+
+  &__title {
+    padding: 0 calc(50% - 10rem) 0;
+    color: var(--eggplant);
+    text-align: center;
+    font-size: 3rem;
+    line-height: 100%;
+    letter-spacing: -0.12rem;
+
+    @include mq(768) {
+      padding: 0 calc(50% - 25rem) 0;
+      font-size: 4.8rem;
+      letter-spacing: -0.096rem;
+    }
+
+    @include mq(1440) {
+      padding: 0;
+      font-size: 6.4rem;
+      letter-spacing: -0.13rem;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    grid-row-gap: 1rem;
+
+    @include mq(1440) {
+      flex-direction: row;
+      grid-row-gap: 0;
+      grid-column-gap: 1rem;
+    }
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    width: 100%;
+
+    @include mq(1440) {
+      width: 98%;
+    }
+
+    &_overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 2rem;
+    }
+
+    &_title {
+      position: absolute;
+      color: var(--color-white);
+      font-size: 2.4rem;
+      letter-spacing: -0.048rem;
+      line-height: 110%;
+      z-index: 1;
+      padding: 1.6rem;
+
+      @include mq(768) {
+        font-size: 3.6rem;
+        letter-spacing: -0.072rem;
+        padding: 0 20rem 3rem 3rem;
+      }
+
+      @include mq(1440) {
+        font-size: 4rem;
+        letter-spacing: -0.08rem;
+        padding: 3rem;
+      }
+    }
+
+    > img {
+      height: 18.5rem;
+      border-radius: 2rem;
+      background: rgba(0, 0, 0, 0.3);
+      object-fit: cover;
+
+      @include mq(768) {
+        height: 24.2rem;
+      }
+
+      @include mq(1440) {
+        height: 48rem;
+        width: 58.2rem;
+      }
+    }
+  }
+  &__advantages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    grid-gap: 1rem;
+
+    &_firstBlock {
+      overflow: hidden;
+      background: var(
+        --Radial,
+        radial-gradient(
+          182.79% 156.21% at 7.63% -11.7%,
+          #ffa848 0%,
+          #ff954d 15.63%,
+          #f94037 39.58%,
+          #7e24cc 70.62%,
+          #13144b 100%
+        )
+      ) !important;
+
+      @include mq(768) {
+        flex-direction: row !important;
+        align-items: center;
+      }
+
+      @include mq(1440) {
+        height: 28.3rem !important;
+        width: 100% !important;
+        padding: 4rem !important;
+        align-items: flex-start;
+      }
+      > .laptop {
+        position: relative;
+        left: 3.8rem;
+        top: -1.5rem;
+        width: 13rem;
+        height: auto;
+
+        @include mq(768) {
+          left: 2.1rem;
+          top: -0.5rem;
+        }
+
+        @include mq(1440) {
+          left: 4.1rem;
+          top: -3.8rem;
+          width: 27rem;
+          height: 27rem;
+        }
+      }
+    }
+
+    &_textInGradient {
+      color: var(--color-white);
+      font-size: 1.8rem;
+      letter-spacing: -0.036rem;
+      line-height: 120%;
+
+      @include mq(768) {
+        font-size: 2.4rem;
+        letter-spacing: -0.048rem;
+      }
+
+      @include mq(1440) {
+        font-size: 3.6rem;
+        letter-spacing: -0.072rem;
+      }
+    }
+
+    &_text {
+      color: var(--eggplant);
+      font-size: 1.3rem;
+      letter-spacing: -0.026rem;
+
+      @include mq(768) {
+        font-size: 1.6rem;
+        letter-spacing: -0.032rem;
+      }
+
+      @include mq(1440) {
+        font-size: 1.68rem;
+        letter-spacing: -0.036rem;
+      }
+    }
+  }
+}
+
+.advantage {
+  display: flex;
+  padding: 1.6rem;
+  flex-direction: column;
+  grid-row-gap: 1rem;
+  border-radius: 2rem;
+  width: 48%;
+  height: 13rem;
+  background: #f7f7f7;
+
+  @include mq(768) {
+    width: 49%;
+    padding: 2rem;
+    height: 11.6rem;
+    grid-row-gap: 2rem;
+    justify-content: space-between;
+  }
+
+  @include mq(1440) {
+    width: 18.1rem;
+    height: 18.7rem;
+  }
+
+  > img {
+    width: 2.4rem;
+    height: 2.4rem;
+
+    @include mq(1440) {
+      width: 3.36rem;
+      height: 3.36rem;
+    }
+  }
+  &_lower {
+    display: flex;
+    padding: 1.6rem;
+    grid-row-gap: 1rem;
+    flex-direction: column;
+    border-radius: 2rem;
+    width: 48%;
+    height: 11.4rem;
+    background: #f7f7f7;
+
+    @include mq(768) {
+      width: 49%;
+      padding: 2rem;
+      height: 11.6rem;
+      justify-content: space-between;
+    }
+
+    @include mq(1440) {
+      width: 18.1rem;
+      height: 18.7rem;
+      justify-content: flex-start;
+      grid-row-gap: 2rem;
+    }
+
+    > img {
+      width: 2.4rem;
+      height: 2.4rem;
+
+      @include mq(1440) {
+        width: 3.36rem;
+        height: 3.36rem;
+      }
     }
   }
 }

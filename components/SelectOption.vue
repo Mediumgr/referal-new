@@ -52,7 +52,7 @@
 </template>
 
 <script setup>
-import options from '@/assets/data/select-option.json';
+import options from '~/assets/data/select-option.json';
 const data = options.content;
 
 const hiddenWrapper = ref(null);
