@@ -161,13 +161,13 @@ onMounted(() => {
 
 .working {
   &__section {
-    padding: 20rem 2rem 0;
+    padding: 20rem 2rem 12rem;
 
     @include mq(768) {
-      padding: 22rem 2rem 0;
+      padding: 22rem 2rem 12rem;
     }
     @include mq(1440) {
-      padding: 28rem 2rem 0;
+      padding: 28rem 2rem 16rem;
     }
   }
   &__title {

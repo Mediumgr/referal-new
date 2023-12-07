@@ -20,14 +20,21 @@
     </div>
   </section>
 
+  <div class="which-stack-to-use-bg"></div>
+
 </template>
 
 <script setup>
 import { onMounted } from 'vue';
-import whichStackToUse from '@/assets/data/which-stack-to-use.json';
+import whichStackToUse from '~/assets/data/which-stack-to-use.json';
 import { gsap } from "~/helpers/gsap";
-import { isMobile } from "~/helpers";
+import { isDesktop, refreshScrollTriggerByElement } from "~/helpers";
 
+const gradientStyle = {
+  height: '20rem',
+  top: '0rem',
+  transform: 'rotate(0deg)',
+}
 const CLASS_PREFIX = '_stack-';
 
 const LEFT_ClASS = CLASS_PREFIX + 'left';
@@ -40,12 +47,6 @@ const ACTIVE_RIGHT_ClASS = ACTIVE_ClASS + '-right';
 const classes = [
   LEFT_ClASS, RIGHT_ClASS, ACTIVE_ClASS, ACTIVE_LEFT_ClASS, ACTIVE_RIGHT_ClASS
 ]
-
-const gradientStyle = {
-  height: '20rem',
-  top: '0rem',
-  transform: 'rotate(0deg)',
-}
 
 function init() {
   const stackContainerEl = document.querySelector('.js-stack-use');
@@ -64,49 +65,53 @@ function init() {
 
   function animation() {
     // заголовки
-    gsap.from(titleEl, {
-      autoAlpha: 0,
-      scrollTrigger: {
-        trigger: stackContainerEl,
-        start: "top 50%",
-        end: "clamp(center +=300px)",
-        scrub: 1,
-      },
-    })
+    // gsap.to(titleEl, {
+    //   autoAlpha: 1,
+    //   scrollTrigger: {
+    //     trigger: stackContainerEl,
+    //     start: "top 70%",
+    //     end: "bottom 90%",
+    //     // scrub: 1,
+    //     markers: true,
+    //   },
+    // })
 
-    gsap.from(cardsStackContainerEl, {
-      autoAlpha: 0,
-      scrollTrigger: {
-        trigger: stackContainerEl,
-        start: "top 50%",
-        end: "clamp(center +=300px)",
-        scrub: 1,
-      },
-    })
+    // gsap.from(cardsStackContainerEl, {
+    //   autoAlpha: 0,
+    //   scrollTrigger: {
+    //     trigger: stackContainerEl,
+    //     start: "top 70%",
+    //     end: "clamp(center +=300px)",
+    //     scrub: 1,
+    //   },
+    // })
 
-    gsap.from(gradientEl, {
-      autoAlpha: 0.2,
-      scrollTrigger: {
-        trigger: stackContainerEl,
-        start: "top 70%",
-        end: "clamp(center +=300px)",
-        scrub: 1,
-      },
-    })
+    // gsap.from(gradientEl, {
+    //   autoAlpha: 0.2,
+    //   scrollTrigger: {
+    //     trigger: stackContainerEl,
+    //     start: "top 70%",
+    //     end: "clamp(center +=300px)",
+    //     scrub: 1,
+    //   },
+    // })
   }
 
-  function stackAnimate({ current, left = null, right = null, leftElementsWrapper = [], rightElementsWrapper = [] }) {
+  function stackAnimate({
+                          current,
+                          left = null,
+                          right = null,
+                          leftElementsWrapper = [],
+                          rightElementsWrapper = []
+                        }, instantly = false) {
     const duration = 0.3
     const backgroundColorActive = '#424ed1'
     const backgroundColorDefault = '#13144b'
     const currentCard = getCardItems(current)
 
-    console.log(backgroundColorDefault)
-
-    const OPTIONS = isMobile() ? {
+    const OPTIONS = !isDesktop() ? {
       //mobile options
       setLeftPositionCard: {
-        // top: '4.7rem',
         top: 0,
         bottom: 'auto',
         transformOrigin: 'top',
@@ -117,7 +122,6 @@ function init() {
       setRightPositionCard: {
         top: 'auto',
         bottom: 0,
-        // bottom: '4.7rem',
         transformOrigin: 'bottom',
         borderBottomLeftRadius: '2rem 3.5rem',
         borderBottomRightRadius: '2rem 3.5rem',
@@ -130,7 +134,6 @@ function init() {
         duration,
       },
       currentCard: {
-        // y: '-4.7rem',
         rotateX: 0,
         backgroundColor: backgroundColorActive,
         opacity: 1,
@@ -215,15 +218,7 @@ function init() {
     }
 
 
-    const timeline = gsap.timeline({
-      ease: 'for-who-appreciate',
-      onComplete: () => {
-        console.log('onComplete');
-      },
-      onStart: () => {
-        console.log('onStart');
-      },
-    })
+    const timeline = gsap.timeline({ ease: 'for-who-appreciate' })
     window.timeline = timeline
 
     function getCardItems(wrapper) {
@@ -274,7 +269,7 @@ function init() {
     gsap.set(current, { zIndex: 2 })
     timeline.to(current, OPTIONS.currentSize, 0)
 
-    isMobile() && gsap.set(currentCard, { borderRadius: '2rem' })
+    !isDesktop() && gsap.set(currentCard, { borderRadius: '2rem' })
     timeline.to(currentCard, OPTIONS.currentCard, 0)
 
     const leftRightWrapActive = [left, right].filter(Boolean)
@@ -315,6 +310,12 @@ function init() {
       animateRightRotation(rightCards)
       setOpacity(rightCards)
     }
+
+
+    if (instantly) {
+      timeline.pause()
+      timeline.play(timeline.totalDuration())
+    }
   }
 
   function handleClick(event) {
@@ -334,7 +335,7 @@ function init() {
     changeClassesByIndex(index)
   }
 
-  function changeClassesByIndex(centerIndex) {
+  function changeClassesByIndex(centerIndex, instantly = false) {
     const current = cardsStackWrapperEl[centerIndex]
     const left = cardsStackWrapperEl[centerIndex - 1]
     const right = cardsStackWrapperEl[centerIndex + 1]
@@ -369,7 +370,8 @@ function init() {
     // левые карточки без активных классов
     const leftElementsWrapper = centerIndex - 1 > 0 ? cardsStackWrapperEl.slice(0, centerIndex - 1) : []
 
-    stackAnimate({ current, left, right, leftElementsWrapper, rightElementsWrapper })
+
+    stackAnimate({ current, left, right, leftElementsWrapper, rightElementsWrapper }, instantly)
   }
 
   function getNodeIndex(element) {
@@ -377,15 +379,15 @@ function init() {
   }
 
   cardsEl[1] && cardsEl[1].classList.add(ACTIVE_ClASS)
-  changeClassesByIndex(1)
+  changeClassesByIndex(1, true)
 
   cardsEl.forEach(card => {
-    const eventType = isMobile() ? 'click' : 'mouseover'
+    const eventType = isDesktop() ? 'mouseover' : 'click'
     card.addEventListener(eventType, handleClick)
   })
 
   animation()
-  // refreshScrollTriggerByElement(stackContainerEl)
+  refreshScrollTriggerByElement(stackContainerEl)
 }
 
 onMounted(() => {

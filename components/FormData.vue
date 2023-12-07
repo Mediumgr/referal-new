@@ -1,7 +1,7 @@
 <template>
   <ClientOnly>
     <section class="form-section">
-      <p class="form-section_title">Заявка на рекомендацию</p>
+      <p class="form-section_title heading-h2">Заявка на рекомендацию</p>
       <template class="form-section-flex">
         <transition name="form-fade" mode="out-in">
           <form v-if="status.form" @submit.stop.prevent="submit()" class="form">
@@ -258,13 +258,15 @@ useWatchers({
     align-items: flex-start;
     height: 79.3rem;
   }
+
   &-section {
     padding: 0 2rem 13rem;
     background: linear-gradient(
-      180deg,
-      #13144b 89.06%,
-      rgba(19, 20, 75, 0) 100%
+        180deg,
+        #13144b 89.06%,
+        rgba(19, 20, 75, 0) 100%
     );
+
     &-flex {
       display: flex;
       justify-content: center;
@@ -273,10 +275,10 @@ useWatchers({
         flex-direction: row;
       }
     }
+
     &_title {
       color: var(--color-white);
       text-align: center;
-      font-size: 4.8rem;
       line-height: 90%;
       letter-spacing: -0.288rem;
       padding-bottom: 10rem;
@@ -295,6 +297,7 @@ useWatchers({
     @include mq(1440) {
       width: 51.95rem;
     }
+
     &_title {
       color: var(--eggplant);
       text-align: center;
@@ -314,6 +317,7 @@ useWatchers({
         letter-spacing: -0.144rem;
       }
     }
+
     &_candidate {
       padding-top: 4rem;
 
@@ -321,6 +325,7 @@ useWatchers({
         padding: 6rem 6rem 4rem;
       }
     }
+
     &_recommender {
       @include mq(1440) {
         padding: 0 6rem;
@@ -329,6 +334,7 @@ useWatchers({
       }
     }
   }
+
   &__inputs {
     margin-bottom: 4rem;
   }
@@ -346,6 +352,7 @@ useWatchers({
       display: none;
     }
   }
+
   &__button {
     display: flex;
     justify-content: center;
@@ -393,9 +400,11 @@ useWatchers({
   color: var(--eggplant);
   text-decoration-line: underline;
 }
+
 .errorLink {
   color: #f00;
 }
+
 .loader {
   display: flex;
   justify-content: center;
