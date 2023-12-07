@@ -31,7 +31,16 @@
       <p class="expectations__title">Что ждет друга после трудоустройства</p>
       <div class="expectations__content">
         <div class="expectations__info">
-          <img src="~/assets/images/participation/poster.jpg" alt="photo" />
+          <video
+            autoplay
+            muted
+            playsinline
+            loop
+            preload="auto"
+            poster="~/assets/images/participation/poster.jpg"
+          >
+            <source src="~/assets/video/expectations.mp4" type="video/mp4" />
+          </video>
           <div class="expectations__info_overlay"></div>
           <p class="expectations__info_title">
             Конкурентная зарплата и&nbsp;премии
@@ -357,7 +366,7 @@
       }
     }
 
-    > img {
+    > video {
       height: 18.5rem;
       border-radius: 2rem;
       background: rgba(0, 0, 0, 0.3);
