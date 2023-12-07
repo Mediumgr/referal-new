@@ -1,6 +1,7 @@
 <template>
   <HeaderBlock />
   <ParticipationConditions />
+  <ProcessBlock />
   <WorkingSection />
   <WhichStackToUseSection />
   <FormData />
@@ -8,6 +9,7 @@
   <FooterSection />
 </template>
 
-<script setup></script>
+<script setup>
+</script>
 
 <style lang="scss" scoped></style>
