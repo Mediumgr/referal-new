@@ -2,6 +2,7 @@
   <HeaderBlock />
   <ParticipationConditions />
   <WorkingSection />
+  <WhichStackToUseSection />
   <FormData />
   <SelectOption />
   <FooterSection />
