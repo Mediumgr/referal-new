@@ -468,7 +468,7 @@ onMounted(async () => {
 @include mq(768) {
   .process {
     gap: 10rem;
-    padding: 16rem 4rem;
+    padding: 0 4rem;
   }
   .process .process-wrapper {
     width: 68.8rem;
@@ -521,7 +521,7 @@ onMounted(async () => {
 @include mq(1440) {
   .process {
     gap: 10rem;
-    padding: 20rem 14rem;
+    padding: 0 14rem;
   }
   .process .process-wrapper {
     width: 128rem;

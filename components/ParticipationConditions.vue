@@ -267,7 +267,7 @@
     padding: 0 calc(50% - 34.8rem) 16rem;
   }
   @include mq(1440) {
-    padding: 0 calc(50% - 64rem) 16rem;
+    padding: 0 calc(50% - 64rem) 20rem;
   }
 }
 .expectations {
