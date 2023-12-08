@@ -116,7 +116,7 @@ function onStack(index) {
     let opacity = 1;
     let _cards = cardsArray.slice(0, index);
 
-    _cards.forEach((item,) => {
+    _cards.forEach((item) => {
       item.style.opacity = opacity;
       opacity = opacity - 0.1
     });
@@ -124,7 +124,7 @@ function onStack(index) {
     // Получаем данные наложения
     overlapCard = (moving.getBoundingClientRect().top - stacked.getBoundingClientRect().top);
 
-    if (Math.round(overlapCard) <= marginCard) {
+    if (parseInt(overlapCard) === parseInt(marginCard)) {
       stacked.classList.remove('process_item-show');
       stacked.classList.add('process_item-hide');
       stacked.style.opacity = 1;
@@ -225,6 +225,26 @@ function setStackCards(){
 
 function onResize(){
   setStackCards();
+
+  cards.forEach((item, i) => {
+    console.log(item);
+    let nextCard = cards[i+1];
+
+    if(nextCard) {
+      let overlapCard = (nextCard.getBoundingClientRect().top - item.getBoundingClientRect().top);
+
+      if (parseInt(overlapCard) === parseInt(marginCard)) {
+        console.log(parseInt(overlapCard))
+        console.log(parseInt(nextCard.getBoundingClientRect().top))
+        console.log(parseInt(item.getBoundingClientRect().top))
+        console.log('1-',i)
+        currentIndex = i;
+      }
+    }
+  });
+
+  console.log('2-',currentIndex);
+  moduleAnimation();
 }
 
 onMounted(async () => {
@@ -235,7 +255,7 @@ onMounted(async () => {
 
   setStackCards();
 
-  window.addEventListener('resize', setStackCards);
+  window.addEventListener('resize', onResize);
 
   let observerGallery = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
