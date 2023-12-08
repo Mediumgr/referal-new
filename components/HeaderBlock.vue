@@ -4,7 +4,7 @@
     <header>
       <nav class="navbar">
         <div class="navbar__container">
-          <img src="~/assets/images/header/logo_1.svg" alt="logo" />
+          <img src="/header/logo_1.svg" alt="logo" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"
@@ -25,7 +25,7 @@
               fill="white"
             />
           </svg>
-          <img src="~/assets/images/header/logo_2.svg" alt="logo" />
+          <img src="/header/logo_2.svg" alt="logo" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="95"
@@ -40,7 +40,7 @@
               fill="white"
             />
           </svg>
-          <img src="~/assets/images/header/logo_3.svg" alt="logo" />
+          <img src="/header/logo_3.svg" alt="logo" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="126"
@@ -66,7 +66,7 @@
             <img
               class="recommend__button_img"
               alt="Frame"
-              src="~/assets/images/header/arrow_right.svg"
+              src="/header/arrow_right.svg"
             /> </span
         ></BaseButton>
       </div>
@@ -76,12 +76,8 @@
 
 <script setup>
 const scrollTo = () => {
-  let form = document.querySelector('.form-section');
-  let offsetForm = form.getBoundingClientRect().top;
-  let scrollToForm = offsetForm + window.scrollY;
-  window.scrollTo({
-    top: scrollToForm,
-    behavior: 'smooth',
+  document.querySelector(".form-section").scrollIntoView({
+    behavior: "smooth",
   });
 };
 </script>
@@ -105,8 +101,10 @@ const scrollTo = () => {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  position: relative;
+  z-index: 1;
   opacity: 0;
-  animation: opacityShow 800ms ease-out forwards;
+  animation: opacityShow 1s ease-out forwards;
 
   &__container {
     display: grid;
@@ -214,6 +212,7 @@ const scrollTo = () => {
       text-align: center;
       font-size: 1.8rem;
       letter-spacing: -0.036rem;
+      white-space: nowrap;
 
       @include mq(768) {
         font-size: 2.4rem;

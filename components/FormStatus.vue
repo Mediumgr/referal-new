@@ -23,7 +23,7 @@
           <p class="error__text">Похоже, проблемы с&nbsp;соединением.</p>
           <p class="error__text_again">Попробуй еще раз</p>
         </div>
-        <BaseButton class="resendBtn" @click="$emit('resend')">
+        <BaseButton class="resendBtn" @click.stop="$emit('resend')">
           <span>Отправить еще раз</span>
         </BaseButton>
       </div>

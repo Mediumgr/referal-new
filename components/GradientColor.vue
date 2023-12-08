@@ -30,7 +30,7 @@ const props = defineProps({
 
   &__grey {
     position: absolute;
-    bottom: 0;
+    bottom: -0.1rem;
     left: 0;
     right: 0;
     height: 38rem;

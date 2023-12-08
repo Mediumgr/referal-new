@@ -16,8 +16,8 @@ const mousemove = (e) => {
   const btn = buttonRef.value;
   let x = e.pageX - btn.offsetLeft;
   let y = e.pageY - btn.offsetTop;
-  btn.style.setProperty('--x', x / 10 + 'rem');
-  btn.style.setProperty('--y', y / 1000 + 'rem');
+  btn.style.setProperty("--x", x / 10 + "rem");
+  btn.style.setProperty("--y", y / 1000 + "rem");
 };
 </script>
 
@@ -26,7 +26,7 @@ button {
   transition: all 200ms ease;
   position: relative;
   overflow: hidden;
-  width: 23.3rem;
+  width: auto;
   height: 6rem;
   padding: 1rem 1rem 1rem 2rem;
   border-radius: 7.3rem;
@@ -37,12 +37,10 @@ button {
   cursor: pointer;
 
   @include mq(768) {
-    width: 34.3rem;
     height: 8.9rem;
     padding: 1rem 2rem 1rem 3rem;
   }
   @include mq(1440) {
-    width: 40.6rem;
     height: 10.1rem;
     padding: 1.6rem 1.6rem 1.6rem 3.6rem;
   }
@@ -58,7 +56,7 @@ button {
 
   &::before {
     --size: 0;
-    content: '';
+    content: "";
     position: absolute;
     left: var(--x);
     top: var(--y);
