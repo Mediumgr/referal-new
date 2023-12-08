@@ -265,12 +265,14 @@ onMounted(async () => {
 }
 
 .process .process_item-hide {
+  filter: blur(1px);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.50);
 }
 
 .process .process_item-show {
+  filter: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   background: rgb(255, 255, 255) !important;
@@ -437,7 +439,6 @@ onMounted(async () => {
 
   max-height: calc(var(--vh, 1vh) * 90);
 
-  transition: all .2s linear;
 }
 
 .process .process_item-href {
