@@ -3,7 +3,7 @@
     <div class="process-wrapper">
       <div class="process_item process_item_video show">
         <video
-          poster="~/assets/images/process/process-b1.jpg"
+          poster="/images/process/process-b1.jpg"
           id="background-video"
           autoplay
           loop
@@ -11,7 +11,7 @@
           playsinline
         >
           <source
-            src="~/assets/video/process/process-b1.mp4"
+            src="/video/process/process-b1.mp4"
             type="video/mp4"
           />
         </video>

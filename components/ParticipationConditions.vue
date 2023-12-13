@@ -37,9 +37,9 @@
             playsinline
             loop
             preload="auto"
-            poster="~/assets/images/participation/poster.jpg"
+            poster="/images/participation/poster.jpg"
           >
-            <source src="~/assets/video/expectations.mp4" type="video/mp4" />
+            <source src="/video/expectations.mp4" type="video/mp4" />
           </video>
           <div class="expectations__info_overlay"></div>
           <p class="expectations__info_title">
@@ -53,24 +53,24 @@
             </p>
             <img
               class="laptop"
-              src="~/assets/images/participation/laptop.png"
+              src="/images/participation/laptop.png"
               alt="photo"
             />
           </div>
           <div class="expectations__advantages_thirdBlock advantage">
-            <img src="~/assets/images/participation/cross.svg" alt="photo" />
+            <img src="/images/participation/cross.svg" alt="photo" />
             <p class="expectations__advantages_text">
               Льготные условия по&nbsp;продуктам банка
             </p>
           </div>
           <div class="expectations__advantages_secondBlock advantage_lower">
-            <img src="~/assets/images/participation/cross.svg" alt="photo" />
+            <img src="/images/participation/cross.svg" alt="photo" />
             <p class="expectations__advantages_text">
               ДМС со&nbsp;стоматологией
             </p>
           </div>
           <div class="expectations__advantages_forthBlock advantage_lower">
-            <img src="~/assets/images/participation/cross.svg" alt="photo" />
+            <img src="/images/participation/cross.svg" alt="photo" />
             <p class="expectations__advantages_text">
               Компенсация фитнеса и&nbsp;путешествий
             </p>

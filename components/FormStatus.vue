@@ -4,7 +4,7 @@
       v-if="status.server.failure === false && status.connection === true"
     >
       <div class="success__container">
-        <img src="~/assets/images/formData/status_good.svg" alt="status ok" />
+        <img src="/images/formData/status_good.svg" alt="status ok" />
         <p class="success__text">
           Спасибо за&nbsp;заявку, мы&nbsp;с&nbsp;тобой свяжемся
         </p>
@@ -17,7 +17,7 @@
       <div class="error__container">
         <div class="error__connection">
           <img
-            src="~/assets/images/formData/status_bad.svg"
+            src="/images/formData/status_bad.svg"
             alt="status Nok"
           />
           <p class="error__text">Похоже, проблемы с&nbsp;соединением.</p>
@@ -31,7 +31,7 @@
 
     <template v-if="status.server.failure && status.connection === true">
       <div class="success__container">
-        <img src="~/assets/images/formData/status_bad.svg" alt="status bad" />
+        <img src="/images/formData/status_bad.svg" alt="status bad" />
         <p class="success__text">
           {{ status.server.message }}
         </p>

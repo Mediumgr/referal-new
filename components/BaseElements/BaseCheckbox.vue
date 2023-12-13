@@ -52,7 +52,7 @@ input {
   opacity: 0;
   visibility: hidden;
   &:checked ~ .checkboxLabel {
-    background: url('~/assets/images/formData/checked.svg') no-repeat center
+    background: url('/images/formData/checked.svg') no-repeat center
       center/1rem 0.8rem;
   }
 }

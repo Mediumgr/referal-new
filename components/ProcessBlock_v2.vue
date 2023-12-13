@@ -3,8 +3,8 @@
     <div class="process-wrapper">
       <div class="process_item_wrapper">
         <div class="process_item process_item_1 process_item_video show">
-          <video poster="../assets/images/process/process-b1.jpg" id="background-video" autoplay loop muted playsinline>
-            <source src="../assets/video/process/process-b1.mp4" type="video/mp4"/>
+          <video poster="/images/process/process-b1.jpg" id="background-video" autoplay loop muted playsinline>
+            <source src="/video/process/process-b1.mp4" type="video/mp4"/>
           </video>
           <div class="process_item-overlay50"></div>
           <div class="process_item_video-header">
