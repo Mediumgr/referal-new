@@ -8,10 +8,12 @@
       <div class="commonStyle working__services">
         Микросервисы для среднего и&nbsp;малого бизнеса
       </div>
+      <!--
       <div class="commonStyle working__commonWealth">
         Образовательная платформа «Содружество»
       </div>
       <div class="commonStyle working__divisions">Поддержка подразделений</div>
+      -->
       <div class="commonStyle working__factory">Продуктовая фабрика РБ</div>
       <div class="commonStyle working__eco">
         Экосистема и&nbsp;небанковские сервисы
@@ -95,11 +97,12 @@ onMounted(() => {
   grid-template-areas:
     'mobile mobile'
     'services services'
-    'commonWealth commonWealth'
-    'divisions factory'
+    'factory factory'
     'eco eco'
     'substitution substitution'
-    'projects projects';
+    'projects projects'
+    'credit credit'
+    'products products';
 
   @include mq(768) {
     margin: 0 auto;
@@ -108,7 +111,6 @@ onMounted(() => {
     grid-column-gap: 2.8rem;
     grid-template-areas:
       'mobile services'
-      'commonWealth divisions'
       'factory eco'
       'substitution projects'
       'credit products';
@@ -122,9 +124,8 @@ onMounted(() => {
     grid-template-columns: repeat(3, auto);
     grid-template-areas:
       'mobile services services'
-      'commonWealth divisions factory'
       'eco substitution projects'
-      'credit products products';
+      'credit products factory';
   }
 }
 
@@ -268,7 +269,7 @@ onMounted(() => {
   &__factory {
     width: 14rem;
     height: 7.8rem;
-    justify-self: start;
+    justify-self: auto;
     grid-area: factory;
 
     @include mq(768) {
@@ -345,9 +346,9 @@ onMounted(() => {
       justify-self: center;
     }
     @include mq(1440) {
-      justify-self: end;
+      justify-self: auto;
       height: 11rem;
-      left: 12rem;
+      left: 14rem;
     }
   }
   &__products {
@@ -361,7 +362,7 @@ onMounted(() => {
     }
     @include mq(1440) {
       height: 13.8rem;
-      left: 12rem;
+      left: 3rem;
     }
   }
 }

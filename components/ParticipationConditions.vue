@@ -6,8 +6,7 @@
         <div class="participation__content_first">
           <p class="participation__content_number">01</p>
           <p class="participation__content_text">
-            Твой друг&nbsp;&mdash; IT-специалист с&nbsp;опытом работы более
-            2&nbsp;лет
+            Твой друг&nbsp;&mdash; Специалист с опытом работы в IT более 2 лет
           </p>
         </div>
         <div class="participation__content_second">
