@@ -12,7 +12,7 @@
                   v-model="recommenderName"
                   type="text"
                   :error="errors['recommenderName']"
-                  placeholder="Имя Фамилия Отчество"
+                  placeholder="Фамилия Имя Отчество"
                 >
                 </BaseInput>
                 <BaseInput
@@ -97,7 +97,7 @@
                   v-model="candidateName"
                   type="text"
                   :error="errors['candidateName']"
-                  placeholder="Имя Фамилия Отчество"
+                  placeholder="Фамилия Имя Отчество"
                 >
                 </BaseInput>
                 <BaseInput
