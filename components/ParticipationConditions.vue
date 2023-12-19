@@ -121,7 +121,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    row-gap: 2rem;
 
     @include mq(768) {
       margin: 0 auto;
@@ -141,7 +140,7 @@
       border-radius: 2rem;
       background: var(--color-white);
       box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
-      grid-gap: 2rem;
+      margin-bottom: 2rem;
       box-sizing: border-box;
 
       @include mq(768) {
@@ -149,11 +148,13 @@
         height: 21.6rem;
         align-items: flex-start;
         padding: 3rem;
+        margin-right: 2rem;
       }
       @include mq(1440) {
         width: 41.3rem;
         height: 27rem;
         padding: 4rem;
+        margin-bottom: 0;
       }
     }
     &_second {
@@ -165,7 +166,7 @@
       border-radius: 2rem;
       background: var(--color-white);
       box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
-      grid-gap: 2rem;
+      margin-bottom: 2rem;
       box-sizing: border-box;
 
       @include mq(768) {
@@ -176,6 +177,7 @@
         width: 41.3rem;
         height: 27rem;
         padding: 4rem;
+        margin-bottom: 0;
       }
     }
     &_third {
@@ -188,7 +190,6 @@
       border-radius: 2rem;
       background: var(--color-white);
       box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
-      grid-gap: 2rem;
       box-sizing: border-box;
 
       @include mq(768) {
@@ -205,6 +206,7 @@
       font-size: 2.4rem;
       line-height: 110%;
       letter-spacing: -0.048rem;
+      margin-bottom: 2rem;
       background: var(
         --Gradient,
         linear-gradient(86deg, #8e54f5 1.34%, #ff4236 48.48%, #ffb55c 95.63%)
@@ -245,12 +247,10 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    row-gap: 2rem;
 
     @include mq(768) {
       flex-direction: row;
       justify-content: space-between;
-      column-gap: 2rem;
     }
     @include mq(1440) {
       width: auto;
