@@ -121,7 +121,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    grid-gap: 2rem;
+    row-gap: 2rem;
 
     @include mq(768) {
       margin: 0 auto;
@@ -129,6 +129,7 @@
     @include mq(1440) {
       flex-direction: row;
       width: auto;
+      column-gap: 2rem;
     }
 
     &_first {
@@ -241,14 +242,15 @@
   &__section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
-    grid-gap: 2rem;
+    row-gap: 2rem;
 
     @include mq(768) {
       flex-direction: row;
       justify-content: space-between;
+      column-gap: 2rem;
     }
     @include mq(1440) {
       width: auto;
