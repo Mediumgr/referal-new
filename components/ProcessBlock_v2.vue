@@ -90,7 +90,6 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
 import { gsap, ScrollTrigger, scrollTriggerRefresh } from "@/helpers/gsap";
 import { isDesktop } from "@/helpers";
 

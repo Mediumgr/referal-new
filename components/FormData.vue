@@ -12,7 +12,7 @@
                   v-model="recommenderName"
                   type="text"
                   :error="errors['recommenderName']"
-                  placeholder="Имя Фамилия"
+                  placeholder="Имя Фамилия Отчество"
                 >
                 </BaseInput>
                 <BaseInput
@@ -97,7 +97,7 @@
                   v-model="candidateName"
                   type="text"
                   :error="errors['candidateName']"
-                  placeholder="Имя Фамилия"
+                  placeholder="Имя Фамилия Отчество"
                 >
                 </BaseInput>
                 <BaseInput
@@ -188,16 +188,16 @@
 
 <script setup>
 const checked = ref([false, false, false, false, false]);
-let recommenderName = ref({ text: '' });
-let recommenderEmail = ref({ text: '' });
-let recommenderPhone = ref({ text: '', textLength: '' });
-let candidateName = ref({ text: '' });
-let candidateEmail = ref({ text: '' });
-let candidatePhone = ref({ text: '', textLength: '' });
+let recommenderName = ref({ text: "" });
+let recommenderEmail = ref({ text: "" });
+let recommenderPhone = ref({ text: "", textLength: "" });
+let candidateName = ref({ text: "" });
+let candidateEmail = ref({ text: "" });
+let candidatePhone = ref({ text: "", textLength: "" });
 let file = ref({});
 const loader = ref(false);
 const regExp = reactive({
-  name: /^[A-Za-zА-Яа-я]+(?: [A-Za-zА-Яа-я]+)?(?: [A-Za-zА-Яа-я]+)?$/,
+  name: /^[A-Za-zА-Яа-я]+ [A-Za-zА-Яа-я]+(?: [A-Za-zА-Яа-я]+)?$/,
 
   phone: /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/,
   email: /^[\w._-]+@\w+\.[a-z]{2,4}$/i,
@@ -206,7 +206,7 @@ let errors = reactive({});
 const status = reactive({
   form: true,
   connection: true,
-  server: { failure: false, message: '' },
+  server: { failure: false, message: "" },
 });
 
 const attachedFile = (resume) => {
@@ -262,9 +262,9 @@ useWatchers({
   &-section {
     padding: 0 2rem 13rem;
     background: linear-gradient(
-        180deg,
-        #13144b 89.06%,
-        rgba(19, 20, 75, 0) 100%
+      180deg,
+      #13144b 89.06%,
+      rgba(19, 20, 75, 0) 100%
     );
 
     &-flex {
@@ -427,7 +427,7 @@ useWatchers({
 
 .loader::after,
 .loader::before {
-  content: '';
+  content: "";
   box-sizing: border-box;
   position: absolute;
   left: 0;

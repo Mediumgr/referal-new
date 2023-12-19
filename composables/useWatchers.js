@@ -16,7 +16,7 @@ export const useWatchers = (options) => {
     () => recommenderName.value.text,
     (name) => {
       if (regExp.name.test(name)) {
-        errors.recommenderName = '';
+        errors.recommenderName = "";
       }
     }
   );
@@ -24,7 +24,7 @@ export const useWatchers = (options) => {
     () => recommenderEmail.value.text,
     (email) => {
       if (regExp.email.test(email)) {
-        errors.recommenderEmail = '';
+        errors.recommenderEmail = "";
       }
     }
   );
@@ -33,7 +33,7 @@ export const useWatchers = (options) => {
     () => recommenderPhone.value,
     (phoneValue) => {
       if (regExp.phone.test(phoneValue.text) && phoneValue.textLength === 11) {
-        errors.recommenderPhone = '';
+        errors.recommenderPhone = "";
       }
     },
     { deep: true }
@@ -43,7 +43,7 @@ export const useWatchers = (options) => {
     () => candidateName.value.text,
     (name) => {
       if (regExp.name.test(name)) {
-        errors.candidateName = '';
+        errors.candidateName = "";
       }
     }
   );
@@ -52,7 +52,7 @@ export const useWatchers = (options) => {
     () => candidateEmail.value.text,
     (email) => {
       if (regExp.email.test(email)) {
-        errors.candidateEmail = '';
+        errors.candidateEmail = "";
       }
     }
   );
@@ -61,7 +61,7 @@ export const useWatchers = (options) => {
     () => candidatePhone.value,
     (phoneValue) => {
       if (regExp.phone.test(phoneValue.text) && phoneValue.textLength === 11) {
-        errors.candidatePhone = '';
+        errors.candidatePhone = "";
       }
     },
     { deep: true }
@@ -71,9 +71,9 @@ export const useWatchers = (options) => {
     () => checked.value[0],
     (value) => {
       if (value) {
-        errors.recParticipation = '';
+        errors.recParticipation = "";
       } else {
-        errors.recParticipation = 'error';
+        errors.recParticipation = "error";
       }
     }
   );
@@ -82,9 +82,9 @@ export const useWatchers = (options) => {
     () => checked.value[1],
     (value) => {
       if (value) {
-        errors.recProcessing = '';
+        errors.recProcessing = "";
       } else {
-        errors.recProcessing = 'error';
+        errors.recProcessing = "error";
       }
     }
   );
@@ -93,9 +93,9 @@ export const useWatchers = (options) => {
     () => checked.value[2],
     (value) => {
       if (value) {
-        errors.recSigning = '';
+        errors.recSigning = "";
       } else {
-        errors.recSigning = 'error';
+        errors.recSigning = "error";
       }
     }
   );
@@ -104,9 +104,9 @@ export const useWatchers = (options) => {
     () => checked.value[3],
     (value) => {
       if (value) {
-        errors.candParticipation = '';
+        errors.candParticipation = "";
       } else {
-        errors.candParticipation = 'error';
+        errors.candParticipation = "error";
       }
     }
   );
@@ -115,9 +115,9 @@ export const useWatchers = (options) => {
     () => checked.value[4],
     (value) => {
       if (value) {
-        errors.candProcessing = '';
+        errors.candProcessing = "";
       } else {
-        errors.candProcessing = 'error';
+        errors.candProcessing = "error";
       }
     }
   );
@@ -126,7 +126,16 @@ export const useWatchers = (options) => {
     () => file.value.name,
     (name) => {
       if (name !== undefined) {
-        errors.file = '';
+        errors.file = "";
+      }
+    }
+  );
+
+  watch(
+    () => [recommenderName.value.text, candidateName.value.text],
+    ([recommender, candidate]) => {
+      if (recommender === candidate) {
+        errors.recommenderName = errors.candidateName = "error";
       }
     }
   );
