@@ -14,15 +14,17 @@ export const useValidate = (options) => {
 
   let recommender = recommenderName.value.text.trimRight();
   let candidate = candidateName.value.text.trimRight();
+  let recommenderTel = recommenderPhone.value.text;
+  let candidateTel = candidatePhone.value.text;
+  let recommenderMail = recommenderEmail.value.text;
+  let candidateMail = candidateEmail.value.text;
 
   errors.recommenderName = regExp.name.test(recommender) ? "" : "error";
 
-  errors.recommenderEmail = regExp.email.test(recommenderEmail.value.text)
-    ? ""
-    : "error";
+  errors.recommenderEmail = regExp.email.test(recommenderMail) ? "" : "error";
 
   errors.recommenderPhone =
-    regExp.phone.test(recommenderPhone.value.text) &&
+    regExp.phone.test(recommenderTel) &&
     recommenderPhone.value.textLength === 11
       ? ""
       : "error";
@@ -33,21 +35,26 @@ export const useValidate = (options) => {
 
   errors.candidateName = regExp.name.test(candidate) ? "" : "error";
 
-  errors.candidateEmail = regExp.email.test(candidateEmail.value.text)
-    ? ""
-    : "error";
+  errors.candidateEmail = regExp.email.test(candidateMail) ? "" : "error";
 
   errors.candidatePhone =
-    regExp.phone.test(candidatePhone.value.text) &&
-    candidatePhone.value.textLength === 11
+    regExp.phone.test(candidateTel) && candidatePhone.value.textLength === 11
       ? ""
       : "error";
 
   errors.candParticipation = checked.value[3] ? "" : "error";
   errors.candProcessing = checked.value[4] ? "" : "error";
   errors.file = file.value.name !== undefined ? "" : "error";
-  
+
   if (recommender === candidate) {
     errors.recommenderName = errors.candidateName = "error";
+  }
+
+  if (recommenderTel === candidateTel) {
+    errors.recommenderPhone = errors.candidatePhone = "error";
+  }
+
+  if (recommenderMail === candidateMail) {
+    errors.recommenderEmail = errors.candidateEmail = "error";
   }
 };

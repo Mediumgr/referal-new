@@ -139,4 +139,22 @@ export const useWatchers = (options) => {
       }
     }
   );
+
+  watch(
+    () => [recommenderEmail.value.text, candidateEmail.value.text],
+    ([recommenderEmail, candidateEmail]) => {
+      if (recommenderEmail === candidateEmail) {
+        errors.recommenderEmail = errors.candidateEmail = "error";
+      }
+    }
+  );
+
+  watch(
+    () => [recommenderPhone.value.text, candidatePhone.value.text],
+    ([recommenderPhone, candidatePhone]) => {
+      if (recommenderPhone === candidatePhone) {
+        errors.recommenderPhone = errors.candidatePhone = "error";
+      }
+    }
+  );
 };

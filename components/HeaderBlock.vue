@@ -201,22 +201,19 @@ const scrollTo = () => {
     &_container {
       position: relative;
       display: flex;
-      grid-gap: 1rem;
       align-items: center;
-
-      @include mq(768) {
-        grid-gap: 2rem;
-      }
     }
     &_text {
       text-align: center;
       font-size: 1.8rem;
       letter-spacing: -0.036rem;
       white-space: nowrap;
+      padding-right: 1rem;
 
       @include mq(768) {
         font-size: 2.4rem;
         letter-spacing: -0.048rem;
+        padding-right: 2rem;
       }
       @include mq(1440) {
         font-size: 3.2rem;

@@ -128,7 +128,6 @@
     @include mq(1440) {
       flex-direction: row;
       width: auto;
-      // column-gap: 2rem;
     }
 
     &_first {
@@ -276,18 +275,15 @@
   display: flex;
   flex-direction: column;
   padding: 2rem;
-  // grid-row-gap: 2rem;
   border-radius: 4rem;
   background: var(--color-white);
   box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
 
   @include mq(768) {
-    // grid-row-gap: 3rem;
     padding: 4rem;
   }
 
   @include mq(1440) {
-    // grid-row-gap: 5rem;
     padding: 4rem 6rem;
   }
 
@@ -319,12 +315,9 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    // grid-row-gap: 1rem;
 
     @include mq(1440) {
       flex-direction: row;
-      // grid-row-gap: 0;
-      // grid-column-gap: 1rem;
     }
   }
   &__info {
@@ -391,7 +384,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    // grid-gap: 1rem;
 
     &_firstBlock {
       margin-bottom: 1.1rem;
@@ -479,7 +471,6 @@
   display: flex;
   padding: 1.6rem;
   flex-direction: column;
-  // grid-row-gap: 1rem;
   border-radius: 2rem;
   width: 48%;
   height: 13rem;
@@ -489,7 +480,6 @@
     width: 49%;
     padding: 2rem;
     height: 11.6rem;
-    // grid-row-gap: 2rem;
   }
 
   @include mq(1440) {
@@ -510,7 +500,6 @@
   &_lower {
     display: flex;
     padding: 1.6rem;
-    // grid-row-gap: 1rem;
     flex-direction: column;
     border-radius: 2rem;
     width: 48%;
@@ -528,7 +517,6 @@
       width: 18.1rem;
       height: 18.7rem;
       justify-content: flex-start;
-      // grid-row-gap: 2rem;
     }
 
     > img {
