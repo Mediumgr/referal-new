@@ -19,6 +19,8 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@babel/runtime-corejs3": "^7.23.6",
+    "core-js": "^3.34.0",
     "normalize.css": "^8.0.1",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2"
