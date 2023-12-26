@@ -25,5 +25,18 @@
     "normalize.css": "^8.0.1",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not dead",
+    "not op_mini all",
+    "Chrome >= 80",
+    "Firefox >= 74",
+    "Edge >= 80",
+    "iOS >= 14",
+    "Safari >= 15.6",
+    "Android >= 8",
+    "Opera >= 67"
+  ]
 }
