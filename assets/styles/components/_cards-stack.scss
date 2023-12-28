@@ -1,6 +1,6 @@
 .cards-stack {
   width: 100%;
-  max-width: 50rem;
+  max-width: 45rem;
   margin: 0 auto;
   border-bottom: none;
   border-top: none;
@@ -41,14 +41,11 @@
     }
 
     ._stack-right &,
-    ._stack-active-right &,
-    ._stack-left &,
-    ._stack-active-left & {
+    ._stack-left & {
       opacity: 1;
     }
 
-    ._stack-right &,
-    ._stack-active-right & {
+    ._stack-right & {
       left: auto;
       right: 0;
     }
@@ -65,7 +62,6 @@
     height: 4.7rem;
     overflow: hidden;
     margin: 0 auto;
-    will-change: height;
 
     @include hover() {
       cursor: pointer;
@@ -75,7 +71,6 @@
       width: 9rem;
       height: 40rem;
       border-radius: 2rem;
-      will-change: width;
     }
 
     &:first-child {
@@ -89,52 +84,15 @@
     &._stack-active {
       margin-top: -1px;
       margin-bottom: -1px;
+      overflow: visible;
 
       @include mq(1200) {
         margin: 0;
       }
     }
 
-    &._stack-active-left {
-      @include mq(1200) {
-        width: 15rem;
-      }
-    }
-
-    &._stack-active-right {
-      @include mq(1200) {
-        width: 17rem;
-      }
-    }
-
     &._stack-left:first-child {
       overflow: hidden;
-    }
-
-    &._stack-left,
-    &._stack-active-left {
-      transform-origin: center top;
-
-      @include mq(1200) {
-        transform-origin: left;
-      }
-    }
-
-    &._stack-right,
-    &._stack-active-right {
-      transform-origin: center bottom;
-
-      @include mq(1200) {
-        transform-origin: right;
-      }
-    }
-
-    &._stack-active {
-      overflow: visible;
-    }
-
-    &:not(._stack-active) .cards-stack__item {
-      backdrop-filter: blur(4rem);
     }
   }
 
@@ -158,7 +116,6 @@
     transform: perspective(62rem) rotateX(-52deg);
     pointer-events: none;
     transition: none !important;
-    will-change: transformm, opacity, background;
 
     @include mq(1200) {
       position: absolute;
@@ -174,6 +131,7 @@
       transform: perspective(60rem) rotateY(-28deg) translateX(0);
     }
   }
+
 
   &__name {
     text-align: left !important;

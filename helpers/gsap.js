@@ -1,16 +1,17 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { CustomEase } from "gsap/CustomEase";
 
-const EASE_FOR_WHO_APPRECIATE = "M0,0 C0.6,0 0.4,1 1,1"
+// ease (0.6, 0, 0.4, 1)
+const NEW_EASE_DEFAULT = "M0,0 C0.6,0 0.4,1 1,1"
+const GSAP_EASE = "gsap-new-ease"
+CustomEase.create(GSAP_EASE, NEW_EASE_DEFAULT)
 
-CustomEase.create("for-who-appreciate", EASE_FOR_WHO_APPRECIATE)
-
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(CustomEase)
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, CustomEase);
 
 function scrollTriggerRefresh() {
   ScrollTrigger.refresh();
 }
 
-export { gsap, scrollTriggerRefresh, EASE_FOR_WHO_APPRECIATE, ScrollTrigger }
+export { gsap, scrollTriggerRefresh, GSAP_EASE, ScrollTrigger }

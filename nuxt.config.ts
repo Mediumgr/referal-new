@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: false },
+  modules: ['@nuxtjs/svg-sprite'],
   app: {
     head: {
       htmlAttrs: { lang: 'ru' },
@@ -102,8 +102,13 @@ export default defineNuxtConfig({
       ],
     },
   },
+  devtools: { enabled: false },
   css: ['normalize.css/normalize.css'],
   vite: {
+    esbuild: {
+      drop: ['debugger'],
+      pure: ['console.log', 'console.error', 'console.warn', 'console.debug', 'console.trace'],
+    },
     css: {
       preprocessorOptions: {
         scss: {

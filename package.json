@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
+    "analyze": "nuxt analyze",
     "dev": "nuxt dev --host",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -19,6 +20,8 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@nuxtjs/svg-sprite": "^1.0.2",
+    "clone-deep": "^4.0.1",
     "normalize.css": "^8.0.1",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2"

@@ -60,11 +60,11 @@
 }
 
 .process .process_item .process_item-overlay50 {
-  background: rgba(0, 0, 0, 0.50);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .process .process_item .process_item-overlay30 {
-  background: rgba(0, 0, 0, 0.30);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .process .process_item_video-header {
@@ -115,55 +115,31 @@
 
   @include mq(768) {
     &:nth-child(6) {
-      transform: translateY(2rem);
+      transform: translateY(1rem);
     }
   }
 
   @include mq(1440) {
-    top: 7rem;
+    top: 9rem;
 
-    @for $i from 1 through 5 {
-      &:nth-child(#{$i}) {
-        transform: translateY(#{($i - 1)}rem);
-      }
-    }
+    //@for $i from 1 through 5 {
+    //  &:nth-child(#{$i}) {
+    //    transform: translateY(#{($i - 1)}rem);
+    //  }
+    //}
 
     &:nth-child(6) {
-      transform: translateY(13rem);
+      transform: translateY(6.4rem);
     }
   }
 
   @include mq(1900) {
-    top: 4rem;
+    top: 7rem;
 
     &:nth-child(6) {
-      transform: translateY(12rem);
+      transform: translateY(7rem);
     }
   }
-
-  //&:nth-child(6) {
-  //  top: 12rem;
-  //}
-  //
-  //&:nth-child(5) {
-  //  top: 10rem;
-  //}
-  //
-  //&:nth-child(4) {
-  //  top: 8rem;
-  //}
-  //
-  //&:nth-child(3) {
-  //  top: 6rem;
-  //}
-  //
-  //&:nth-child(2) {
-  //  top: 4rem;
-  //}
-  //
-  //&:nth-child(1) {
-  //  top: 2rem;
-  //}
 }
 
 .process .process_item {
@@ -201,7 +177,7 @@
 .process .process_item-hide {
   //backdrop-filter: blur(10px);
   //-webkit-backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.50);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .process .process_item-show {
@@ -212,7 +188,7 @@
 }
 
 .process .process_item-href {
-  color: #DE745A;
+  color: #de745a;
 }
 
 .process .process_item_description {
@@ -234,11 +210,11 @@
   line-height: 120%;
   letter-spacing: -0.6799999999999999rem;
   background: linear-gradient(
-      357deg,
-      rgba(168, 182, 255, 0.1) 10%,
-      #8e54f5 45.97%,
-      #ff4236 61.03%,
-      #ffb55c 84.91%
+    357deg,
+    rgba(168, 182, 255, 0.1) 10%,
+    #8e54f5 45.97%,
+    #ff4236 61.03%,
+    #ffb55c 84.91%
   );
   background-clip: text;
   -webkit-background-clip: text;
@@ -252,6 +228,14 @@
   font-style: normal;
   text-align: left;
   max-width: 98rem;
+
+  @include mq(768) {
+    font-size: 3.4rem;
+  }
+
+  @include mq(1440) {
+    font-size: 4.4rem;
+  }
 }
 
 .process .process_item_description li {
@@ -398,15 +382,15 @@
   width: 14.25rem;
   height: 14.4rem;
   background: var(
-      --radial,
-      radial-gradient(
-          182.79% 156.21% at 7.63% -11.7%,
-          #ffa848 0%,
-          #ff954d 15.63%,
-          #f94037 39.58%,
-          #7e24cc 70.62%,
-          #13144b 100%
-      )
+    --radial,
+    radial-gradient(
+      182.79% 156.21% at 7.63% -11.7%,
+      #ffa848 0%,
+      #ff954d 15.63%,
+      #f94037 39.58%,
+      #7e24cc 70.62%,
+      #13144b 100%
+    )
   );
 }
 
@@ -504,11 +488,11 @@
   top: 0;
   bottom: 0;
   background: radial-gradient(
-      192.34% 144.79% at 2.54% -1.56%,
-      #ffb966 0%,
-      #ff4236 33.65%,
-      #73f 70.62%,
-      #13144b 100%
+    192.34% 144.79% at 2.54% -1.56%,
+    #ffb966 0%,
+    #ff4236 33.65%,
+    #73f 70.62%,
+    #13144b 100%
   );
   width: 33.5rem;
   height: 54.4rem;
@@ -567,11 +551,11 @@
     font-size: 30rem;
     letter-spacing: -1.2rem;
     background: linear-gradient(
-        357deg,
-        rgba(168, 182, 255, 0.1) 25%,
-        #8e54f5 49.93%,
-        #ff4236 67.57%,
-        #ffb55c 84.91%
+      357deg,
+      rgba(168, 182, 255, 0.1) 25%,
+      #8e54f5 49.93%,
+      #ff4236 67.57%,
+      #ffb55c 84.91%
     );
     background-clip: text;
     -webkit-background-clip: text;
@@ -660,12 +644,12 @@
     width: 70rem;
     height: 60rem;
     background: radial-gradient(
-        50% 50% at 50% 50%,
-        rgb(255, 168, 72) 0%,
-        rgb(255, 149, 77) 15.62%,
-        rgb(249, 64, 55) 39.58%,
-        rgb(126.46, 36, 204) 70.62%,
-        rgb(19, 20, 75) 100%
+      50% 50% at 50% 50%,
+      rgb(255, 168, 72) 0%,
+      rgb(255, 149, 77) 15.62%,
+      rgb(249, 64, 55) 39.58%,
+      rgb(126.46, 36, 204) 70.62%,
+      rgb(19, 20, 75) 100%
     );
   }
 
@@ -692,12 +676,12 @@
     width: 200rem;
     height: 220rem;
     background: radial-gradient(
-        50% 50% at 50% 50%,
-        rgb(255, 168, 72) 0%,
-        rgb(255, 149, 77) 15.62%,
-        rgb(249, 64, 55) 39.58%,
-        rgb(126, 36, 204) 70.62%,
-        rgb(19, 20, 75) 100%
+      50% 50% at 50% 50%,
+      rgb(255, 168, 72) 0%,
+      rgb(255, 149, 77) 15.62%,
+      rgb(249, 64, 55) 39.58%,
+      rgb(126, 36, 204) 70.62%,
+      rgb(19, 20, 75) 100%
     );
   }
 
@@ -746,11 +730,11 @@
     font-size: 40rem;
     letter-spacing: -1.6rem;
     background: linear-gradient(
-        357deg,
-        rgba(168, 182, 255, 0.1) 30.29%,
-        #8e54f5 49.93%,
-        #ff4236 67.57%,
-        #ffb55c 84.91%
+      357deg,
+      rgba(168, 182, 255, 0.1) 30.29%,
+      #8e54f5 49.93%,
+      #ff4236 67.57%,
+      #ffb55c 84.91%
     );
     background-clip: text;
     -webkit-background-clip: text;
@@ -875,12 +859,12 @@
     width: 120rem;
     height: 120rem;
     background: radial-gradient(
-        50% 50% at 50% 50%,
-        rgb(255, 168, 72) 0%,
-        rgb(255, 149, 77) 15.62%,
-        rgb(249, 64, 55) 39.58%,
-        rgb(126.46, 36, 204) 70.62%,
-        rgb(19, 20, 75) 100%
+      50% 50% at 50% 50%,
+      rgb(255, 168, 72) 0%,
+      rgb(255, 149, 77) 15.62%,
+      rgb(249, 64, 55) 39.58%,
+      rgb(126.46, 36, 204) 70.62%,
+      rgb(19, 20, 75) 100%
     );
   }
 
@@ -913,12 +897,12 @@
     width: 250rem;
     height: 220rem;
     background: radial-gradient(
-        50% 50% at 50% 50%,
-        rgb(255, 168, 72) 0%,
-        rgb(255, 149, 77) 15.62%,
-        rgb(249, 64, 55) 39.58%,
-        rgb(126.46, 36, 204) 70.62%,
-        rgb(19, 20, 75) 100%
+      50% 50% at 50% 50%,
+      rgb(255, 168, 72) 0%,
+      rgb(255, 149, 77) 15.62%,
+      rgb(249, 64, 55) 39.58%,
+      rgb(126.46, 36, 204) 70.62%,
+      rgb(19, 20, 75) 100%
     );
   }
 
@@ -945,12 +929,12 @@
     width: 300rem;
     height: 240rem;
     background: radial-gradient(
-        50% 50% at 50% 50%,
-        rgb(255, 168, 72) 0%,
-        rgb(255, 149, 77) 15.62%,
-        rgb(249, 64, 55) 39.58%,
-        rgb(126.46, 36, 204) 70.62%,
-        rgb(19, 20, 75) 100%
+      50% 50% at 50% 50%,
+      rgb(255, 168, 72) 0%,
+      rgb(255, 149, 77) 15.62%,
+      rgb(249, 64, 55) 39.58%,
+      rgb(126.46, 36, 204) 70.62%,
+      rgb(19, 20, 75) 100%
     );
   }
 
@@ -970,12 +954,12 @@
     width: 100%;
     height: 100%;
     background: radial-gradient(
-        182.79% 156.21% at 7.63% -11.7%,
-        #ffa848 0%,
-        #ff954d 15.63%,
-        #f94037 39.58%,
-        #7e24cc 70.62%,
-        #13144b 100%
+      182.79% 156.21% at 7.63% -11.7%,
+      #ffa848 0%,
+      #ff954d 15.63%,
+      #f94037 39.58%,
+      #7e24cc 70.62%,
+      #13144b 100%
     );
   }
 

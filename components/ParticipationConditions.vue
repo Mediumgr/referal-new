@@ -38,6 +38,7 @@
             preload="auto"
             poster="/images/participation/poster.jpg"
           >
+            <source src="/video/expectations.webm" type="video/webm" />
             <source src="/video/expectations.mp4" type="video/mp4" />
           </video>
           <div class="expectations__info_overlay"></div>
@@ -50,26 +51,36 @@
             <p class="expectations__advantages_textInGradient">
               Техника <br />для работы
             </p>
-            <img
-              class="laptop"
-              src="/images/participation/laptop.png"
-              alt="photo"
-            />
+            <picture>
+              <source
+                srcset="/images/participation/laptop.avif"
+                type="image/avif"
+              />
+              <source
+                srcset="/images/participation/laptop.webp"
+                type="image/webp"
+              />
+              <img
+                class="laptop"
+                src="/images/participation/laptop.png"
+                alt="photo"
+              />
+            </picture>
           </div>
           <div class="expectations__advantages_thirdBlock advantage">
-            <img src="/images/participation/cross.svg" alt="photo" />
+            <svg-icon class="expectations__icon" name="cross" />
             <p class="expectations__advantages_text">
               Льготные условия по&nbsp;продуктам банка
             </p>
           </div>
           <div class="expectations__advantages_secondBlock advantage_lower">
-            <img src="/images/participation/cross.svg" alt="photo" />
+            <svg-icon class="expectations__icon" name="cross" />
             <p class="expectations__advantages_text">
               ДМС со&nbsp;стоматологией
             </p>
           </div>
           <div class="expectations__advantages_forthBlock advantage_lower">
-            <img src="/images/participation/cross.svg" alt="photo" />
+            <svg-icon class="expectations__icon" name="cross" />
             <p class="expectations__advantages_text">
               Компенсация фитнеса и&nbsp;путешествий
             </p>
@@ -271,6 +282,7 @@
     padding: 0 calc(50% - 64rem) 20rem;
   }
 }
+
 .expectations {
   display: flex;
   flex-direction: column;
@@ -411,25 +423,6 @@
         padding: 4rem !important;
         align-items: flex-start;
       }
-      > .laptop {
-        position: relative;
-        left: 3.8rem;
-        top: -1.5rem;
-        width: 13rem;
-        height: auto;
-
-        @include mq(768) {
-          left: 2.1rem;
-          top: -0.5rem;
-        }
-
-        @include mq(1440) {
-          left: 4.1rem;
-          top: -3.8rem;
-          width: 27rem;
-          height: 27rem;
-        }
-      }
     }
 
     &_textInGradient {
@@ -465,12 +458,24 @@
       }
     }
   }
+
+  &__icon {
+    width: 2.4rem;
+    height: 2.4rem;
+
+    @include mq(1440) {
+      width: 3.4rem;
+      height: 3.4rem;
+      margin-bottom: 2rem;
+    }
+  }
 }
 
 .advantage {
   display: flex;
   padding: 1.6rem;
   flex-direction: column;
+  justify-content: space-between;
   border-radius: 2rem;
   width: 48%;
   height: 13rem;
@@ -485,6 +490,7 @@
   @include mq(1440) {
     width: 18rem;
     height: 18.7rem;
+    justify-content: flex-start;
   }
 
   > img {
@@ -530,6 +536,27 @@
         margin-bottom: 2rem;
       }
     }
+  }
+}
+
+.laptop {
+  display: block;
+  position: relative;
+  left: 3.8rem;
+  top: -1.5rem;
+  width: 13rem;
+  height: auto;
+
+  @include mq(768) {
+    left: 2.1rem;
+    top: -0.5rem;
+  }
+
+  @include mq(1440) {
+    left: 4.1rem;
+    top: -3.8rem;
+    width: 27rem;
+    height: 27rem;
   }
 }
 </style>

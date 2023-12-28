@@ -1,7 +1,8 @@
-@import "./mixins.scss";
-@import "./fonts.scss";
-@import "./colors.scss";
-@import "./heading.scss";
+@import "./mixins";
+@import "./shared-classes";
+@import "./fonts";
+@import "./colors";
+@import "./heading";
 
 li {
   list-style: none;

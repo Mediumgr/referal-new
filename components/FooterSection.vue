@@ -1,6 +1,6 @@
 <template>
   <footer class="digital-laboratory">
-    <GradientColor :gradientStyle="gradientStyle"></GradientColor>
+    <GradientColor2 :gradientStyle="gradientStyle"></GradientColor2>
     <h2 class="digital-laboratory__title">
       ПСБ цифровая <br />
       лаборатория
