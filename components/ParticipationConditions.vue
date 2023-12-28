@@ -446,6 +446,7 @@
       color: var(--eggplant);
       font-size: 1.3rem;
       letter-spacing: -0.026rem;
+      margin-top: 1.1rem;
 
       @include mq(768) {
         font-size: 1.6rem;
@@ -455,18 +456,18 @@
       @include mq(1440) {
         font-size: 1.68rem;
         letter-spacing: -0.036rem;
+        margin-top: 2rem;
       }
     }
   }
 
   &__icon {
-    width: 2.4rem;
-    height: 2.4rem;
+    height: 2.3rem;
+    width: 2.3rem;
 
     @include mq(1440) {
       width: 3.4rem;
       height: 3.4rem;
-      margin-bottom: 2rem;
     }
   }
 }
@@ -475,7 +476,6 @@
   display: flex;
   padding: 1.6rem;
   flex-direction: column;
-  justify-content: space-between;
   border-radius: 2rem;
   width: 48%;
   height: 13rem;
@@ -516,25 +516,12 @@
       width: 49%;
       padding: 2rem;
       height: 11.6rem;
-      justify-content: space-between;
     }
 
     @include mq(1440) {
       width: 18.1rem;
       height: 18.7rem;
       justify-content: flex-start;
-    }
-
-    > img {
-      width: 2.4rem;
-      height: 2.4rem;
-      margin-bottom: 1.1rem;
-
-      @include mq(1440) {
-        width: 3.36rem;
-        height: 3.36rem;
-        margin-bottom: 2rem;
-      }
     }
   }
 }
@@ -548,12 +535,16 @@
   height: auto;
 
   @include mq(768) {
-    left: 2.1rem;
+    left: 3rem;
     top: -0.5rem;
   }
 
+  @include mq(1024) {
+    left: 2.4rem;
+  }
+
   @include mq(1440) {
-    left: 4.1rem;
+    left: 5.4rem;
     top: -3.8rem;
     width: 27rem;
     height: 27rem;
