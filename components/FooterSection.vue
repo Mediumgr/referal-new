@@ -1,6 +1,10 @@
 <template>
   <footer class="digital-laboratory">
-    <GradientColor :gradientStyle="gradientStyle"></GradientColor>
+    <GradientColor
+      :class="classElement"
+      :animationAction="animationAction"
+      :gradientStyle="gradientStyle"
+    ></GradientColor>
     <h2 class="digital-laboratory__title">
       ПСБ цифровая <br />
       лаборатория
@@ -10,10 +14,14 @@
 
 <script setup>
 const gradientStyle = ref({
-  height: '20rem',
-  top: '0rem',
-  transform: 'rotate(0deg)',
+  height: "20rem",
+  top: "0rem",
+  transform: "rotate(0deg)",
 });
+let animationAction = ref(false);
+let classElement = ref("gradientFooter");
+
+useGradient({ animationAction, classElement });
 </script>
 
 <style lang="scss" scoped>

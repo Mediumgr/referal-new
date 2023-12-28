@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <GradientColor />
+    <GradientColor :class="classElement" :animationAction="animationAction" />
     <header>
       <nav class="navbar">
         <div class="navbar__container">
@@ -75,6 +75,11 @@
 </template>
 
 <script setup>
+let animationAction = ref(false);
+let classElement = ref("gradientHeader");
+
+useGradient({ animationAction, classElement });
+
 const scrollTo = () => {
   document.querySelector(".form-section").scrollIntoView({
     behavior: "smooth",

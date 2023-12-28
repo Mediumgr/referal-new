@@ -1,19 +1,55 @@
 <template>
   <div class="gradient">
-    <div class="gradient__blue"></div>
-    <div class="gradient__purple"></div>
-    <div class="gradient__red"></div>
-    <div class="gradient__yellow"></div>
+    <div class="gradient__blue" ref="blue"></div>
+    <div class="gradient__purple" ref="purple"></div>
+    <div class="gradient__red" ref="red"></div>
+    <div class="gradient__yellow" ref="yellow"></div>
     <div class="gradient__grey" :style="gradientStyle"></div>
   </div>
 </template>
 
 <script setup>
+let blue = ref(null);
+let purple = ref(null);
+let red = ref(null);
+let yellow = ref(null);
+
 const props = defineProps({
   gradientStyle: {
     type: Object,
     required: false,
   },
+  animationAction: {
+    type: Boolean,
+    required: false,
+  },
+});
+
+watch(
+  () => props.animationAction,
+  (val) => {
+    if (val) {
+      blue.value.style.animation =
+        purple.value.style.animation =
+        red.value.style.animation =
+        yellow.value.style.animation =
+          "";
+    } else {
+      blue.value.style.animation =
+        purple.value.style.animation =
+        red.value.style.animation =
+        yellow.value.style.animation =
+          "none";
+    }
+  }
+);
+
+onMounted(() => {
+  blue.value.style.animation =
+    purple.value.style.animation =
+    red.value.style.animation =
+    yellow.value.style.animation =
+      "none";
 });
 </script>
 
@@ -68,7 +104,6 @@ const props = defineProps({
     height: 100%;
     width: 100%;
     margin: 0 auto;
-    animation: gradientBlue 1.5s ease forwards;
   }
 
   &__purple {
@@ -97,16 +132,14 @@ const props = defineProps({
     width: 130rem;
     top: -40rem;
     left: -40rem;
-    animation: slideInGradient 1.5s ease forwards,
-      gradientPurple_375 8s ease infinite;
+    animation: gradientPurple_375 8s ease infinite;
 
     @include mq(375) {
       height: 130rem;
       width: 130rem;
       top: -40rem;
       left: -40rem;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientPurple_375 8s ease infinite;
+      animation: gradientPurple_375 8s ease infinite;
     }
 
     @include mq(768) {
@@ -114,8 +147,7 @@ const props = defineProps({
       width: 160rem;
       top: -40rem;
       left: -35rem;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientPurple_768 8s ease infinite;
+      animation: gradientPurple_768 8s ease infinite;
     }
 
     @include mq(1024) {
@@ -123,8 +155,7 @@ const props = defineProps({
       width: 200rem;
       top: -70rem;
       left: -35rem;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientPurple_1024 8s ease infinite;
+      animation: gradientPurple_1024 8s ease infinite;
     }
 
     @include mq(1440) {
@@ -132,8 +163,7 @@ const props = defineProps({
       width: 250rem;
       top: -80rem;
       left: -50rem;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientPurple_1440 8s ease infinite;
+      animation: gradientPurple_1440 8s ease infinite;
     }
   }
 
@@ -163,16 +193,14 @@ const props = defineProps({
     height: 85rem;
     top: -25rem;
     left: -15rem;
-    animation: slideInGradient 1.5s ease forwards,
-      gradientRed_375 8s ease infinite;
+    animation: gradientRed_375 8s ease infinite;
 
     @include mq(375) {
       width: 85rem;
       height: 85rem;
       top: -25rem;
       left: -15rem;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientRed_375 8s ease infinite;
+      animation: gradientRed_375 8s ease infinite;
     }
 
     @include mq(768) {
@@ -180,8 +208,7 @@ const props = defineProps({
       height: 110rem;
       top: -30rem;
       left: 5rem;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientRed_768 8s ease infinite;
+      animation: gradientRed_768 8s ease infinite;
     }
 
     @include mq(1024) {
@@ -189,15 +216,13 @@ const props = defineProps({
       height: 150rem;
       top: -35rem;
       left: 0;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientRed_1024 8s ease infinite;
+      animation: gradientRed_1024 8s ease infinite;
     }
 
     @include mq(1440) {
       top: -45rem;
       left: 35rem;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientRed_1440 8s ease infinite;
+      animation: gradientRed_1440 8s ease infinite;
     }
   }
 
@@ -227,16 +252,14 @@ const props = defineProps({
     height: 40rem;
     top: 40rem;
     left: 18rem;
-    animation: slideInGradient 1.5s ease forwards,
-      gradientYellow_375 8s ease infinite;
+    animation: gradientYellow_375 8s ease infinite;
 
     @include mq(375) {
       width: 40rem;
       height: 40rem;
       top: 40rem;
       left: 18rem;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientYellow_375 8s ease infinite;
+      animation: gradientYellow_375 8s ease infinite;
     }
 
     @include mq(768) {
@@ -244,8 +267,7 @@ const props = defineProps({
       height: 70rem;
       top: 45rem;
       left: 35rem;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientYellow_768 8s ease infinite;
+      animation: gradientYellow_768 8s ease infinite;
     }
 
     @include mq(1024) {
@@ -253,8 +275,7 @@ const props = defineProps({
       height: 80rem;
       top: 35rem;
       left: 55rem;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientYellow_1024 8s ease infinite;
+      animation: gradientYellow_1024 8s ease infinite;
     }
 
     @include mq(1440) {
@@ -262,48 +283,14 @@ const props = defineProps({
       height: 100rem;
       top: 20rem;
       left: 95rem;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientYellow_1440 8s ease infinite;
+      animation: gradientYellow_1440 8s ease infinite;
     }
 
     @include mq(2560) {
       top: 30rem;
       left: 170rem;
-      animation: slideInGradient 1.5s ease forwards,
-        gradientYellow_2560 8s ease infinite;
+      animation: gradientYellow_2560 8s ease infinite;
     }
-  }
-}
-
-@keyframes slideInGradient {
-  0% {
-    transform: translateY(-400rem);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes gradientBlue {
-  0% {
-    opacity: 0;
-  }
-  20% {
-    opacity: 0.2;
-  }
-  40% {
-    opacity: 0.4;
-  }
-  60% {
-    opacity: 0.6;
-  }
-  80% {
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 1;
   }
 }
 
