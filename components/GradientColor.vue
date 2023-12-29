@@ -29,31 +29,31 @@ watch(
   () => props.animationAction,
   (val) => {
     if (val) {
-      blue.value.style.animation =
-        purple.value.style.animation =
-        red.value.style.animation =
-        yellow.value.style.animation =
-          "";
+      blue.value.classList.remove("notActive");
+      purple.value.classList.remove("notActive");
+      red.value.classList.remove("notActive");
+      yellow.value.classList.remove("notActive");
     } else {
-      blue.value.style.animation =
-        purple.value.style.animation =
-        red.value.style.animation =
-        yellow.value.style.animation =
-          "none";
+      blue.value.classList.add("notActive");
+      purple.value.classList.add("notActive");
+      red.value.classList.add("notActive");
+      yellow.value.classList.add("notActive");
     }
   }
 );
 
 onMounted(() => {
-  blue.value.style.animation =
-    purple.value.style.animation =
-    red.value.style.animation =
-    yellow.value.style.animation =
-      "none";
+  blue.value.classList.add("notActive");
+  purple.value.classList.add("notActive");
+  red.value.classList.add("notActive");
+  yellow.value.classList.add("notActive");
 });
 </script>
 
 <style lang="scss" scoped>
+.notActive {
+  animation-play-state: paused !important;
+}
 .gradient {
   position: absolute;
   top: 0;

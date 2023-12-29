@@ -1,27 +1,15 @@
 export const useGradient = ({ animationAction, classElement }) => {
   const intersection = () => {
-    let counter = 0;
     let options = {
-      threshold: [0.5],
+      threshold: [0.2],
     };
-
-    console.log(document.querySelector(`.${classElement.value}`));
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        /* при любом пересечении threshold должен срабатывать обработчик observer,  для корректной работоспособности подходит intersectionRatio, т.к. isIntersection не всегда становится true */
-        const { intersectionRatio } = entry;
-
-        if (!!intersectionRatio && counter === 0) {
-          animationAction.value = true;
-          counter++;
-          return;
-        }
-        if (!!intersectionRatio && counter === 1) {
-          animationAction.value = false;
-          counter--;
-          return;
-        }
+        const { isIntersecting } = entry;
+        isIntersecting
+          ? (animationAction.value = true)
+          : (animationAction.value = false);
       });
     }, options);
 
