@@ -94,6 +94,12 @@
 import { gsap, ScrollTrigger, scrollTriggerRefresh } from "@/helpers/gsap";
 import { isDesktop } from "@/helpers";
 
+const scrollTo = () => {
+  document.querySelector(".form-section").scrollIntoView({
+    behavior: "smooth",
+  });
+};
+
 function initAnimation() {
   const cardsArray = Array.from(document.querySelectorAll(".process_item_wrapper"))
   const lastItem = cardsArray[cardsArray.length - 1].querySelector('.process_item')

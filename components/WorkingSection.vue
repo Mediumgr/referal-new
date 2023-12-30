@@ -36,51 +36,58 @@ const frame = ref(null);
 const title = ref(null);
 const show = ref(false);
 
-const handleScroll = () => {
-  const viewportTop = frame.value.getBoundingClientRect().top;
-  if (viewportTop > 400 && viewportTop < 500) {
-    title.value.style.opacity = '1';
-  } else if (viewportTop > 300 && viewportTop <= 400) {
-    title.value.style.opacity = '0.4';
-  } else if (viewportTop <= 300) {
-    title.value.style.opacity = '0';
-  }
+const intersectionWrapper = () => {
+  let options = {
+    rootMargin: "0px 0px -200px 0px",
+    threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+
+      const { boundingClientRect } = entry;
+      const frameViewportTop = boundingClientRect.top;
+
+      if (frameViewportTop > 500) {
+        title.value.style.opacity = "";
+      } else if (frameViewportTop > 370 && frameViewportTop <= 500) {
+        title.value.style.opacity = "0.4";;
+      } else if (frameViewportTop <= 370) {
+        title.value.style.opacity = "0";
+      }
+    });
+  }, options);
+
+  observer.observe(frame.value);
 };
 
-const intersection = () => {
+const intersectionElements = () => {
   let options = {
-    rootMargin: '0px 0px -250px 0px',
+    rootMargin: "0px 0px -250px 0px",
   };
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       const { target, isIntersecting } = entry;
       if (isIntersecting) {
-        target.classList.add('active');
+        target.classList.add("active");
       }
     });
   }, options);
 
-  let commonStyle = document.querySelectorAll('.commonStyle');
+  let commonStyle = document.querySelectorAll(".commonStyle");
   commonStyle.forEach((el) => observer.observe(el));
   observer.observe(title.value);
 };
 
 const showMoreBlocks = () => {
-  let width = document.documentElement.clientWidth;
-  if (width >= 768) {
-    show.value = true;
-  } else {
-    show.value = false;
-  }
+  let clientWidth = document.documentElement.clientWidth;
+  clientWidth >= 768 ? (show.value = true) : (show.value = false);
 };
 
 onMounted(() => {
-  intersection();
+  intersectionElements();
+  intersectionWrapper();
   showMoreBlocks();
-  window.addEventListener('scroll', () => {
-    handleScroll();
-  });
-  window.addEventListener('resize', () => showMoreBlocks());
+  window.addEventListener("resize", () => showMoreBlocks());
 });
 </script>
 
@@ -95,14 +102,14 @@ onMounted(() => {
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-template-areas:
-    'mobile mobile'
-    'services services'
-    'factory factory'
-    'eco eco'
-    'substitution substitution'
-    'projects projects'
-    'credit credit'
-    'products products';
+    "mobile mobile"
+    "services services"
+    "factory factory"
+    "eco eco"
+    "substitution substitution"
+    "projects projects"
+    "credit credit"
+    "products products";
 
   @include mq(768) {
     margin: 0 auto;
@@ -110,10 +117,10 @@ onMounted(() => {
     grid-row-gap: 2.5rem;
     grid-column-gap: 2.8rem;
     grid-template-areas:
-      'mobile services'
-      'factory eco'
-      'substitution projects'
-      'credit products';
+      "mobile services"
+      "factory eco"
+      "substitution projects"
+      "credit products";
   }
   @include mq(1024) {
     width: 73rem;
@@ -123,9 +130,9 @@ onMounted(() => {
     grid-gap: 2.8rem;
     grid-template-columns: repeat(3, auto);
     grid-template-areas:
-      'mobile services services'
-      'eco substitution projects'
-      'credit products factory';
+      "mobile services services"
+      "eco substitution projects"
+      "credit products factory";
   }
 }
 
