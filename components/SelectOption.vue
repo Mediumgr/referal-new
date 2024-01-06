@@ -9,38 +9,10 @@
     >
       <div class="wrapper-dropdown_select">
         <p class="wrapper-dropdown_title">{{ data[index].title }}</p>
-        <svg
+        <svg-icon
           :class="['wrapper-dropdown_arrow', { active: checked[index] }]"
-          width="40"
-          height="40"
-          viewBox="0 0 40 40"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            width="40"
-            height="40"
-            rx="20"
-            transform="matrix(1 0 0 -1 0 40)"
-            fill="white"
-          />
-          <rect
-            x="0.5"
-            y="-0.5"
-            width="39"
-            height="39"
-            rx="19.5"
-            transform="matrix(1 0 0 -1 0 39)"
-            stroke="#13144B"
-            stroke-opacity="0.2"
-          />
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M19.3776 27.2416C19.7222 27.5861 20.2809 27.5861 20.6254 27.2416L26.2407 21.6263C26.5853 21.2817 26.5853 20.723 26.2407 20.3785C25.8961 20.0339 25.3374 20.0339 24.9929 20.3785L20.8839 24.4875V13.3824C20.8839 12.895 20.4888 12.5 20.0015 12.5C19.5142 12.5 19.1192 12.895 19.1192 13.3824V24.4875L15.0102 20.3785C14.6656 20.0339 14.1069 20.0339 13.7623 20.3785C13.4178 20.723 13.4178 21.2817 13.7623 21.6263L19.3776 27.2416Z"
-            fill="#13144B"
-          />
-        </svg>
+          name="dropdown_arrow"
+        ></svg-icon>
       </div>
       <div class="wrapper-dropdown_hidden" ref="hiddenWrapper">
         <p class="wrapper-dropdown_text" ref="hiddenText">
@@ -52,7 +24,7 @@
 </template>
 
 <script setup>
-import options from '~/assets/data/select-option.json';
+import options from "~/assets/data/select-option.json";
 const data = options.content;
 
 const hiddenWrapper = ref(null);
@@ -67,10 +39,10 @@ const showHiddenText = (index) => {
   checked.value[index] = !checked.value[index];
   let hiddenNode = hiddenWrapper.value[index];
   if (hiddenNode.clientHeight) {
-    hiddenNode.style.height = 0 + 'rem';
+    hiddenNode.style.height = 0 + "rem";
   } else {
     let hiddenTextHeight = hiddenText.value[index].clientHeight;
-    hiddenNode.style.height = hiddenTextHeight / 10 + 'rem';
+    hiddenNode.style.height = hiddenTextHeight / 10 + "rem";
   }
 };
 </script>
