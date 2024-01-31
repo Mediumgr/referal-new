@@ -6,7 +6,11 @@
         <div class="participation__content_first">
           <p class="participation__content_number">01</p>
           <p class="participation__content_text">
-            Твой друг&nbsp;&mdash; Специалист с опытом работы в IT более 2 лет
+            Твой друг&nbsp;&mdash; Специалист с&nbsp;опытом работы
+            в&nbsp;IT&nbsp;более 2&nbsp;лет по&nbsp;одному из&nbsp;
+            <span class="participation__content_span" @click.stop="scrollTo()">
+              наших направлений
+            </span>
           </p>
         </div>
         <div class="participation__content_second">
@@ -91,7 +95,13 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const scrollTo = () => {
+  document.querySelector(".which-stack-to-use__title").scrollIntoView({
+    behavior: "smooth",
+  });
+};
+</script>
 
 <style lang="scss" scoped>
 .participation {
@@ -211,6 +221,11 @@
         height: 27rem;
         padding: 4rem;
       }
+    }
+
+    &_span {
+      text-decoration: underline;
+      cursor: pointer;
     }
 
     &_number {
