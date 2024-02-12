@@ -7,9 +7,9 @@
           <p class="participation__content_number">01</p>
           <p class="participation__content_text">
             Твой друг&nbsp;&mdash; Специалист с&nbsp;опытом работы
-            в&nbsp;IT&nbsp;более 2&nbsp;лет по&nbsp;одному из&nbsp;
+            в&nbsp;IT&nbsp;более 2&nbsp;лет в&nbsp;
             <span class="participation__content_span" @click.stop="scrollTo()">
-              наших направлений
+              одном из&nbsp;наших направлений
             </span>
           </p>
         </div>
@@ -224,7 +224,7 @@ const scrollTo = () => {
     }
 
     &_span {
-      text-decoration: underline;
+      color: var(--active-color);
       cursor: pointer;
     }
 

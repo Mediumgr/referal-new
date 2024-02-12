@@ -1,8 +1,6 @@
 <template>
   <div class="working__section">
-    <h2 ref="title" class="working__title">
-      Какие направления у&nbsp;нас есть
-    </h2>
+    <h2 ref="title" class="working__title">Наши проекты</h2>
     <div ref="frame" class="frame__wrapper">
       <div class="commonStyle working__mobile">Мобильный и интернет-банк</div>
       <div class="commonStyle working__services">
@@ -43,14 +41,13 @@ const intersectionWrapper = () => {
   };
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-
       const { boundingClientRect } = entry;
       const frameViewportTop = boundingClientRect.top;
 
       if (frameViewportTop > 500) {
         title.value.style.opacity = "";
       } else if (frameViewportTop > 370 && frameViewportTop <= 500) {
-        title.value.style.opacity = "0.4";;
+        title.value.style.opacity = "0.4";
       } else if (frameViewportTop <= 370) {
         title.value.style.opacity = "0";
       }
@@ -190,18 +187,17 @@ onMounted(() => {
     font-style: normal;
     line-height: 90%;
     letter-spacing: -0.288rem;
-    padding: 0 calc(50% - 14rem) 3rem;
+    padding: 0 0 3rem;
 
     @include mq(768) {
       font-size: 9.6rem;
       letter-spacing: -0.576rem;
-      padding: 0 calc(50% - 28rem) 4rem;
+      padding: 0 0 4rem;
     }
     @include mq(1440) {
       top: 15rem;
       font-size: 15rem;
       letter-spacing: -0.9rem;
-      padding: 0 calc(50% - 43rem) 4rem;
     }
   }
 
