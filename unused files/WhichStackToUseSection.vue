@@ -25,7 +25,6 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
 import whichStackToUse from '@/assets/data/which-stack-to-use.json';
 import { gsap, GSAP_EASE } from "@/helpers/gsap";
 import { isDesktop } from "@/helpers";

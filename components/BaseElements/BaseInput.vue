@@ -18,7 +18,7 @@
 const input = ref(null);
 const label = ref(null);
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(["update:modelValue"]);
 const props = defineProps({
   modelValue: {
     type: Object,
@@ -38,32 +38,32 @@ const props = defineProps({
   },
 });
 
-let formattedDigits = ref('');
+let formattedDigits = ref("");
 
 const onInput = (event) => {
   let value = event.target.value;
   let type = event.target.type;
-  if (type === 'tel') {
-    let numbers = value.replace(/\D/g, '');
+  if (type === "tel") {
+    let numbers = value.replace(/\D/g, "");
     let length = numbers.length;
-    if (length < 12 && event.inputType !== 'deleteContentBackward') {
+    if (length < 12 && event.inputType !== "deleteContentBackward") {
       formattedDigits.value =
-        '+7 ' +
+        "+7 " +
         numbers.slice(1, 4) +
-        ' ' +
+        " " +
         numbers.slice(4, 7) +
-        ' ' +
+        " " +
         numbers.slice(7, 9) +
-        ' ' +
+        " " +
         numbers.slice(9, 11);
 
-      emit('update:modelValue', {
+      emit("update:modelValue", {
         text: formattedDigits.value,
         textLength: length,
       });
-    } else if (event.inputType === 'deleteContentBackward') {
+    } else if (event.inputType === "deleteContentBackward") {
       formattedDigits.value = formattedDigits.value.slice(0, -1);
-      emit('update:modelValue', {
+      emit("update:modelValue", {
         text: formattedDigits.value,
         textLength: length,
       });
@@ -71,24 +71,24 @@ const onInput = (event) => {
       event.target.value = formattedDigits.value;
     }
   } else {
-    emit('update:modelValue', {
+    emit("update:modelValue", {
       text: value.trimLeft(),
     });
   }
 };
 
 const onFocus = () => {
-  input.value.classList.add('focus');
+  input.value.classList.add("focus");
 };
 const onBlur = () => {
-  input.value.classList.remove('focus');
+  input.value.classList.remove("focus");
 };
 
 const labelClasses = computed(() => {
   return [
-    'placeholder-label',
+    "placeholder-label",
     {
-      errorLabel: props.error === 'error',
+      errorLabel: props.error === "error",
       hidden: props.modelValue.text.length > 0,
     },
   ];
@@ -98,7 +98,7 @@ const labelClasses = computed(() => {
 <style lang="scss" scoped>
 /* disable iphone zoom */
 /* input:active {
-  font-size: 16px; 
+  font-size: 16px;
 } */
 
 .wrapper-input {
@@ -110,14 +110,14 @@ const labelClasses = computed(() => {
 
 .input {
   color: #13144b;
-  font-family: 'Onest';
+  font-family: "Onest";
   font-size: 1.3rem;
   font-style: normal;
   font-weight: 500;
   letter-spacing: -0.026rem;
-  padding: 1.5rem 2rem;
+  padding: 2rem;
   width: 100%;
-  height: 4.6rem;
+  max-height: 5.4rem;
   border-radius: 2rem;
   border: 0.1rem solid rgba(19, 20, 75, 0.2);
   margin-top: 1rem;
@@ -125,7 +125,7 @@ const labelClasses = computed(() => {
   box-sizing: border-box;
 
   @include mq(768) {
-    height: 4.9rem;
+    // height: 4.9rem;
     font-size: 1.6rem;
   }
 
@@ -137,27 +137,23 @@ const labelClasses = computed(() => {
 
 .placeholder-label {
   position: absolute;
-  top: 4.9rem;
+  top: 2.8rem;
   left: 2rem;
-  transform: translateY(-135%);
   pointer-events: none;
   transition: all 0.3s ease-out;
   color: #13144b;
-  font-family: 'Onest', serif;
-  font-size: 1.3rem;
-  font-style: normal;
-  font-weight: 500;
+  font-family: "Onest", serif;
+  font-size: 1.4rem;
   opacity: 0.5;
   line-height: 140%;
   letter-spacing: -0.064rem;
 
   @include mq(768) {
-    transform: translateY(-100%);
-    font-size: 1.6rem;
     letter-spacing: -0.032rem;
   }
   @include mq(1440) {
-    font-size: 1.8rem;
+    top: 2.6rem;
+    font-size: 1.6rem;
     letter-spacing: -0.064rem;
   }
   &.hidden {

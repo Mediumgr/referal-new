@@ -6,10 +6,10 @@
         <div class="participation__content_first">
           <p class="participation__content_number">01</p>
           <p class="participation__content_text">
-            Твой друг&nbsp;&mdash; Специалист с&nbsp;опытом работы
-            в&nbsp;IT&nbsp;более 2&nbsp;лет в&nbsp;
+            Твой друг&nbsp;&mdash; специалист <br />с&nbsp;опытом работы
+            в&nbsp;IT&nbsp;более <br />2&nbsp;лет в&nbsp;одном из&nbsp;
             <span class="participation__content_span" @click.stop="scrollTo()">
-              одном из&nbsp;наших направлений
+              наших направлений
             </span>
           </p>
         </div>
@@ -24,7 +24,8 @@
       <div class="participation__content_third">
         <p class="participation__content_number">03</p>
         <p class="participation__content_text">
-          Ты&nbsp;не&nbsp;работаешь в&nbsp;ПСБ или в&nbsp;ПСБ Лаб
+          Ты&nbsp;не&nbsp;работаешь <br />
+          в&nbsp;ПСБ или в&nbsp;ПСБ Лаб
         </p>
       </div>
     </div>
@@ -97,7 +98,7 @@
 
 <script setup>
 const scrollTo = () => {
-  document.querySelector(".which-stack-to-use__title").scrollIntoView({
+  document.querySelector(".direction").scrollIntoView({
     behavior: "smooth",
   });
 };
@@ -124,7 +125,7 @@ const scrollTo = () => {
     line-height: 90%;
     letter-spacing: -0.0288rem;
     font-weight: 500;
-    padding: 0 0 6rem;
+    padding: 0 0 4.8rem;
 
     @include mq(768) {
       font-size: 8.6rem;
@@ -229,33 +230,33 @@ const scrollTo = () => {
     }
 
     &_number {
-      font-size: 2.4rem;
+      font-size: 4.8rem;
       line-height: 110%;
+      font-weight: 700;
       letter-spacing: -0.048rem;
       margin-bottom: 2rem;
-      background: var(
-        --Gradient,
-        linear-gradient(86deg, #8e54f5 1.34%, #ff4236 48.48%, #ffb55c 95.63%)
+      background: linear-gradient(
+        355.5deg,
+        #8e54f5 21.86%,
+        #ff4236 54.22%,
+        #ffb55c 86.58%
       );
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
 
       @include mq(768) {
-        font-size: 3.6rem;
-        line-height: 110%;
         letter-spacing: -0.072rem;
       }
       @include mq(1440) {
-        font-size: 4.8rem;
-        font-weight: 700;
         letter-spacing: -0.144rem;
       }
     }
     &_text {
-      color: var(--eggplant);
+      color: #13144bcc;
       font-size: 1.6rem;
       letter-spacing: -0.048rem;
+      line-height: 1.92rem;
 
       @include mq(768) {
         font-size: 2rem;
@@ -264,6 +265,7 @@ const scrollTo = () => {
       @include mq(1440) {
         font-size: 2.4rem;
         letter-spacing: -0.072rem;
+        line-height: 2.88rem;
       }
     }
   }
@@ -386,8 +388,8 @@ const scrollTo = () => {
       }
 
       @include mq(1440) {
-        font-size: 4rem;
-        letter-spacing: -0.08rem;
+        font-size: 4.8rem;
+        letter-spacing: -0.03rem;
         padding: 3rem;
       }
     }
@@ -452,7 +454,7 @@ const scrollTo = () => {
       }
 
       @include mq(1440) {
-        font-size: 3.6rem;
+        font-size: 3.2rem;
         letter-spacing: -0.072rem;
       }
     }
@@ -469,7 +471,7 @@ const scrollTo = () => {
       }
 
       @include mq(1440) {
-        font-size: 1.68rem;
+        font-size: 1.8rem;
         letter-spacing: -0.036rem;
         margin-top: 2rem;
       }
@@ -559,7 +561,7 @@ const scrollTo = () => {
   }
 
   @include mq(1440) {
-    left: 5.4rem;
+    left: 7.5rem;
     top: -3.8rem;
     width: 27rem;
     height: 27rem;

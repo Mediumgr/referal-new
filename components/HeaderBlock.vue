@@ -5,16 +5,25 @@
       <div class="logo">
         <picture>
           <source srcset="/header/logo.svg" media="(min-width: 768px)" />
-          <img class="logo__img" src="/header/logo-mobile.svg" alt="logo" width="141" height="37"  />
+          <img
+            class="logo__img"
+            src="/header/logo-mobile.svg"
+            alt="logo"
+            width="141"
+            height="37"
+          />
         </picture>
       </div>
       <div class="recommend__content">
         <h1 class="recommend__title">Получи 100&nbsp;000&nbsp;₽</h1>
         <p class="recommend__sub-title">Рекомендуй друга в IT</p>
-        <BaseButton @click.stop="scrollTo()">
+        <BaseButton @click.stop="scrollTo()" class="btn">
           <span class="recommend__button_container">
             <span class="recommend__button_text">Заполнить заявку</span>
-            <svg-icon class="recommend__button_img" name="arrow_right"></svg-icon>
+            <svg-icon
+              class="recommend__button_img"
+              name="arrow_right"
+            ></svg-icon>
           </span>
         </BaseButton>
       </div>
@@ -53,7 +62,7 @@ const scrollTo = () => {
   position: relative;
   z-index: 1;
   opacity: 0;
-  animation: opacityShow 1s ease-out forwards;
+  animation: appearance 1s ease-out forwards;
 
   &__img {
     display: block;
@@ -66,7 +75,7 @@ const scrollTo = () => {
   }
 }
 
-@keyframes opacityShow {
+@keyframes appearance {
   0% {
     opacity: 0;
   }
@@ -105,18 +114,21 @@ const scrollTo = () => {
     text-align: center;
     font-size: 4.8rem;
     font-weight: 500;
-    line-height: 100%;
+    line-height: 4.32rem;
     letter-spacing: -0.288rem;
     margin: 0;
     padding-bottom: 1rem;
+
     @include mq(768) {
       font-size: 9.6rem;
       letter-spacing: -0.576rem;
       padding-bottom: 3rem;
+      line-height: 90%;
     }
     @include mq(1440) {
       font-size: 15rem;
       letter-spacing: -0.9rem;
+      line-height: 13.5rem;
       padding-bottom: 4rem;
     }
   }
@@ -124,11 +136,12 @@ const scrollTo = () => {
   &__sub-title {
     color: var(--color-white);
     text-align: center;
-    font-size: 2.4rem;
-    line-height: 110%;
+    font-size: 2rem;
+    line-height: 2.4rem;
     opacity: 0.6;
     margin: 0;
     padding-bottom: 4rem;
+
     @include mq(768) {
       font-size: 3.6rem;
       letter-spacing: -0.072rem;
@@ -136,7 +149,7 @@ const scrollTo = () => {
     }
     @include mq(1440) {
       font-size: 4.8rem;
-      line-height: 110%;
+      line-height: 5.28rem;
       letter-spacing: -0.0144rem;
       opacity: 0.7;
     }
@@ -147,14 +160,15 @@ const scrollTo = () => {
       position: relative;
       display: flex;
       align-items: center;
+      justify-content: space-between;
     }
 
     &_text {
       text-align: center;
-      font-size: 1.8rem;
       letter-spacing: -0.036rem;
       white-space: nowrap;
-      padding-right: 1rem;
+      font-size: 2.4rem;
+      line-height: 2.88rem;
 
       @include mq(768) {
         font-size: 2.4rem;
@@ -168,14 +182,14 @@ const scrollTo = () => {
     }
 
     &_img {
-      width: 4rem;
-      height: 4rem;
-
-      @include mq(768) {
-        width: 7rem;
-        height: 7rem;
-      }
+      width: 7rem;
+      height: 7rem;
     }
   }
+}
+
+.btn {
+  min-width: 32.4rem;
+  min-height: 8.5rem;
 }
 </style>

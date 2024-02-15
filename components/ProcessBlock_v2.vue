@@ -22,53 +22,38 @@
       </div>
 
       <div class="process_item_wrapper">
-        <div class="process_item process_item_2">
+        <div class="process_item">
           <div class="process_item_description">
-            <div class="process_item_header heading-h4">
-              Заполните форму заявки<br />на&nbsp;сайте вместе с&nbsp;другом
+            <div class="process_item_header heading-h4 process_item_style">
+              Заполните форму <br />
+              заявки на&nbsp;сайте вместе с&nbsp;другом
             </div>
             <div class="process_item_header-num">01</div>
           </div>
         </div>
-
-        <!--   <div class="process_item_wrapper">
-          <div class="process_item process_item_2">
-            <div class="process_item_title">Оставь отклик</div>
-            <div class="process_item_text">
-              <ul class="process_item_header heading-h4">
-                <li>
-                  Посмотри актуальные вакансии на
-                  <span class="process_item_active">&nbsp;Хабр Карьере</span>
-                  или заполни
-                  <span class="process_item_active">анкету </span>ниже
-                </li>
-                <li>Дождись нашего звонка</li>
-              </ul>
-            </div>
-          </div>
-        </div> -->
       </div>
 
       <div class="process_item_wrapper">
-        <div class="process_item process_item_3">
+        <div class="process_item">
           <div class="process_item_description">
-            <div class="process_item_header heading-h4">
+            <div class="process_item_header heading-h4 process_item_style">
               На&nbsp;ваши электронные адреса придет подтверждение.
             </div>
-
-            <div class="process_item_header process_item_small">
-              Заявки рассматриваются <br />
-              до&nbsp;5&nbsp;рабочих дней
-            </div>
+            <ul class="process_item_header process_item_small">
+              <li class="process_item_li">
+                Заявки рассматриваются <br />
+                до&nbsp;5&nbsp;рабочих дней
+              </li>
+            </ul>
             <div class="process_item_header-num">02</div>
           </div>
         </div>
       </div>
 
       <div class="process_item_wrapper">
-        <div class="process_item process_item_4">
+        <div class="process_item">
           <div class="process_item_description">
-            <div class="process_item_header heading-h4">
+            <div class="process_item_header heading-h4 process_item_style-2">
               Если опыт в&nbsp;резюме друга будет релевантным, ему назначат одно
               техническое собеседование
             </div>
@@ -78,9 +63,9 @@
       </div>
 
       <div class="process_item_wrapper">
-        <div class="process_item process_item_5">
+        <div class="process_item">
           <div class="process_item_description">
-            <div class="process_item_header heading-h4">
+            <div class="process_item_header heading-h4 process_item_style">
               В&nbsp;случае успешного собеседования друг получит оффер
             </div>
             <div class="process_item_header-num">04</div>
@@ -89,26 +74,27 @@
       </div>
 
       <div class="process_item_wrapper">
-        <div class="process_item process_item_6">
-          <div class="process_item_header-num">05</div>
+        <div class="process_item process_item_last-card">
           <div class="process_item_description">
-            <div class="process_item_header heading-h4">
-              Когда друг пройдет испытательный срок, мы&nbsp;вышлем тебе
-              электронный договор.
+            <svg-icon class="process_item_svg" name="vector"></svg-icon>
+            <div class="process_item_last-card-info">
+              Когда друг пройдет испытательный срок, ты&nbsp;получишь выплату
             </div>
 
-            <div class="process_item_header heading-h4">
-              В&nbsp;течение 7&nbsp;рабочих дней после подписания договора
-              ты&nbsp;получишь выплату
+            <div class="process_item_last-card-small">
+              Мы вышлем тебе электронный договор. Выплата придет в течение 7
+              рабочих дней после его подписания
             </div>
+            <BaseButton
+              @click.stop="scrollTo('vacancy')"
+              class="process_item_button"
+            >
+              <span class="process_item_button_text">Смотреть вакансии</span>
+            </BaseButton>
           </div>
-          <BaseButton class="process_item_button" @click.stop="scrollTo()">
-            <span class="process_item_button_text">Смотреть вакансии</span>
-          </BaseButton>
         </div>
       </div>
     </div>
-
     <div class="process_end_element"></div>
   </div>
 </template>
@@ -118,7 +104,7 @@ import { gsap, ScrollTrigger, scrollTriggerRefresh } from "@/helpers/gsap";
 import { isDesktop } from "@/helpers";
 
 const scrollTo = () => {
-  document.querySelector(".form-section").scrollIntoView({
+  document.querySelector(".which-stack-to-use__title").scrollIntoView({
     behavior: "smooth",
   });
 };
@@ -221,7 +207,6 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* gap: 1rem; */
   padding: 0 2rem;
   position: relative;
   align-items: center;
@@ -257,7 +242,7 @@ onMounted(() => {
   }
   &_item {
     width: 100%;
-    height: auto;
+    height: 43.7rem;
     min-height: 37rem;
     max-height: 37rem;
     // align-items: flex-start;
@@ -276,13 +261,18 @@ onMounted(() => {
     // max-height: calc(var(--vh, 1vh) * 90);
     /* filter: blur(1px); */
     /* transition: all .2s linear;*/
+    &:last-child {
+      transform: translateY(-4rem);
+      max-height: 100%;
+    }
+
     @include mq(768) {
       min-height: 70rem;
       padding: 5rem;
       border-radius: 5rem;
     }
     @include mq(1440) {
-      padding: 7rem;
+      padding: 10rem;
     }
     @include mq(1920) {
       min-height: 65rem;
@@ -293,19 +283,38 @@ onMounted(() => {
       align-items: center;
     }
     &_small {
-      padding-top: 1rem;
+      padding-top: 2rem;
+      padding-left: 1.2rem;
+
+      @include mq(768) {
+        font-size: 2rem;
+      }
+      @include mq(1440) {
+        padding-top: 4rem;
+        padding-left: 0;
+      }
+      @include mq(1920) {
+        padding-top: 1rem;
+      }
+    }
+    &_style {
+      @include mq(768) {
+        padding-right: 17.5rem;
+      }
+      @include mq(1440) {
+        padding-right: 30rem;
+      }
+      &-2 {
+        @include mq(768) {
+          padding-right: 10.5rem;
+        }
+      }
     }
     &_description {
       display: flex;
-      align-items: flex-end;
+      align-items: flex-start;
       flex-direction: column;
-      /*    position: relative;
-      flex: 1;
-      align-self: stretch; */
       width: 100%;
-
-      @include mq(1440) {
-      }
     }
     &_wrapper {
       width: 100%;
@@ -360,21 +369,8 @@ onMounted(() => {
       background: rgba(0, 0, 0, 0.5);
     }
     &_video-header {
-      /*       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem; */
-      padding: 0 2rem 0;
-      /*       position: relative; */
-      /*       top: 18.3rem; */
-      /*       margin-left: auto; */
-      /*       margin-right: auto; */
-
-      /*       @include mq(768) {
-        gap: 3rem;
-      } */
+      padding: 0;
       @include mq(1440) {
-        // gap: 5rem;
         padding: 0;
       }
     }
@@ -411,19 +407,16 @@ onMounted(() => {
       text-align: left;
       max-width: 98rem;
 
-      @include mq(768) {
-        font-size: 3.4rem;
-      }
-
       @include mq(1440) {
-        font-size: 4.4rem;
+        font-size: 6.4rem;
+        line-height: 90%;
       }
     }
     &_header-num {
       position: absolute;
       bottom: -4rem;
+      left: 2rem;
       height: 22rem;
-
       font-size: 17rem;
       font-style: normal;
       font-weight: 500;
@@ -435,67 +428,55 @@ onMounted(() => {
         rgba(255, 57, 44, 0.85) 46.08%,
         rgba(255, 158, 42, 0) 67.67%
       );
-
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
 
       @include mq(768) {
+        bottom: -7rem;
+        left: 3.6rem;
+        height: 39rem;
         font-size: 30rem;
-        letter-spacing: -1.2rem;
-        background: linear-gradient(
-          357deg,
-          rgba(168, 182, 255, 0.1) 25%,
-          #8e54f5 49.93%,
-          #ff4236 67.57%,
-          #ffb55c 84.91%
-        );
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
       }
       @include mq(1440) {
+        bottom: -14rem;
+        left: auto;
+        height: 52rem;
         font-size: 40rem;
         letter-spacing: -1.6rem;
-        background: linear-gradient(
-          357deg,
-          rgba(168, 182, 255, 0.1) 30.29%,
-          #8e54f5 49.93%,
-          #ff4236 67.57%,
-          #ffb55c 84.91%
-        );
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
       }
-    }
-    &_title {
-      font-size: 3rem;
-    }
-    &_active {
-      color: var(--active-color);
     }
     &_button {
       width: 100%;
       padding: 2rem;
       margin-top: 2.7rem;
-      border-radius: 2rem;
+      border-radius: 4rem;
+      background: rgb(255, 255, 255);
       flex-shrink: 0;
 
       @include mq(768) {
-        height: 6.4rem;
-        margin-top: 6rem;
+        height: 7.4rem;
+        margin-top: 14rem;
+        font-size: 2.4rem;
       }
       @include mq(1440) {
-        height: 7rem;
+        padding: 2.6rem 3.6rem;
+        height: auto;
+        width: auto;
       }
-      @include mq(1920) {
-        margin-top: 3rem;
+      &:hover {
+        .process_item_button_text {
+          color: white;
+          transition: 0.2s ease;
+        }
       }
       &_text {
         position: relative;
         font-size: 1.6rem;
         letter-spacing: -0.032rem;
+        color: var(--eggplant);
+        font-weight: 500;
+        line-height: 120%;
 
         @include mq(768) {
           font-size: 2rem;
@@ -507,20 +488,105 @@ onMounted(() => {
         }
       }
     }
+    &_li {
+      color: var(--eggplant);
+      padding-left: 1rem;
+
+      &:not(:last-child) {
+        padding-bottom: 1rem;
+      }
+
+      @include mq(1440) {
+        font-size: 2.4rem;
+        line-height: 120%;
+        opacity: 0.8;
+        padding-left: 0;
+      }
+
+      &::marker {
+        content: "•";
+        font-size: 2rem;
+        color: var(--eggplant);
+
+        @include mq(1440) {
+          content: "";
+        }
+      }
+    }
+    &_last-card {
+      position: relative;
+      background: radial-gradient(
+        130.45% 100% at 100% 100%,
+        #ffb55c 0%,
+        #ff4236 28.77%,
+        #9e22d2 62.81%,
+        #2b268a 100%
+      );
+      @include mq(1440) {
+        background: radial-gradient(
+          82.66% 161.63% at 85.94% 97.15%,
+          #ffb55c 0%,
+          #ff4236 28.77%,
+          #9e22d2 62.81%,
+          #2b268a 100%
+        );
+      }
+      &-info {
+        padding-top: 7.4rem;
+        color: rgb(255, 255, 255);
+        font-size: 2.9rem;
+        line-height: 100%;
+        padding-bottom: 2rem;
+
+        @include mq(768) {
+          padding-top: 20rem;
+          font-size: 3.6rem;
+        }
+        @include mq(1440) {
+          padding-top: 0;
+          font-size: 6.3rem;
+          line-height: 5.76rem;
+          padding-bottom: 4rem;
+        }
+      }
+      &-small {
+        color: rgb(255, 255, 255);
+        font-size: 1.6rem;
+        line-height: 120%;
+
+        @include mq(768) {
+          font-size: 2.2rem;
+        }
+        @include mq(1440) {
+          font-size: 2.4rem;
+          padding-right: 33rem;
+        }
+      }
+    }
+    &_svg {
+      position: absolute;
+      top: -5rem;
+      left: 3rem;
+      width: 14.9rem;
+      height: 14.9rem;
+
+      @include mq(768) {
+        top: -10rem;
+        left: 5rem;
+        width: 30rem;
+        height: 30rem;
+      }
+      @include mq(1440) {
+        top: 25rem;
+        left: 77rem;
+        width: 52rem;
+        height: 52rem;
+      }
+    }
   }
   &_end_element {
     width: 100%;
     height: 1px;
   }
-}
-
-li {
-  list-style: inside;
-}
-
-.process_item:last-child {
-  /* transform: translateY(60px); */
-  transform: translateY(-4rem);
-  max-height: 100%;
 }
 </style>

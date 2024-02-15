@@ -1,0 +1,122 @@
+{
+  "title": "IT-направления </br> ПСБ",
+  "items": [
+    {
+      "name": "AQA",
+      "stack": ["Java", "Selenium", "Cucumber", "Load Testing"],
+      "settings": { "padding": "8rem" }
+    },
+    {
+      "name": "QA",
+      "stack": ["SQL", "Jira", "SOAP", "XML/XLST", "Postman", "API"],
+      "settings": { "padding": "7rem" }
+    },
+    {
+      "name": "Корпоративная </br> архитектура",
+      "stack": ["Archimate MSA", "Java", "C#", "UML", "BPMN"],
+      "settings": { "flex-grow": 1, "flex-basis": "63rem" }
+    },
+    {
+      "name": "DevOps",
+      "stack": [
+        "Nexus",
+        "GitLab",
+        "Jenkins",
+        "Handicorp",
+        "Vault",
+        "SonarCube",
+        "Ansible",
+        "Salt",
+        "SI / CD",
+        "Bash",
+        "Python",
+        "Linux",
+        "Git"
+      ],
+      "settings": { "flex-grow": 1, "flex-basis": "63rem" }
+    },
+    {
+      "name": "JavaScript",
+      "stack": [
+        "Angular",
+        "React",
+        "Vue",
+        "HTML",
+        "TypeScript",
+        "Node.JS",
+        "Express.JS"
+      ],
+      "settings": {}
+    },
+    {
+      "name": "CA",
+      "stack": [
+        "SOAP / REST",
+        "JSON",
+        "XML / XSD",
+        "SQL",
+        "Jira",
+        "Confluence"
+      ],
+      "settings": {}
+    },
+    {
+      "name": "C#",
+      "stack": [".Net Core", ".Net Framework", "MS SQL", "ASP.Net"],
+      "settings": {}
+    },
+    {
+      "name": "Мобильная разработка",
+      "stack": [
+        "iOS",
+        "Android",
+        "Swift",
+        "Objective-C",
+        "Kotlin",
+        "Java",
+        "Android SDK"
+      ],
+      "settings": { "flex-grow": 1, "flex-basis": "63rem" }
+    },
+    {
+      "name": "Python",
+      "stack": ["Django", "Apache Airflow", "Apache Hadoop", "PySpark"],
+      "settings": {}
+    },
+    {
+      "name": "Support",
+      "stack": [
+        "Linux",
+        "SI / CD",
+        "Astra",
+        "AltLinux",
+        "RedOS",
+        "GitLab",
+        "Jenkins",
+        "PostgreSQL",
+        "Oracle",
+        "Apache",
+        "Nginx",
+        "Prometheus",
+        "Zabbix",
+        "Opensearch",
+        "RabbitMQ",
+        "IMB MQ",
+        "Kafka"
+      ],
+      "settings": { "flex-grow": 1, "flex-basis": "63rem" }
+    },
+    {
+      "name": "Java",
+      "stack": [
+        "JavaCore",
+        "Hibernate",
+        "Spring (LoC and DI)",
+        "Solid",
+        "Rest API",
+        "SQL"
+      ],
+      "settings": {}
+    }
+  ]
+}

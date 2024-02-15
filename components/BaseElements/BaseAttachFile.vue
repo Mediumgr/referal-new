@@ -153,13 +153,12 @@ input {
 
   &__title {
     color: #13144b;
-    font-size: 1.3rem;
-    line-height: 120%;
+    font-size: 1.4rem;
+    line-height: 100%;
     letter-spacing: -0.026rem;
 
     @include mq(768) {
       font-size: 1.6rem;
-      line-height: 120%;
       letter-spacing: -0.032rem;
     }
 
@@ -173,14 +172,13 @@ input {
     margin: 0 auto;
     color: #13144b;
     opacity: 0.5;
-    font-size: 1.3rem;
-    line-height: 120%;
+    font-size: 1.4rem;
     letter-spacing: -0.026rem;
     text-align: center;
+    line-height: 100%;
 
     @include mq(768) {
       font-size: 1.6rem;
-      line-height: 120%;
       letter-spacing: -0.032rem;
     }
 

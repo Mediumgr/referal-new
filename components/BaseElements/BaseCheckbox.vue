@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(["update:modelValue"]);
 const props = defineProps({
   modelValue: {
     type: [Boolean, Object],
@@ -52,14 +52,15 @@ input {
   opacity: 0;
   visibility: hidden;
   &:checked ~ .checkboxLabel {
-    background: url('/images/formData/checked.svg') no-repeat center
-      center/1rem 0.8rem;
+    background: url("/images/formData/checked.svg") no-repeat center center/1rem
+      0.8rem;
   }
 }
 .checkboxLabel {
   position: relative;
   margin-right: 1rem;
-  height: 1.9rem;
+  height: 2rem;
+  width: 2.135rem;
   padding-right: 1.75rem;
   border-radius: 0.5rem;
   border: 0.1rem solid var(--eggplant);
@@ -67,14 +68,17 @@ input {
 }
 .textLabel {
   color: var(--eggplant);
-  font-size: 1.3rem;
-  line-height: 140%;
+  font-size: 1.2rem;
+  line-height: 120%;
   letter-spacing: -0.026rem;
   opacity: 0.5;
 
   @include mq(768) {
     font-size: 1.6rem;
     letter-spacing: -0.032rem;
+  }
+  @include mq(1440) {
+    line-height: 140%;
   }
 }
 .errorCheckbox {

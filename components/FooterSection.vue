@@ -10,9 +10,9 @@
 
 <script setup>
 const gradientStyle = ref({
-  height: '20rem',
-  top: '0rem',
-  transform: 'rotate(0deg)',
+  height: "20rem",
+  top: "0rem",
+  transform: "rotate(0deg)",
 });
 </script>
 
@@ -34,6 +34,7 @@ const gradientStyle = ref({
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 4.8rem;
+    font-weight: 500;
     line-height: 90%;
     letter-spacing: -0.288rem;
     text-align: center;

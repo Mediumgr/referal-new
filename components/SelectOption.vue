@@ -1,6 +1,6 @@
 <template>
+  <p class="title">Часто задаваемые вопросы</p>
   <section class="section">
-    <p class="section_title">Часто задаваемые вопросы</p>
     <div
       class="wrapper-dropdown"
       v-for="(n, index) in data"
@@ -48,36 +48,39 @@ const showHiddenText = (index) => {
 </script>
 
 <style lang="scss" scoped>
-.section {
-  @include mq(375) {
-    padding: 12rem calc(50% - 17.7rem) 12rem;
-  }
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--eggplant);
+  font-size: 4.8rem;
+  line-height: 90%;
+  letter-spacing: -0.288rem;
+  padding: 8rem 0 6rem;
+
   @include mq(768) {
-    padding: 16rem calc(50% - 34.4rem) 16rem;
+    font-size: 9.6rem;
+    letter-spacing: -0.576rem;
+  }
+  @include mq(1024) {
+    padding: 12rem 18rem 8rem;
   }
   @include mq(1440) {
-    padding: 20rem calc(50% - 53rem) 16rem;
+    font-size: 15rem;
+    letter-spacing: -0.9rem;
+    padding: 30rem 10rem 8rem;
   }
-
-  &_title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: var(--eggplant);
-    font-size: 4.8rem;
-    line-height: 90%;
-    letter-spacing: -0.288rem;
-    padding-bottom: 6rem;
-
-    @include mq(768) {
-      font-size: 9.6rem;
-      letter-spacing: -0.576rem;
-    }
-    @include mq(1440) {
-      font-size: 15rem;
-      letter-spacing: -0.9rem;
-    }
+}
+.section {
+  @include mq(375) {
+    padding: 0 calc(50% - 17.7rem) 12rem;
+  }
+  @include mq(768) {
+    padding: 0 calc(50% - 34.4rem) 16rem;
+  }
+  @include mq(1440) {
+    padding: 0 calc(50% - 53rem) 16rem;
   }
 }
 
@@ -122,6 +125,7 @@ const showHiddenText = (index) => {
     @include mq(1440) {
       font-size: 3.2rem;
       letter-spacing: -0.096rem;
+      line-height: 120%;
     }
   }
 
@@ -162,6 +166,7 @@ const showHiddenText = (index) => {
 
     @include mq(1440) {
       font-size: 2.4rem;
+      line-height: 120%;
     }
   }
 }

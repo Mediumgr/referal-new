@@ -2,29 +2,32 @@
   <div class="working__section">
     <h2 ref="title" class="working__title">Наши проекты</h2>
     <div ref="frame" class="frame__wrapper">
-      <div class="commonStyle working__mobile">Мобильный и интернет-банк</div>
-      <div class="commonStyle working__services">
-        Микросервисы для среднего и&nbsp;малого бизнеса
+      <!-- <div class="commonStyle working__divisions">Поддержка подразделений</div> -->
+      <div class="commonStyle working__eco">
+        Экосистема <br />
+        сервисов
+      </div>
+      <div class="commonStyle working__projects">
+        Проекты для оборонно-<br />промышленного комплекса
       </div>
       <!--
       <div class="commonStyle working__commonWealth">
         Образовательная платформа «Содружество»
       </div>
-      <div class="commonStyle working__divisions">Поддержка подразделений</div>
       -->
-      <div class="commonStyle working__factory">Продуктовая фабрика РБ</div>
-      <div class="commonStyle working__eco">
-        Экосистема и&nbsp;небанковские сервисы
+      <div class="commonStyle working__bank">
+        Интернет-банк корпоративных <br />
+        клиентов
       </div>
-      <div class="commonStyle working__substitution">Импортозамещение</div>
-      <div class="commonStyle working__projects">Проекты ОПК</div>
-      <div class="commonStyle working__credit" v-show="show">
-        Кредитный конвейер
+      <div class="commonStyle working__substitution">Импортозамещение ПО</div>
+      <div class="commonStyle working__microServices">
+        Микросервисы&nbsp;для&nbsp;среднего <br />и&nbsp;малого бизнеса
       </div>
-      <div class="commonStyle working__products" v-show="show">
-        Безрисковые продукты <br />
-        ДБО КБ
+      <div class="commonStyle working__services">
+        Сервисы для <br />
+        розничных клиентов
       </div>
+      <div class="commonStyle working__credit">Сервисы оформления кредитов</div>
     </div>
   </div>
 </template>
@@ -32,7 +35,6 @@
 <script setup>
 const frame = ref(null);
 const title = ref(null);
-const show = ref(false);
 
 const intersectionWrapper = () => {
   let options = {
@@ -43,12 +45,12 @@ const intersectionWrapper = () => {
     entries.forEach((entry) => {
       const { boundingClientRect } = entry;
       const frameViewportTop = boundingClientRect.top;
-
-      if (frameViewportTop > 500) {
+      console.log("frameViewportTop", frameViewportTop);
+      if (frameViewportTop > 270) {
         title.value.style.opacity = "";
-      } else if (frameViewportTop > 370 && frameViewportTop <= 500) {
+      } else if (frameViewportTop > 170 && frameViewportTop <= 270) {
         title.value.style.opacity = "0.4";
-      } else if (frameViewportTop <= 370) {
+      } else if (frameViewportTop <= 170) {
         title.value.style.opacity = "0";
       }
     });
@@ -75,61 +77,40 @@ const intersectionElements = () => {
   observer.observe(title.value);
 };
 
-const showMoreBlocks = () => {
-  let clientWidth = document.documentElement.clientWidth;
-  clientWidth >= 768 ? (show.value = true) : (show.value = false);
-};
-
 onMounted(() => {
   intersectionElements();
   intersectionWrapper();
-  showMoreBlocks();
-  window.addEventListener("resize", () => showMoreBlocks());
 });
 </script>
 
 <style lang="scss" scoped>
 .frame__wrapper {
   color: var(--eggplant);
-  grid-row-gap: 2.5rem;
-  grid-column-gap: 2.5rem;
+  grid-row-gap: 1.5rem;
   justify-items: center;
   align-items: center;
-  flex-direction: column;
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: 18rem auto;
   grid-template-areas:
-    "mobile mobile"
-    "services services"
-    "factory factory"
-    "eco eco"
-    "substitution substitution"
-    "projects projects"
-    "credit credit"
-    "products products";
+    "projects eco"
+    "bank bank"
+    "microServices microServices"
+    "substitution services"
+    "credit credit";
 
   @include mq(768) {
     margin: 0 auto;
-    grid-template-columns: 40rem 1fr;
-    grid-row-gap: 2.5rem;
-    grid-column-gap: 2.8rem;
-    grid-template-areas:
-      "mobile services"
-      "factory eco"
-      "substitution projects"
-      "credit products";
-  }
-  @include mq(1024) {
-    width: 73rem;
+    width: 56rem;
+    grid-template-columns: 30rem auto;
   }
   @include mq(1440) {
-    width: 140rem;
-    grid-gap: 2.8rem;
+    width: 120rem;
+    grid-row-gap: 1rem;
     grid-template-columns: repeat(3, auto);
     grid-template-areas:
-      "mobile services services"
-      "eco substitution projects"
-      "credit products factory";
+      "bank eco projects"
+      "microServices substitution services"
+      "credit  credit credit";
   }
 }
 
@@ -137,13 +118,12 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 1.4rem;
   border-radius: 12rem;
   text-align: center;
   box-sizing: border-box;
   background: var(--color-white);
   box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
-  font-size: 1.6rem;
   letter-spacing: -0.048rem;
   color: #13144b;
   position: relative;
@@ -161,6 +141,7 @@ onMounted(() => {
     font-size: 2.4rem;
     letter-spacing: -0.096rem;
     padding: 4rem;
+    line-height: 2.88rem;
   }
 }
 
@@ -190,183 +171,74 @@ onMounted(() => {
     padding: 0 0 3rem;
 
     @include mq(768) {
-      font-size: 9.6rem;
-      letter-spacing: -0.576rem;
-      padding: 0 0 4rem;
+      font-size: 8rem;
     }
     @include mq(1440) {
-      top: 15rem;
       font-size: 15rem;
-      letter-spacing: -0.9rem;
     }
   }
 
-  &__mobile {
-    height: 6rem;
-    grid-area: mobile;
-
-    @include mq(768) {
-      justify-self: end;
-    }
+  &__bank {
+    grid-area: bank;
     @include mq(1440) {
-      height: auto;
       position: relative;
-      right: -15rem;
+      left: 9rem;
     }
   }
 
-  &__services {
-    width: 17.2rem;
-    height: 9.7rem;
-    grid-area: services;
-
-    @include mq(768) {
-      width: 22.5rem;
-      height: 11.2rem;
-      justify-self: start;
-    }
-    @include mq(1440) {
-      width: 42.6rem;
-      height: auto;
-      position: relative;
-      right: -15rem;
-    }
+  &__microServices {
+    grid-area: microServices;
+    position: relative;
+    left: 2rem;
   }
 
   &__commonWealth {
-    width: 26rem;
-    height: 9rem;
     grid-area: commonWealth;
-
-    @include mq(768) {
-      width: 32.5rem;
-      height: 8.8rem;
-      justify-self: end;
-    }
-    @include mq(1440) {
-      width: 40.4rem;
-      height: 11.8rem;
-      position: relative;
-      right: -10rem;
-    }
   }
 
   &__divisions {
-    width: 16rem;
-    height: 7.8rem;
-    justify-self: end;
     grid-area: divisions;
-
-    @include mq(768) {
-      width: 20.6rem;
-      height: 8.8rem;
-      justify-self: start;
-    }
-    @include mq(1440) {
-      width: 25.2rem;
-      height: 11.8rem;
-      justify-self: center;
-    }
   }
 
-  &__factory {
-    width: 14rem;
-    height: 7.8rem;
-    justify-self: auto;
-    grid-area: factory;
+  &__services {
+    grid-area: services;
+    min-width: 15rem;
 
-    @include mq(768) {
-      width: 18.3rem;
-      height: 8.8rem;
-      justify-self: center;
-      position: relative;
-      right: -3rem;
-    }
     @include mq(1440) {
-      width: 22.5rem;
-      height: 11.8rem;
-      justify-self: start;
-      right: 10rem;
+      position: relative;
+      left: -4.5rem;
     }
   }
 
   &__eco {
-    width: 21.6rem;
-    height: 7.8rem;
     grid-area: eco;
-
+    position: relative;
+    left: 1rem;
     @include mq(768) {
-      width: 29.3rem;
-      height: 7.8rem;
-      position: relative;
-      right: 8rem;
-    }
-    @include mq(1440) {
-      right: -4.5rem;
-      justify-self: end;
-      width: 35.4rem;
-      height: 11.8rem;
+      left: 1.5rem;
     }
   }
 
   &__substitution {
-    height: 6rem;
     grid-area: substitution;
-
-    @include mq(768) {
-      justify-self: end;
-      height: 6.4rem;
-    }
-    @include mq(1440) {
-      height: 11rem;
-      justify-self: center;
-      position: relative;
-      left: -3rem;
-    }
   }
 
   &__projects {
-    height: 6rem;
+    min-width: 19.3rem;
+    position: relative;
+    left: 2rem;
     grid-area: projects;
 
     @include mq(768) {
-      height: 6.4rem;
-      justify-self: start;
+      min-width: 32rem;
+      left: 2.5rem;
     }
     @include mq(1440) {
-      height: 11rem;
-      position: relative;
-      left: -10.5rem;
+      left: -5.7rem;
     }
   }
   &__credit {
     grid-area: credit;
-
-    @include mq(768) {
-      position: relative;
-      left: 2rem;
-      height: 6.4rem;
-      justify-self: center;
-    }
-    @include mq(1440) {
-      justify-self: auto;
-      height: 11rem;
-      left: 14rem;
-    }
-  }
-  &__products {
-    grid-area: products;
-
-    @include mq(768) {
-      position: relative;
-      left: -5rem;
-      height: 8.8rem;
-      justify-self: start;
-    }
-    @include mq(1440) {
-      height: 13.8rem;
-      left: 3rem;
-    }
   }
 }
 

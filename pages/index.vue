@@ -3,7 +3,7 @@
   <ParticipationConditions />
   <ProcessBlock_v2 />
   <WorkingSection />
-  <WhichStackToUseSection />
+  <ItDirections />
   <FormData />
   <SelectOption />
   <FooterSection />
