@@ -1,17 +1,31 @@
 <template>
   <section class="which-stack-to-use js-stack-use">
-    <GradientColor2 :gradientStyle="gradientStyle" colorBack="#424ED1"></GradientColor2>
+    <GradientColor2
+      :gradientStyle="gradientStyle"
+      colorBack="#424ED1"
+    ></GradientColor2>
 
-    <h2 class="which-stack-to-use__title heading-h2" v-html="whichStackToUse.title"></h2>
+    <h2
+      class="which-stack-to-use__title heading-h2"
+      v-html="whichStackToUse.title"
+    ></h2>
 
     <div class="cards-stack">
-      <div v-for="stack in whichStackToUse.items" :key="stack.name" class="cards-stack__wrapper-item">
+      <div
+        v-for="stack in whichStackToUse.items"
+        :key="stack.name"
+        class="cards-stack__wrapper-item"
+      >
         <span class="cards-stack__label heading-h6">{{ stack.name }}</span>
 
         <div class="cards-stack__item">
           <div class="cards-stack__name heading-h3">{{ stack.name }}</div>
           <ul class="cards-stack__stack-list">
-            <li v-for="item in stack.stack" :key="item" class="cards-stack__stack-item">
+            <li
+              v-for="item in stack.stack"
+              :key="item"
+              class="cards-stack__stack-item"
+            >
               {{ item }}
             </li>
           </ul>
@@ -21,13 +35,12 @@
   </section>
 
   <div class="which-stack-to-use-bg"></div>
-
 </template>
 
 <script setup>
-import whichStackToUse from '@/assets/data/which-stack-to-use.json';
-import { gsap, GSAP_EASE } from "@/helpers/gsap";
-import { isDesktop } from "@/helpers";
+import whichStackToUse from '@/assets/data/which-stack-to-use.json'
+import { gsap, GSAP_EASE } from '@/helpers/gsap'
+import { isDesktop } from '@/helpers'
 import cloneDeep from 'clone-deep'
 
 const gradientStyle = {
@@ -39,33 +52,35 @@ const gradientStyle = {
 let timeline = null
 
 function init() {
-  const LEFT_ClASS = '_stack-left';
-  const RIGHT_ClASS = '_stack-right';
-  const ACTIVE_ClASS = '_stack-active';
+  const LEFT_ClASS = '_stack-left'
+  const RIGHT_ClASS = '_stack-right'
+  const ACTIVE_ClASS = '_stack-active'
 
-  const classes = [
-    LEFT_ClASS, RIGHT_ClASS, ACTIVE_ClASS
-  ]
+  const classes = [LEFT_ClASS, RIGHT_ClASS, ACTIVE_ClASS]
 
-  const stackContainerEl = document.querySelector('.js-stack-use');
+  const stackContainerEl = document.querySelector('.js-stack-use')
   if (!stackContainerEl) {
-    return;
+    return
   }
 
   const titleEl = stackContainerEl.querySelector('.which-stack-to-use__title')
   const gradientEl = stackContainerEl.querySelector('.gradient')
 
   const cardsStackContainerEl = stackContainerEl.querySelector('.cards-stack')
-  const cardsEl = stackContainerEl.querySelectorAll('.cards-stack__wrapper-item');
-  const cardsStackWrapperEl = Array.from(stackContainerEl.querySelectorAll('.cards-stack__wrapper-item'))
+  const cardsEl = stackContainerEl.querySelectorAll(
+    '.cards-stack__wrapper-item',
+  )
+  const cardsStackWrapperEl = Array.from(
+    stackContainerEl.querySelectorAll('.cards-stack__wrapper-item'),
+  )
 
   function animationAppearance() {
     gsap.from(gradientEl, {
       autoAlpha: 0.2,
       scrollTrigger: {
         trigger: stackContainerEl,
-        start: "top 80%",
-        end: "clamp(center +=300px)",
+        start: 'top 80%',
+        end: 'clamp(center +=300px)',
         scrub: 1,
         // markers: true,
       },
@@ -76,8 +91,8 @@ function init() {
       autoAlpha: 0,
       scrollTrigger: {
         trigger: stackContainerEl,
-        start: "top 50%",
-        end: "clamp(center +=300px)",
+        start: 'top 50%',
+        end: 'clamp(center +=300px)',
         scrub: true,
         // markers: true,
       },
@@ -87,15 +102,21 @@ function init() {
       autoAlpha: 0,
       scrollTrigger: {
         trigger: stackContainerEl,
-        start: "top 50%",
-        end: "clamp(center +=300px)",
+        start: 'top 50%',
+        end: 'clamp(center +=300px)',
         scrub: true,
         // markers: true,
       },
     })
   }
 
-  function stackAnimate({ current, left = null, right = null, leftElementsWrapper = [], rightElementsWrapper = [] }) {
+  function stackAnimate({
+    current,
+    left = null,
+    right = null,
+    leftElementsWrapper = [],
+    rightElementsWrapper = [],
+  }) {
     if (timeline) {
       timeline.totalDuration(0.08)
     }
@@ -104,7 +125,7 @@ function init() {
     const backgroundColorActive = '#424ed1'
     const backgroundColorDefault = '#13144b'
     const currentCard = getCardItems(current)
-    let optionsOrigin;
+    let optionsOrigin
 
     if (isDesktop()) {
       //desktop options
@@ -113,13 +134,13 @@ function init() {
           left: 0,
           right: 'auto',
           transformPerspective: '60rem',
-          transformOrigin: "left",
+          transformOrigin: 'left',
         },
         setRightPositionCard: {
           left: 'auto',
           right: 0,
           transformPerspective: '60rem',
-          transformOrigin: "right",
+          transformOrigin: 'right',
         },
         currentSize: {
           width: '60rem',
@@ -150,12 +171,12 @@ function init() {
         rotateLeftAnimation: {
           rotateY: 28,
           backgroundColor: backgroundColorDefault,
-          duration: duration / 2
+          duration: duration / 2,
         },
         rotateRightAnimation: {
           rotateY: -28,
           backgroundColor: backgroundColorDefault,
-          duration: duration / 2
+          duration: duration / 2,
         },
       }
     } else {
@@ -208,18 +229,18 @@ function init() {
         rotateLeftAnimation: {
           rotateX: -52,
           backgroundColor: backgroundColorDefault,
-          duration: duration / 2
+          duration: duration / 2,
         },
         rotateRightAnimation: {
           rotateX: 52,
           backgroundColor: backgroundColorDefault,
-          duration: duration / 2
+          duration: duration / 2,
         },
       }
     }
 
     // этот код нужен из-за того что gsap мутирует объект переданный в него как параметр
-    const options = cloneDeep(optionsOrigin);
+    const options = cloneDeep(optionsOrigin)
 
     timeline = gsap.timeline({ ease: GSAP_EASE })
 
@@ -244,7 +265,7 @@ function init() {
 
     const setOpacity = (elements) => {
       elements.forEach((item, index) => {
-        let opacity = 0.5 - (index) / 10
+        let opacity = 0.5 - index / 10
         if (opacity < 0.1) {
           opacity = 0.1
         }
@@ -310,7 +331,11 @@ function init() {
       timeline.to(right, options.rightActiveSize, 0)
     }
 
-    timeline.to([...leftElementsWrapper, ...rightElementsWrapper], options.leftRightWrapperSize, 0)
+    timeline.to(
+      [...leftElementsWrapper, ...rightElementsWrapper],
+      options.leftRightWrapperSize,
+      0,
+    )
 
     const leftCards = getCardItems(leftElementsWrapper)
     if (leftCards.length) {
@@ -367,10 +392,16 @@ function init() {
     const rightElementsWrapper = cardsStackWrapperEl.slice(centerIndex + 2)
 
     // левые карточки без активных классов
-    const leftElementsWrapper = centerIndex - 1 > 0 ? cardsStackWrapperEl.slice(0, centerIndex - 1) : []
+    const leftElementsWrapper =
+      centerIndex - 1 > 0 ? cardsStackWrapperEl.slice(0, centerIndex - 1) : []
 
-
-    stackAnimate({ current, left, right, leftElementsWrapper, rightElementsWrapper })
+    stackAnimate({
+      current,
+      left,
+      right,
+      leftElementsWrapper,
+      rightElementsWrapper,
+    })
   }
 
   function getNodeIndex(element) {
@@ -382,7 +413,7 @@ function init() {
   timeline.totalProgress(1)
 
   const eventType = isDesktop() ? 'mouseover' : 'click'
-  cardsEl.forEach(card => {
+  cardsEl.forEach((card) => {
     card.addEventListener(eventType, handleClick)
   })
 
@@ -391,10 +422,10 @@ function init() {
 
 onMounted(() => {
   init()
-});
+})
 </script>
 
 <style lang="scss" scoped>
-@import "~/assets/styles/components/which-stack-to-use";
-@import "~/assets/styles/components/cards-stack";
+@import '~/assets/styles/components/which-stack-to-use';
+@import '~/assets/styles/components/cards-stack';
 </style>

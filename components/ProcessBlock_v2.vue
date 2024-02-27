@@ -100,106 +100,106 @@
 </template>
 
 <script setup>
-import { gsap, ScrollTrigger, scrollTriggerRefresh } from "@/helpers/gsap";
-import { isDesktop } from "@/helpers";
+import { gsap, ScrollTrigger, scrollTriggerRefresh } from '@/helpers/gsap'
+import { isDesktop } from '@/helpers'
 
 const scrollTo = () => {
-  document.querySelector(".which-stack-to-use__title").scrollIntoView({
-    behavior: "smooth",
-  });
-};
+  document.querySelector('.which-stack-to-use__title').scrollIntoView({
+    behavior: 'smooth',
+  })
+}
 
 function initAnimation() {
   const cardsArray = Array.from(
-    document.querySelectorAll(".process_item_wrapper")
-  );
+    document.querySelectorAll('.process_item_wrapper'),
+  )
   const lastItem =
-    cardsArray[cardsArray.length - 1].querySelector(".process_item");
+    cardsArray[cardsArray.length - 1].querySelector('.process_item')
 
   cardsArray.forEach((card, index) => {
     ScrollTrigger.create({
       trigger: card,
       // start: "top-=" + 10 * index + " 10%",
-      start: "top 10%",
-      end: "top bottom",
-      endTrigger: ".process_end_element",
+      start: 'top 10%',
+      end: 'top bottom',
+      endTrigger: '.process_end_element',
       // pin: true,
       // anticipatePin: 1,
       // markers: true,
       onEnter: () => {
-        if (index < 1) return;
-        const previousCards = cardsArray.slice(0, index).reverse();
+        if (index < 1) return
+        const previousCards = cardsArray.slice(0, index).reverse()
 
-        console.log("onEnter");
+        console.log('onEnter')
         previousCards.forEach((card, idx) => {
           gsap.to(card, {
             opacity: 1 - (idx + 1) / 10,
             duration: 0.15,
-          });
-        });
+          })
+        })
       },
       onLeaveBack: () => {
-        if (index < 1) return;
-        const previousCards = cardsArray.slice(0, index).reverse();
+        if (index < 1) return
+        const previousCards = cardsArray.slice(0, index).reverse()
 
         previousCards.forEach((card, idx) => {
           gsap.to(card, {
             opacity: 1 - idx / 10,
             duration: 0.15,
-          });
-        });
+          })
+        })
       },
       onComplete: (self) => {
-        console.log(self);
+        console.log(self)
       },
-    });
+    })
 
     if (index !== cardsArray.length - 1) {
-      let options = {};
+      let options = {}
 
       if (isDesktop()) {
         options = {
           scaleX: 1 - 0.02 * (cardsArray.length - (index + 1)),
           y: `-=${cardsArray.length - index}rem`,
-        };
+        }
       } else {
         options = {
           scaleX: 1 - 0.05 * (cardsArray.length - (index + 1)),
           y: `-=${cardsArray.length - index}rem`,
-        };
+        }
 
         if (index === 0) {
-          options.scaleX = 0.65;
+          options.scaleX = 0.65
         }
       }
 
-      const item = card.querySelector(".process_item");
-      const itemNext = cardsArray[index + 1].querySelector(".process_item");
+      const item = card.querySelector('.process_item')
+      const itemNext = cardsArray[index + 1].querySelector('.process_item')
 
       gsap.to(item, {
         scaleX: options.scaleX,
         y: options.y,
-        ease: "none",
+        ease: 'none',
         immediateRender: true,
         scrollTrigger: {
           trigger: itemNext,
-          start: "top bottom",
-          end: "bottom bottom",
+          start: 'top bottom',
+          end: 'bottom bottom',
           endTrigger: lastItem,
           scrub: true,
-          preventOverlaps: "group1",
+          preventOverlaps: 'group1',
           // markers: { indent: 50 },
         },
-      });
+      })
     }
-  });
+  })
 
-  scrollTriggerRefresh();
+  scrollTriggerRefresh()
 }
 
 onMounted(() => {
-  initAnimation();
-});
+  initAnimation()
+})
 </script>
 
 <style lang="scss" scoped>
@@ -504,12 +504,12 @@ onMounted(() => {
       }
 
       &::marker {
-        content: "•";
+        content: '•';
         font-size: 2rem;
         color: var(--eggplant);
 
         @include mq(1440) {
-          content: "";
+          content: '';
         }
       }
     }

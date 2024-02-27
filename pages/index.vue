@@ -10,12 +10,12 @@
 </template>
 
 <script setup>
-import { heightVH } from "@/helpers";
+import { heightVH } from '@/helpers'
 onMounted(() => {
-  heightVH();
-});
+  heightVH()
+})
 </script>
 
 <style lang="scss">
-@use "~/assets/styles/main";
+@use '~/assets/styles/main';
 </style>

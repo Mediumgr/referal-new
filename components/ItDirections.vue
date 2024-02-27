@@ -38,68 +38,68 @@
 </template>
 
 <script setup>
-import itDirections from "@/assets/data/it-directions.json";
-const { title, items } = itDirections;
+import itDirections from '@/assets/data/it-directions.json'
+const { title, items } = itDirections
 
-const hiddenWrapper = ref(null);
-const hiddenElements = ref(null);
-const el = ref(null);
-const checked = ref({});
-const desktop = ref(null);
+const hiddenWrapper = ref(null)
+const hiddenElements = ref(null)
+const el = ref(null)
+const checked = ref({})
+const desktop = ref(null)
 
 for (let i = 0; i < items.length; i++) {
-  checked.value[i] = false;
+  checked.value[i] = false
 }
 
 const show = (index) => {
   if (!desktop.value) {
-    checked.value[index] = !checked.value[index];
-    let hiddenWrap = hiddenWrapper.value[index];
+    checked.value[index] = !checked.value[index]
+    let hiddenWrap = hiddenWrapper.value[index]
     if (hiddenWrap.clientHeight) {
-      hiddenWrap.style.height = "";
+      hiddenWrap.style.height = ''
     } else {
-      let hiddenBlock = hiddenElements.value[index].clientHeight;
+      let hiddenBlock = hiddenElements.value[index].clientHeight
       let borderWidth = +window
         .getComputedStyle(el.value[index])
-        .getPropertyValue("border-right-width")
-        .split("px")[0];
-      hiddenWrap.style.height = hiddenBlock + borderWidth + "px";
+        .getPropertyValue('border-right-width')
+        .split('px')[0]
+      hiddenWrap.style.height = hiddenBlock + borderWidth + 'px'
     }
   }
-};
+}
 
 const getPadding = (el, index) => {
-  let isPadding = !!el.settings.padding;
-  let padding = isPadding ? el.settings.padding : null;
+  let isPadding = !!el.settings.padding
+  let padding = isPadding ? el.settings.padding : null
   if ((index === 0 || index === 3) && desktop.value) {
-    return { "padding-right": "2rem" };
+    return { 'padding-right': '2rem' }
   } else if (padding && !desktop.value) {
-    return { "padding-right": el.settings.padding };
+    return { 'padding-right': el.settings.padding }
   }
-};
+}
 
 const getFlex = (el) => {
-  let isSettings = !!el.settings;
-  let grow = isSettings ? el.settings["flex-grow"] : null;
-  let basis = isSettings ? el.settings["flex-basis"] : null;
+  let isSettings = !!el.settings
+  let grow = isSettings ? el.settings['flex-grow'] : null
+  let basis = isSettings ? el.settings['flex-basis'] : null
   if (isSettings && grow && basis && desktop.value) {
-    return { flex: `${grow} 0 ${basis}` };
+    return { flex: `${grow} 0 ${basis}` }
   }
-};
+}
 
 const onResizeListener = () => {
-  window.addEventListener("resize", () => {
-    desktop.value = window.matchMedia(`(min-width: 1440px)`).matches;
+  window.addEventListener('resize', () => {
+    desktop.value = window.matchMedia(`(min-width: 1440px)`).matches
     items.forEach((item) => {
-      getFlex(item);
-    });
-  });
-};
+      getFlex(item)
+    })
+  })
+}
 
 onMounted(() => {
-  desktop.value = window.matchMedia(`(min-width: 1440px)`).matches;
-  onResizeListener();
-});
+  desktop.value = window.matchMedia(`(min-width: 1440px)`).matches
+  onResizeListener()
+})
 </script>
 
 <style lang="scss" scoped>

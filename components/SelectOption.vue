@@ -24,27 +24,27 @@
 </template>
 
 <script setup>
-import options from "~/assets/data/select-option.json";
-const data = options.content;
+import options from '~/assets/data/select-option.json'
+const data = options.content
 
-const hiddenWrapper = ref(null);
-const hiddenText = ref(null);
-const checked = ref({});
+const hiddenWrapper = ref(null)
+const hiddenText = ref(null)
+const checked = ref({})
 
 for (let i = 0; i < data.length; i++) {
-  checked.value[i] = false;
+  checked.value[i] = false
 }
 
 const showHiddenText = (index) => {
-  checked.value[index] = !checked.value[index];
-  let hiddenNode = hiddenWrapper.value[index];
+  checked.value[index] = !checked.value[index]
+  let hiddenNode = hiddenWrapper.value[index]
   if (hiddenNode.clientHeight) {
-    hiddenNode.style.height = 0 + "rem";
+    hiddenNode.style.height = 0 + 'rem'
   } else {
-    let hiddenTextHeight = hiddenText.value[index].clientHeight;
-    hiddenNode.style.height = hiddenTextHeight / 10 + "rem";
+    let hiddenTextHeight = hiddenText.value[index].clientHeight
+    hiddenNode.style.height = hiddenTextHeight / 10 + 'rem'
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

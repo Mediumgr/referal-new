@@ -178,7 +178,7 @@
           :status="status"
           @resend="
             () => {
-              status.form = true;
+              status.form = true
             }
           "
         ></FormStatus>
@@ -188,31 +188,31 @@
 </template>
 
 <script setup>
-const checked = ref([false, false, false, false, false]);
-let recommenderName = ref({ text: "" });
-let recommenderEmail = ref({ text: "" });
-let recommenderPhone = ref({ text: "", textLength: "" });
-let candidateName = ref({ text: "" });
-let candidateEmail = ref({ text: "" });
-let candidatePhone = ref({ text: "", textLength: "" });
-let file = ref({});
-const loader = ref(false);
+const checked = ref([false, false, false, false, false])
+let recommenderName = ref({ text: '' })
+let recommenderEmail = ref({ text: '' })
+let recommenderPhone = ref({ text: '', textLength: '' })
+let candidateName = ref({ text: '' })
+let candidateEmail = ref({ text: '' })
+let candidatePhone = ref({ text: '', textLength: '' })
+let file = ref({})
+const loader = ref(false)
 const regExp = reactive({
   name: /^[a-zа-я]+\s[a-zа-я]+(\s[a-zа-я]+)?$/i,
 
   phone: /^((8|\+7)\s)\d{3}[\d\s]{10}$/,
   email: /^[\w.-]+@([\w-]+\.)+[\w-]+$/i,
-});
-let errors = reactive({});
+})
+let errors = reactive({})
 const status = reactive({
   form: true,
   connection: true,
-  server: { failure: false, message: "" },
-});
+  server: { failure: false, message: '' },
+})
 
 const attachedFile = (resume) => {
-  file.value = resume;
-};
+  file.value = resume
+}
 
 const submit = async () =>
   await useSubmit({
@@ -228,7 +228,7 @@ const submit = async () =>
     file,
     status,
     regExp,
-  });
+  })
 
 useWatchers({
   errors,
@@ -242,7 +242,7 @@ useWatchers({
   file,
   status,
   regExp,
-});
+})
 </script>
 
 <style lang="scss" scoped>
@@ -298,7 +298,7 @@ useWatchers({
 
   &__wrapper {
     padding: 2rem;
-    box-sizing: content-box;
+    //box-sizing: content-box;
 
     @include mq(768) {
       width: 60.8rem;
@@ -442,7 +442,7 @@ useWatchers({
 
 .loader::after,
 .loader::before {
-  content: "";
+  content: '';
   box-sizing: border-box;
   position: absolute;
   left: 0;

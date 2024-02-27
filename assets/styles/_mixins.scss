@@ -11,9 +11,9 @@
 }
 
 @mixin only-mobile() {
-    @include mq(0, 767) {
-      @content
-    }
+  @include mq(0, 767) {
+    @content;
+  }
 }
 
 @mixin mqh($from, $to: false) {

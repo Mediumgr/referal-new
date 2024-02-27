@@ -3,13 +3,7 @@
   "items": [
     {
       "name": "OS\n& Virtualization Systems",
-      "stack": [
-        "Astra Linux",
-        "Альт Сервер",
-        "Ред ОС",
-        "zVirt",
-        "Скала-Р"
-      ]
+      "stack": ["Astra Linux", "Альт Сервер", "Ред ОС", "zVirt", "Скала-Р"]
     },
     {
       "name": "Development",
@@ -27,12 +21,7 @@
     },
     {
       "name": "Low-code platforms & PM",
-      "stack": [
-        "Greendata",
-        "FIS",
-        "JMIX",
-        "Camunda"
-      ]
+      "stack": ["Greendata", "FIS", "JMIX", "Camunda"]
     },
     {
       "name": "CI/CD",

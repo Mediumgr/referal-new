@@ -13,8 +13,8 @@
 </template>
 
 <script setup>
-const container = ref(null);
-const size = ref("max(100vw, 100vh)");
+const container = ref(null)
+const size = ref('max(100vw, 100vh)')
 
 const props = defineProps({
   gradientStyle: {
@@ -23,44 +23,44 @@ const props = defineProps({
   },
   colorBack: {
     type: String,
-    default: "#733ff5",
+    default: '#733ff5',
   },
-});
+})
 
 function observer() {
   let options = {
-    rootMargin: "0px 0px -250px 0px",
-  };
+    rootMargin: '0px 0px -250px 0px',
+  }
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      const { target, isIntersecting } = entry;
+      const { target, isIntersecting } = entry
       if (isIntersecting) {
         //active
-        target.classList.remove("_paused");
+        target.classList.remove('_paused')
       } else {
         //paused
-        target.classList.add("_paused");
+        target.classList.add('_paused')
       }
-    });
-  }, options);
+    })
+  }, options)
 
-  observer.observe(container.value);
+  observer.observe(container.value)
 }
 
 onMounted(() => {
   size.value =
-    Math.max(container.value.offsetHeight, container.value.offsetWidth) + "px";
+    Math.max(container.value.offsetHeight, container.value.offsetWidth) + 'px'
 
   setTimeout(() => {
-    observer();
-  }, 1500);
+    observer()
+  }, 1500)
   // const pageWidth = document.documentElement.offsetWidth / 10;
   // document.documentElement.style.setProperty("--page-size", pageWidth + "rem");
-});
+})
 </script>
 
 <style lang="scss" scoped>
-@use "~/assets/styles/main";
+@use '~/assets/styles/main';
 
 @function getBGSizePercent($size-block) {
   // 3744 - размер врапера для фона на экране 1440

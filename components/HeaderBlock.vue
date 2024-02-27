@@ -1,57 +1,63 @@
 <template>
-  <div class="container">
+  <div class="container2">
     <GradientColor2 />
-    <header>
-      <div class="logo">
-        <picture>
-          <source srcset="/header/logo.svg" media="(min-width: 768px)" />
-          <img
-            class="logo__img"
-            src="/header/logo-mobile.svg"
-            alt="logo"
-            width="141"
-            height="37"
-          />
-        </picture>
-      </div>
-      <div class="recommend__content">
-        <h1 class="recommend__title">Получи 100&nbsp;000&nbsp;₽</h1>
-        <p class="recommend__sub-title">Рекомендуй друга в IT</p>
-        <BaseButton @click.stop="scrollTo()" class="btn">
-          <span class="recommend__button_container">
-            <span class="recommend__button_text">Заполнить заявку</span>
-            <svg-icon
-              class="recommend__button_img"
-              name="arrow_right"
-            ></svg-icon>
-          </span>
-        </BaseButton>
-      </div>
-    </header>
+
+    <div class="container">
+      <header>
+        <div class="logo">
+          <picture>
+            <source srcset="/header/logo.svg" media="(min-width: 768px)" />
+            <img
+              class="logo__img"
+              src="/header/logo-mobile.svg"
+              alt="logo"
+              width="141"
+              height="37"
+            />
+          </picture>
+        </div>
+        <div class="recommend__content">
+          <h1 class="recommend__title heading-h1">
+            <span class="recommend__title">Получи 100&nbsp;000&nbsp;₽</span>
+            <span class="recommend__sub-title">Рекомендуй друга в IT</span>
+          </h1>
+
+          <BaseButton @click.stop="scrollTo()" class="btn">
+            <span class="recommend__button_container">
+              <span class="recommend__button_text">Заполнить заявку</span>
+              <svg-icon
+                class="recommend__button_img"
+                name="arrow_right"
+              ></svg-icon>
+            </span>
+          </BaseButton>
+        </div>
+      </header>
+    </div>
   </div>
 </template>
 
 <script setup>
 const scrollTo = () => {
-  document.querySelector(".form-section").scrollIntoView({
-    behavior: "smooth",
-  });
-};
+  document.querySelector('.form-section').scrollIntoView({
+    behavior: 'smooth',
+  })
+}
 </script>
 
 <style lang="scss" scoped>
-.container {
+.container2 {
   position: relative;
   height: 66.7rem;
   box-sizing: border-box;
-  padding: 4rem 2rem 0;
+  padding: 4rem 0 0;
 
   @include mq(768) {
     height: 102.4rem;
-    padding: 2rem 4rem 0;
+    padding-top: 2rem;
   }
   @include mq(1440) {
-    padding: 4rem 8rem 0;
+    padding-top: 4rem;
   }
 }
 
@@ -111,24 +117,13 @@ const scrollTo = () => {
 
   &__title {
     color: var(--color-white);
-    text-align: center;
-    font-size: 4.8rem;
-    font-weight: 500;
-    line-height: 4.32rem;
-    letter-spacing: -0.288rem;
-    margin: 0;
     padding-bottom: 1rem;
 
     @include mq(768) {
-      font-size: 9.6rem;
-      letter-spacing: -0.576rem;
       padding-bottom: 3rem;
-      line-height: 90%;
     }
-    @include mq(1440) {
-      font-size: 15rem;
-      letter-spacing: -0.9rem;
-      line-height: 13.5rem;
+
+    @include mq(1200) {
       padding-bottom: 4rem;
     }
   }

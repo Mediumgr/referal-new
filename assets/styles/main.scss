@@ -1,8 +1,9 @@
-@import "./mixins";
-@import "./shared-classes";
-@import "./fonts";
-@import "./colors";
-@import "./heading";
+@import './mixins';
+@import './shared-classes';
+@import './fonts';
+@import './colors';
+@import './heading';
+@import './container';
 
 li {
   list-style: none;
@@ -16,6 +17,11 @@ a {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 html,
@@ -72,30 +78,24 @@ html {
   }
 }
 
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
 body {
   font-family: Onest, Helvetica, serif;
   font-size: 1.3rem;
   font-style: normal;
   font-weight: 500;
   line-height: 120%;
-  letter-spacing: -0.026rem;
+  letter-spacing: -0.02em;
   margin: 0;
   background-color: var(--bg);
   color: var(--eggplant);
 
   @include mq(768) {
     font-size: 1.6rem;
-    letter-spacing: -0.032rem;
+    letter-spacing: -0.02em;
   }
 
   @include mq(1200) {
-    font-size: 1.6rem;
     line-height: 140%;
-    letter-spacing: -0.064rem;
+    letter-spacing: -0.04em;
   }
 }

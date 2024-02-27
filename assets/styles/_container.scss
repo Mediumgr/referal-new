@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+  position: relative;
+  padding: 0 2rem;
+  background-color: blueviolet;
+  margin: 0 auto;
+
+  @include mq(768) {
+    padding: 0 4rem;
+  }
+
+  @include mq(1320) {
+    box-sizing: content-box;
+    padding: 0 2rem;
+    max-width: 128rem;
+  }
+}

@@ -10,15 +10,15 @@
 </template>
 
 <script setup>
-const buttonRef = ref(null);
+const buttonRef = ref(null)
 
 const mousemove = (e) => {
-  const btn = buttonRef.value;
-  let x = e.pageX - btn.offsetLeft;
-  let y = e.pageY - btn.offsetTop;
-  btn.style.setProperty("--x", x / 10 + "rem");
-  btn.style.setProperty("--y", y / 1000 + "rem");
-};
+  const btn = buttonRef.value
+  let x = e.pageX - btn.offsetLeft
+  let y = e.pageY - btn.offsetTop
+  btn.style.setProperty('--x', x / 10 + 'rem')
+  btn.style.setProperty('--y', y / 1000 + 'rem')
+}
 </script>
 
 <style lang="scss" scoped>
@@ -56,7 +56,7 @@ button {
 
   &::before {
     --size: 0;
-    content: "";
+    content: '';
     position: absolute;
     left: var(--x);
     top: var(--y);

@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(['update:modelValue'])
 const props = defineProps({
   modelValue: {
     type: [Boolean, Object],
@@ -32,7 +32,7 @@ const props = defineProps({
     type: String,
     required: false,
   },
-});
+})
 </script>
 
 <style lang="scss" scoped>
@@ -52,7 +52,7 @@ input {
   opacity: 0;
   visibility: hidden;
   &:checked ~ .checkboxLabel {
-    background: url("/images/formData/checked.svg") no-repeat center center/1rem
+    background: url('/images/formData/checked.svg') no-repeat center center/1rem
       0.8rem;
   }
 }

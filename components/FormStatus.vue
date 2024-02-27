@@ -16,10 +16,7 @@
     >
       <div class="error__container">
         <div class="error__connection">
-          <img
-            src="/images/formData/status_bad.svg"
-            alt="status Nok"
-          />
+          <img src="/images/formData/status_bad.svg" alt="status Nok" />
           <p class="error__text">Похоже, проблемы с&nbsp;соединением.</p>
           <p class="error__text_again">Попробуй еще раз</p>
         </div>
@@ -42,13 +39,13 @@
 
 <script setup>
 /* eslint-disable */
-const emit = defineEmits(['resend']);
+const emit = defineEmits(['resend'])
 const props = defineProps({
   status: {
     type: Object,
     default: () => {},
   },
-});
+})
 </script>
 
 <style lang="scss" scoped>

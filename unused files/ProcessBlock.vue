@@ -10,18 +10,12 @@
           muted
           playsinline
         >
-          <source
-            src="/video/process/process-b1.webm"
-            type="video/webm"
-          />
-          <source
-            src="/video/process/process-b1.mp4"
-            type="video/mp4"
-          />
+          <source src="/video/process/process-b1.webm" type="video/webm" />
+          <source src="/video/process/process-b1.mp4" type="video/mp4" />
         </video>
         <div class="process_item-overlay50"></div>
         <div class="process_item_video-header">
-          <div class="process_item_video-text">Как получить<br/>бонус</div>
+          <div class="process_item_video-text">Как получить<br />бонус</div>
           <div class="process_item_video-text2"></div>
         </div>
       </div>
@@ -29,7 +23,7 @@
         <div class="process_item_header-num">01</div>
         <div class="process_item_description">
           <div class="process_item_header">
-            Заполните форму заявки<br/>на сайте вместе с другом
+            Заполните форму заявки<br />на сайте вместе с другом
           </div>
         </div>
       </div>
@@ -37,7 +31,7 @@
         <div class="process_item_header-num">02</div>
         <div class="process_item_description">
           <div class="process_item_header">
-            На ваши электронные адреса придет подтверждение. <br/><br/>Заявки
+            На ваши электронные адреса придет подтверждение. <br /><br />Заявки
             рассматриваются до 5 рабочих дней
           </div>
         </div>
@@ -64,7 +58,7 @@
         <div class="process_item_description">
           <div class="process_item_header">
             Когда друг пройдет испытательный срок, мы вышлем тебе электронный
-            договор. <br/><br/>
+            договор. <br /><br />
             В течение 7 рабочих дней после подписания договора ты получишь
             выплату
           </div>
@@ -78,211 +72,210 @@
 </template>
 
 <script setup>
-
 const scrollTo = () => {
-  document.querySelector(".form-section").scrollIntoView({
-    behavior: "smooth",
-  });
-};
+  document.querySelector('.form-section').scrollIntoView({
+    behavior: 'smooth',
+  })
+}
 
-var currentIndex = 0;
-var isScrollingDown = true;
-var lastScrollTop = 0;
-var cardsArray = [];
-let marginCard = 10;
+var currentIndex = 0
+var isScrollingDown = true
+var lastScrollTop = 0
+var cardsArray = []
+let marginCard = 10
 
-let waitingOnAnimRequest = false;
+let waitingOnAnimRequest = false
 
-let cards = '';
-let list = '';
+let cards = ''
+let list = ''
 
-let ListTop = '';
-let firstCard = '';
-let cardTop = '';
-let cardHeight = '';
-
+let ListTop = ''
+let firstCard = ''
+let cardTop = ''
+let cardHeight = ''
 
 function onChangePosition(index) {
-  let _cards = cardsArray.slice(0, index + 1);
+  let _cards = cardsArray.slice(0, index + 1)
 
   if (_cards) {
     for (var i = 0; i < _cards.length; i++) {
-
-      let scrolling = cardTop - ListTop - i * (cardHeight);
+      let scrolling = cardTop - ListTop - i * cardHeight
 
       // Считаем scale
-      let scaling = (cardHeight - scrolling * 0.05) / cardHeight;
+      let scaling = (cardHeight - scrolling * 0.05) / cardHeight
       //  let scaling = i == cards.length - 1 ? 1 : (cardHeight - scrolling * 0.05) / cardHeight;
-      _cards[i].style.transform = 'translateY(' + marginCard * i + 'px) scale(' + (scaling > 1 ? 1 : scaling) + ')';
-      scaling = scaling + 0.05;
+      _cards[i].style.transform =
+        'translateY(' +
+        marginCard * i +
+        'px) scale(' +
+        (scaling > 1 ? 1 : scaling) +
+        ')'
+      scaling = scaling + 0.05
     }
   }
 }
 
 function onStack(index) {
-
-  const stacked = cards[index];
-  const moving = cards[index + 1];
-  let overlapCard = '';
+  const stacked = cards[index]
+  const moving = cards[index + 1]
+  let overlapCard = ''
 
   // Получаем позицию предыдущей карточки
   if (moving && stacked) {
-
-    let opacity = 0.6;
-    let _cards = cardsArray.slice(0, index + 1);
+    let opacity = 0.6
+    let _cards = cardsArray.slice(0, index + 1)
 
     // Получаем данные наложения
-    overlapCard = (moving.getBoundingClientRect().top - stacked.getBoundingClientRect().top);
+    overlapCard =
+      moving.getBoundingClientRect().top - stacked.getBoundingClientRect().top
 
     if (parseInt(overlapCard) <= parseInt(marginCard)) {
-      if(index != 0) {
-        stacked.classList.remove('process_item-show');
-        stacked.classList.add('process_item-hide');
+      if (index != 0) {
+        stacked.classList.remove('process_item-show')
+        stacked.classList.add('process_item-hide')
       }
 
       _cards.forEach((item, i) => {
         //item.style.opacity = opacity;
-        if(i != 0) {
-          item.style.background = 'rgba(255, 255, 255, ' + opacity + ')';
+        if (i != 0) {
+          item.style.background = 'rgba(255, 255, 255, ' + opacity + ')'
           opacity = opacity - 0.1
         }
-      });
+      })
 
-      currentIndex = currentIndex + 1;
+      currentIndex = currentIndex + 1
     }
   }
 }
 
 function onRemoveStack(index) {
+  const moving = cards[index]
+  const stacked = cards[index - 1]
 
-  const moving = cards[index];
-  const stacked = cards[index - 1];
-
-  let overlapCard = '';
+  let overlapCard = ''
 
   // Получаем позицию предыдущей карточки
   if (moving && stacked) {
-
     // Получаем данные наложения
-    overlapCard = (moving.getBoundingClientRect().top - stacked.getBoundingClientRect().top);
+    overlapCard =
+      moving.getBoundingClientRect().top - stacked.getBoundingClientRect().top
 
     if (parseInt(overlapCard) > parseInt(marginCard)) {
-      stacked.classList.add('process_item-show');
-      currentIndex = currentIndex - 1;
+      stacked.classList.add('process_item-show')
+      currentIndex = currentIndex - 1
     }
   }
 }
 
 function onAnimate(vars) {
-
-  const scrollTopPosition = window.pageYOffset || document.documentElement.scrollTop;
-  isScrollingDown = (scrollTopPosition > lastScrollTop ? true : false);
+  const scrollTopPosition =
+    window.pageYOffset || document.documentElement.scrollTop
+  isScrollingDown = scrollTopPosition > lastScrollTop ? true : false
 
   if (isScrollingDown) {
-    vars.onDown();
+    vars.onDown()
   }
 
   if (!isScrollingDown) {
-    vars.onUp();
+    vars.onUp()
   }
 
-  lastScrollTop = scrollTopPosition;
+  lastScrollTop = scrollTopPosition
 }
 
 function moduleAnimation() {
-
-  waitingOnAnimRequest = true;
+  waitingOnAnimRequest = true
 
   //let index = currentIndex;
 
-  ListTop = list.getBoundingClientRect().top;
+  ListTop = list.getBoundingClientRect().top
 
   onAnimate({
     onDown: () => {
-      onStack(currentIndex);
-      onChangePosition(currentIndex + 1);
+      onStack(currentIndex)
+      onChangePosition(currentIndex + 1)
     },
     onUp: () => {
-      onRemoveStack(currentIndex);
-      onChangePosition(currentIndex + 1);
+      onRemoveStack(currentIndex)
+      onChangePosition(currentIndex + 1)
     },
-  });
+  })
 
-  waitingOnAnimRequest = false;
+  waitingOnAnimRequest = false
 }
 
 function scroll() {
   if (!waitingOnAnimRequest) {
-    window.requestAnimationFrame(moduleAnimation);
+    window.requestAnimationFrame(moduleAnimation)
   }
 }
 
 function setStackCards() {
-
-  firstCard = cards[0];
-  cardTop = Math.floor(parseFloat(getComputedStyle(firstCard).getPropertyValue('top')));
-  cardHeight = parseInt(firstCard.offsetHeight);
+  firstCard = cards[0]
+  cardTop = Math.floor(
+    parseFloat(getComputedStyle(firstCard).getPropertyValue('top')),
+  )
+  cardHeight = parseInt(firstCard.offsetHeight)
 
   if (cards) {
     cards.forEach((item, i) => {
-      cards[i].cardHeight = parseInt(firstCard.offsetHeight);
-      cards[i].style.transform = 'translateY(' + marginCard * i + 'px)';
+      cards[i].cardHeight = parseInt(firstCard.offsetHeight)
+      cards[i].style.transform = 'translateY(' + marginCard * i + 'px)'
     })
   }
 }
 
 function onResize() {
-
   // Проверяем ширину экрана т.к. resize срабатывает на мобилах при скроллинге
   if (window.screen.width !== window.innerWidth) {
-
-    setStackCards();
+    setStackCards()
 
     cards.forEach((item, i) => {
-
-      let nextCard = cards[i + 1];
+      let nextCard = cards[i + 1]
 
       if (nextCard) {
-        let overlapCard = (nextCard.getBoundingClientRect().top - item.getBoundingClientRect().top);
+        let overlapCard =
+          nextCard.getBoundingClientRect().top -
+          item.getBoundingClientRect().top
 
         if (parseInt(overlapCard) <= parseInt(marginCard)) {
-          currentIndex = i + 1;
+          currentIndex = i + 1
         }
       }
-    });
+    })
 
-    moduleAnimation();
+    moduleAnimation()
   }
 }
 
-
 onMounted(async () => {
+  list = document.querySelector('.process-wrapper')
+  cards = list.querySelectorAll('.process_item')
+  cardsArray = Array.from(cards)
 
-  list = document.querySelector(".process-wrapper");
-  cards = list.querySelectorAll(".process_item");
-  cardsArray = Array.from(cards);
+  setStackCards()
 
-  setStackCards();
+  window.addEventListener('resize', onResize)
 
-  window.addEventListener('resize', onResize);
+  let observerGallery = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        // получаем свойства, которые доступны в объекте entry
+        const { isIntersecting } = entry
 
-  let observerGallery = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      // получаем свойства, которые доступны в объекте entry
-      const {isIntersecting} = entry;
-
-      if (isIntersecting) {
-        console.log(isIntersecting);
-        document.addEventListener('scroll', scroll, true);
-      } else {
-        console.log('RemoveisIntersecting');
-        document.removeEventListener('scroll', scroll, true);
-      }
-    });
-  }, {threshold: [0, 1]});
-  observerGallery.observe(list);
-
-});
+        if (isIntersecting) {
+          console.log(isIntersecting)
+          document.addEventListener('scroll', scroll, true)
+        } else {
+          console.log('RemoveisIntersecting')
+          document.removeEventListener('scroll', scroll, true)
+        }
+      })
+    },
+    { threshold: [0, 1] },
+  )
+  observerGallery.observe(list)
+})
 </script>
 
 <style lang="scss" scoped>
@@ -301,7 +294,7 @@ onMounted(async () => {
 .process .process_item-show {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  background : rgba(255, 255, 255, 1) !important;
+  background: rgba(255, 255, 255, 1) !important;
 }
 
 .process {
@@ -436,11 +429,11 @@ onMounted(async () => {
   line-height: 120%;
   letter-spacing: -0.6799999999999999rem;
   background: linear-gradient(
-      357deg,
-      rgba(168, 182, 255, 0.1) 10%,
-      #8e54f5 45.97%,
-      #ff4236 61.03%,
-      #ffb55c 84.91%
+    357deg,
+    rgba(168, 182, 255, 0.1) 10%,
+    #8e54f5 45.97%,
+    #ff4236 61.03%,
+    #ffb55c 84.91%
   );
   background-clip: text;
   -webkit-background-clip: text;
@@ -502,11 +495,11 @@ onMounted(async () => {
     font-size: 30rem;
     letter-spacing: -1.2rem;
     background: linear-gradient(
-        357deg,
-        rgba(168, 182, 255, 0.1) 25%,
-        #8e54f5 49.93%,
-        #ff4236 67.57%,
-        #ffb55c 84.91%
+      357deg,
+      rgba(168, 182, 255, 0.1) 25%,
+      #8e54f5 49.93%,
+      #ff4236 67.57%,
+      #ffb55c 84.91%
     );
     background-clip: text;
     -webkit-background-clip: text;
@@ -559,11 +552,11 @@ onMounted(async () => {
     font-size: 40rem;
     letter-spacing: -1.6rem;
     background: linear-gradient(
-        357deg,
-        rgba(168, 182, 255, 0.1) 30.29%,
-        #8e54f5 49.93%,
-        #ff4236 67.57%,
-        #ffb55c 84.91%
+      357deg,
+      rgba(168, 182, 255, 0.1) 30.29%,
+      #8e54f5 49.93%,
+      #ff4236 67.57%,
+      #ffb55c 84.91%
     );
     background-clip: text;
     -webkit-background-clip: text;

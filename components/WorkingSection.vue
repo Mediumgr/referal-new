@@ -33,54 +33,54 @@
 </template>
 
 <script setup>
-const frame = ref(null);
-const title = ref(null);
+const frame = ref(null)
+const title = ref(null)
 
 const intersectionWrapper = () => {
   let options = {
-    rootMargin: "0px 0px -50px 0px",
+    rootMargin: '0px 0px -50px 0px',
     threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-  };
+  }
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      const { boundingClientRect } = entry;
-      const frameViewportTop = boundingClientRect.top;
-      console.log("frameViewportTop", frameViewportTop);
+      const { boundingClientRect } = entry
+      const frameViewportTop = boundingClientRect.top
+      console.log('frameViewportTop', frameViewportTop)
       if (frameViewportTop > 270) {
-        title.value.style.opacity = "";
+        title.value.style.opacity = ''
       } else if (frameViewportTop > 170 && frameViewportTop <= 270) {
-        title.value.style.opacity = "0.4";
+        title.value.style.opacity = '0.4'
       } else if (frameViewportTop <= 170) {
-        title.value.style.opacity = "0";
+        title.value.style.opacity = '0'
       }
-    });
-  }, options);
+    })
+  }, options)
 
-  observer.observe(frame.value);
-};
+  observer.observe(frame.value)
+}
 
 const intersectionElements = () => {
   let options = {
-    rootMargin: "0px 0px -250px 0px",
-  };
+    rootMargin: '0px 0px -250px 0px',
+  }
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      const { target, isIntersecting } = entry;
+      const { target, isIntersecting } = entry
       if (isIntersecting) {
-        target.classList.add("active");
+        target.classList.add('active')
       }
-    });
-  }, options);
+    })
+  }, options)
 
-  let commonStyle = document.querySelectorAll(".commonStyle");
-  commonStyle.forEach((el) => observer.observe(el));
-  observer.observe(title.value);
-};
+  let commonStyle = document.querySelectorAll('.commonStyle')
+  commonStyle.forEach((el) => observer.observe(el))
+  observer.observe(title.value)
+}
 
 onMounted(() => {
-  intersectionElements();
-  intersectionWrapper();
-});
+  intersectionElements()
+  intersectionWrapper()
+})
 </script>
 
 <style lang="scss" scoped>
@@ -92,11 +92,11 @@ onMounted(() => {
   display: grid;
   grid-template-columns: 18rem auto;
   grid-template-areas:
-    "projects eco"
-    "bank bank"
-    "microServices microServices"
-    "substitution services"
-    "credit credit";
+    'projects eco'
+    'bank bank'
+    'microServices microServices'
+    'substitution services'
+    'credit credit';
 
   @include mq(768) {
     margin: 0 auto;
@@ -108,9 +108,9 @@ onMounted(() => {
     grid-row-gap: 1rem;
     grid-template-columns: repeat(3, auto);
     grid-template-areas:
-      "bank eco projects"
-      "microServices substitution services"
-      "credit  credit credit";
+      'bank eco projects'
+      'microServices substitution services'
+      'credit  credit credit';
   }
 }
 

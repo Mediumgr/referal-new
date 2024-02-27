@@ -10,10 +10,10 @@
 
 <script setup>
 const gradientStyle = ref({
-  height: "20rem",
-  top: "0rem",
-  transform: "rotate(0deg)",
-});
+  height: '20rem',
+  top: '0rem',
+  transform: 'rotate(0deg)',
+})
 </script>
 
 <style lang="scss" scoped>

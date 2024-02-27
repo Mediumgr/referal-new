@@ -14,7 +14,7 @@ const props = defineProps({
     type: Object,
     required: false,
   },
-});
+})
 </script>
 
 <style lang="scss" scoped>
@@ -97,7 +97,8 @@ const props = defineProps({
     width: 130rem;
     top: -40rem;
     left: -40rem;
-    animation: slideInGradient 1.5s ease forwards,
+    animation:
+      slideInGradient 1.5s ease forwards,
       gradientPurple_375 8s ease infinite;
 
     @include mq(375) {
@@ -105,7 +106,8 @@ const props = defineProps({
       width: 130rem;
       top: -40rem;
       left: -40rem;
-      animation: slideInGradient 1.5s ease forwards,
+      animation:
+        slideInGradient 1.5s ease forwards,
         gradientPurple_375 8s ease infinite;
     }
 
@@ -114,7 +116,8 @@ const props = defineProps({
       width: 160rem;
       top: -40rem;
       left: -35rem;
-      animation: slideInGradient 1.5s ease forwards,
+      animation:
+        slideInGradient 1.5s ease forwards,
         gradientPurple_768 8s ease infinite;
     }
 
@@ -123,7 +126,8 @@ const props = defineProps({
       width: 200rem;
       top: -70rem;
       left: -35rem;
-      animation: slideInGradient 1.5s ease forwards,
+      animation:
+        slideInGradient 1.5s ease forwards,
         gradientPurple_1024 8s ease infinite;
     }
 
@@ -132,7 +136,8 @@ const props = defineProps({
       width: 250rem;
       top: -80rem;
       left: -50rem;
-      animation: slideInGradient 1.5s ease forwards,
+      animation:
+        slideInGradient 1.5s ease forwards,
         gradientPurple_1440 8s ease infinite;
     }
   }
@@ -163,7 +168,8 @@ const props = defineProps({
     height: 85rem;
     top: -25rem;
     left: -15rem;
-    animation: slideInGradient 1.5s ease forwards,
+    animation:
+      slideInGradient 1.5s ease forwards,
       gradientRed_375 8s ease infinite;
 
     @include mq(375) {
@@ -171,7 +177,8 @@ const props = defineProps({
       height: 85rem;
       top: -25rem;
       left: -15rem;
-      animation: slideInGradient 1.5s ease forwards,
+      animation:
+        slideInGradient 1.5s ease forwards,
         gradientRed_375 8s ease infinite;
     }
 
@@ -180,7 +187,8 @@ const props = defineProps({
       height: 110rem;
       top: -30rem;
       left: 5rem;
-      animation: slideInGradient 1.5s ease forwards,
+      animation:
+        slideInGradient 1.5s ease forwards,
         gradientRed_768 8s ease infinite;
     }
 
@@ -189,14 +197,16 @@ const props = defineProps({
       height: 150rem;
       top: -35rem;
       left: 0;
-      animation: slideInGradient 1.5s ease forwards,
+      animation:
+        slideInGradient 1.5s ease forwards,
         gradientRed_1024 8s ease infinite;
     }
 
     @include mq(1440) {
       top: -45rem;
       left: 35rem;
-      animation: slideInGradient 1.5s ease forwards,
+      animation:
+        slideInGradient 1.5s ease forwards,
         gradientRed_1440 8s ease infinite;
     }
   }
@@ -227,7 +237,8 @@ const props = defineProps({
     height: 40rem;
     top: 40rem;
     left: 18rem;
-    animation: slideInGradient 1.5s ease forwards,
+    animation:
+      slideInGradient 1.5s ease forwards,
       gradientYellow_375 8s ease infinite;
 
     @include mq(375) {
@@ -235,7 +246,8 @@ const props = defineProps({
       height: 40rem;
       top: 40rem;
       left: 18rem;
-      animation: slideInGradient 1.5s ease forwards,
+      animation:
+        slideInGradient 1.5s ease forwards,
         gradientYellow_375 8s ease infinite;
     }
 
@@ -244,7 +256,8 @@ const props = defineProps({
       height: 70rem;
       top: 45rem;
       left: 35rem;
-      animation: slideInGradient 1.5s ease forwards,
+      animation:
+        slideInGradient 1.5s ease forwards,
         gradientYellow_768 8s ease infinite;
     }
 
@@ -253,7 +266,8 @@ const props = defineProps({
       height: 80rem;
       top: 35rem;
       left: 55rem;
-      animation: slideInGradient 1.5s ease forwards,
+      animation:
+        slideInGradient 1.5s ease forwards,
         gradientYellow_1024 8s ease infinite;
     }
 
@@ -262,14 +276,16 @@ const props = defineProps({
       height: 100rem;
       top: 20rem;
       left: 95rem;
-      animation: slideInGradient 1.5s ease forwards,
+      animation:
+        slideInGradient 1.5s ease forwards,
         gradientYellow_1440 8s ease infinite;
     }
 
     @include mq(2560) {
       top: 30rem;
       left: 170rem;
-      animation: slideInGradient 1.5s ease forwards,
+      animation:
+        slideInGradient 1.5s ease forwards,
         gradientYellow_2560 8s ease infinite;
     }
   }

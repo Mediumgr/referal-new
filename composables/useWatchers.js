@@ -10,151 +10,151 @@ export const useWatchers = (options) => {
     candidatePhone,
     file,
     regExp,
-  } = options;
+  } = options
 
   watch(
     () => recommenderName.value.text,
     (name) => {
       if (regExp.name.test(name)) {
-        errors.recommenderName = "";
+        errors.recommenderName = ''
       }
-    }
-  );
+    },
+  )
   watch(
     () => recommenderEmail.value.text,
     (email) => {
       if (regExp.email.test(email)) {
-        errors.recommenderEmail = "";
+        errors.recommenderEmail = ''
       }
-    }
-  );
+    },
+  )
 
   watch(
     () => recommenderPhone.value,
     (phoneValue) => {
       if (regExp.phone.test(phoneValue.text) && phoneValue.textLength === 11) {
-        errors.recommenderPhone = "";
+        errors.recommenderPhone = ''
       }
     },
-    { deep: true }
-  );
+    { deep: true },
+  )
 
   watch(
     () => candidateName.value.text,
     (name) => {
       if (regExp.name.test(name)) {
-        errors.candidateName = "";
+        errors.candidateName = ''
       }
-    }
-  );
+    },
+  )
 
   watch(
     () => candidateEmail.value.text,
     (email) => {
       if (regExp.email.test(email)) {
-        errors.candidateEmail = "";
+        errors.candidateEmail = ''
       }
-    }
-  );
+    },
+  )
 
   watch(
     () => candidatePhone.value,
     (phoneValue) => {
       if (regExp.phone.test(phoneValue.text) && phoneValue.textLength === 11) {
-        errors.candidatePhone = "";
+        errors.candidatePhone = ''
       }
     },
-    { deep: true }
-  );
+    { deep: true },
+  )
 
   watch(
     () => checked.value[0],
     (value) => {
       if (value) {
-        errors.recParticipation = "";
+        errors.recParticipation = ''
       } else {
-        errors.recParticipation = "error";
+        errors.recParticipation = 'error'
       }
-    }
-  );
+    },
+  )
 
   watch(
     () => checked.value[1],
     (value) => {
       if (value) {
-        errors.recProcessing = "";
+        errors.recProcessing = ''
       } else {
-        errors.recProcessing = "error";
+        errors.recProcessing = 'error'
       }
-    }
-  );
+    },
+  )
 
   watch(
     () => checked.value[2],
     (value) => {
       if (value) {
-        errors.recSigning = "";
+        errors.recSigning = ''
       } else {
-        errors.recSigning = "error";
+        errors.recSigning = 'error'
       }
-    }
-  );
+    },
+  )
 
   watch(
     () => checked.value[3],
     (value) => {
       if (value) {
-        errors.candParticipation = "";
+        errors.candParticipation = ''
       } else {
-        errors.candParticipation = "error";
+        errors.candParticipation = 'error'
       }
-    }
-  );
+    },
+  )
 
   watch(
     () => checked.value[4],
     (value) => {
       if (value) {
-        errors.candProcessing = "";
+        errors.candProcessing = ''
       } else {
-        errors.candProcessing = "error";
+        errors.candProcessing = 'error'
       }
-    }
-  );
+    },
+  )
 
   watch(
     () => file.value.name,
     (name) => {
       if (name !== undefined) {
-        errors.file = "";
+        errors.file = ''
       }
-    }
-  );
+    },
+  )
 
   watch(
     () => [recommenderName.value.text, candidateName.value.text],
     ([recommender, candidate]) => {
       if (recommender === candidate) {
-        errors.recommenderName = errors.candidateName = "error";
+        errors.recommenderName = errors.candidateName = 'error'
       }
-    }
-  );
+    },
+  )
 
   watch(
     () => [recommenderEmail.value.text, candidateEmail.value.text],
     ([recommenderEmail, candidateEmail]) => {
       if (recommenderEmail === candidateEmail) {
-        errors.recommenderEmail = errors.candidateEmail = "error";
+        errors.recommenderEmail = errors.candidateEmail = 'error'
       }
-    }
-  );
+    },
+  )
 
   watch(
     () => [recommenderPhone.value.text, candidatePhone.value.text],
     ([recommenderPhone, candidatePhone]) => {
       if (recommenderPhone === candidatePhone) {
-        errors.recommenderPhone = errors.candidatePhone = "error";
+        errors.recommenderPhone = errors.candidatePhone = 'error'
       }
-    }
-  );
-};
+    },
+  )
+}

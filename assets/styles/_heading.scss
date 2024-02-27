@@ -1,46 +1,22 @@
-.heading-h1 {
-  /* H1/Phone */
-  font-size: 4.8rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 90%; /* 4.32rem */
-  letter-spacing: -0.288rem;
-  text-align: center;
-  margin: 0;
-
-  @include mq(768) {
-    /* H1/Tablet */
-    font-size: 9.6rem;
-    letter-spacing: -0.576rem;
-  }
-
-  @include mq(1200) {
-    /* H1/Desktop */
-    font-size: 15rem;
-    letter-spacing: -0.9rem;
-  }
-}
-
+.heading-h1,
 .heading-h2 {
-  /* H2/Phone */
+  /* H1H2/Phone */
   font-size: 4.8rem;
   font-style: normal;
   font-weight: 500;
   line-height: 90%; /* 4.32rem */
-  letter-spacing: -0.288rem;
+  letter-spacing: -0.06em;
   text-align: center;
   margin: 0;
 
   @include mq(768) {
-    /* H2/Tablet */
+    /* H1H2/Tablet */
     font-size: 9.6rem;
-    letter-spacing: -0.576rem;
   }
 
   @include mq(1200) {
-    /* H2/Desktop */
+    /* H1H2/Desktop */
     font-size: 15rem;
-    letter-spacing: -0.9rem;
   }
 }
 
@@ -50,43 +26,42 @@
   font-style: normal;
   font-weight: 500;
   line-height: 100%; /* 3rem */
-  letter-spacing: -0.12rem;
+  letter-spacing: -0.04em;
   text-align: center;
   margin: 0;
 
   @include mq(768) {
     /* H3/Tablet */
     font-size: 4.8rem;
-    letter-spacing: -0.096rem;
+    letter-spacing: -0.02em;
   }
 
   @include mq(1200) {
     /* H3/Desktop */
     font-size: 6.4rem;
-    letter-spacing: -0.256rem;
+    letter-spacing: -0.04em;
   }
 }
 
 .heading-h4 {
   /* H4/Phone */
-  font-size: 3rem;
+  font-size: 2.4rem;
   font-style: normal;
   font-weight: 500;
-  line-height: 100%;
-  letter-spacing: -0.048rem;
+  line-height: 110%;
+  letter-spacing: -0.02em;
   text-align: center;
   margin: 0;
 
   @include mq(768) {
     /* H4/Tablet */
     font-size: 3.6rem;
-    letter-spacing: -0.072rem;
   }
 
   @include mq(1200) {
     /* H4/Desktop */
     font-size: 4.8rem;
-    letter-spacing: -0.144rem;
+    letter-spacing: -0.03em;
   }
 }
 
@@ -96,20 +71,19 @@
   font-style: normal;
   font-weight: 500;
   line-height: 120%; /* 2.16rem */
-  letter-spacing: -0.036rem;
+  letter-spacing: -0.02em;
   text-align: center;
   margin: 0;
 
   @include mq(768) {
     /* H5/Tablet */
     font-size: 2.4rem;
-    letter-spacing: -0.048rem;
   }
 
   @include mq(1200) {
     /* H5/Desktop */
     font-size: 3.2rem;
-    letter-spacing: -0.096rem;
+    letter-spacing: -0.03em;
   }
 }
 
@@ -119,19 +93,18 @@
   font-style: normal;
   font-weight: 500;
   line-height: 120%; /* 1.92rem */
-  letter-spacing: -0.048rem;
+  letter-spacing: -0.03em;
   text-align: center;
   margin: 0;
 
   @include mq(768) {
     /* H6/Tablet */
     font-size: 2rem;
-    letter-spacing: -0.06rem;
   }
 
   @include mq(1200) {
     /* H6/Desktop */
     font-size: 2.4rem;
-    letter-spacing: -0.072rem;
+    letter-spacing: -0.03em;
   }
 }

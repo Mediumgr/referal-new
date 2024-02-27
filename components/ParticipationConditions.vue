@@ -98,10 +98,10 @@
 
 <script setup>
 const scrollTo = () => {
-  document.querySelector(".direction").scrollIntoView({
-    behavior: "smooth",
-  });
-};
+  document.querySelector('.direction').scrollIntoView({
+    behavior: 'smooth',
+  })
+}
 </script>
 
 <style lang="scss" scoped>
