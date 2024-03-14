@@ -1,6 +1,7 @@
 <template>
-  <div class="participation">
-    <p class="participation__title">Условия участия</p>
+  <section class="participation container">
+    <h2 class="participation__title heading-h2">Условия участия</h2>
+
     <div class="participation__content">
       <div class="participation__section">
         <div class="participation__content_first">
@@ -29,10 +30,15 @@
         </p>
       </div>
     </div>
-  </div>
+  </section>
   <div class="wrapper__expectations">
     <div class="expectations">
-      <p class="expectations__title">Что ждет друга после трудоустройства</p>
+      <h3 class="expectations__title heading-h3">
+        Что ждет <br class="only-mobile" />
+        друга после <br class="only-mobile" />
+        <br class="show-tablet-and-more" />
+        трудоустройства
+      </h3>
       <div class="expectations__content">
         <div class="expectations__info">
           <video
@@ -106,38 +112,32 @@ const scrollTo = () => {
 
 <style lang="scss" scoped>
 .participation {
-  padding: 1rem 2rem 4rem;
+  padding-top: 1rem;
+  padding-bottom: 4rem;
 
   @include mq(768) {
-    padding: 6rem 3rem 6rem;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
-  @include mq(1024) {
-    padding: 6rem calc(50% - 34.8rem) 6rem;
-  }
-  @include mq(1440) {
-    padding: 10rem 8rem 8rem;
+
+  @include mq(1200) {
+    padding-top: 10rem;
+    padding-bottom: 8rem;
   }
 
   &__title {
-    color: var(--eggplant);
-    text-align: center;
-    font-size: 4.8rem;
-    line-height: 90%;
-    letter-spacing: -0.0288rem;
-    font-weight: 500;
     padding: 0 0 4.8rem;
+    color: var(--eggplant);
 
     @include mq(768) {
-      font-size: 8.6rem;
-      letter-spacing: -0.0576rem;
       padding: 0 0 8rem;
     }
-    @include mq(1440) {
-      font-size: 15rem;
-      letter-spacing: -0.9rem;
+
+    @include mq(1200) {
       padding: 0 0 10rem;
     }
   }
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -147,7 +147,7 @@ const scrollTo = () => {
     @include mq(768) {
       margin: 0 auto;
     }
-    @include mq(1440) {
+    @include mq(1200) {
       flex-direction: row;
       width: auto;
     }
@@ -157,83 +157,81 @@ const scrollTo = () => {
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
-      padding: 2rem;
+      box-sizing: border-box;
+      margin-bottom: 2rem;
+      box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
       border-radius: 2rem;
       background: var(--color-white);
-      box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
-      margin-bottom: 2rem;
-      box-sizing: border-box;
+      padding: 2rem;
 
       @include mq(768) {
+        align-items: flex-start;
+        margin-right: 2rem;
+        padding: 3rem;
         width: 83.8rem;
         height: 21.6rem;
-        align-items: flex-start;
-        padding: 3rem;
-        margin-right: 2rem;
       }
-      @include mq(1440) {
+      @include mq(1200) {
+        margin-bottom: 0;
+        padding: 4rem;
         width: 41.3rem;
         height: 27rem;
-        padding: 4rem;
-        margin-bottom: 0;
       }
     }
+
     &_second {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
-      padding: 2rem;
+      box-sizing: border-box;
+      margin-bottom: 2rem;
+      box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
       border-radius: 2rem;
       background: var(--color-white);
-      box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
-      margin-bottom: 2rem;
-      box-sizing: border-box;
+      padding: 2rem;
 
       @include mq(768) {
         padding: 3rem;
         height: 21.6rem;
       }
-      @include mq(1440) {
+      @include mq(1200) {
+        margin-right: 2rem;
+        margin-bottom: 0;
+        padding: 4rem;
         width: 41.3rem;
         height: 27rem;
-        padding: 4rem;
-        margin-bottom: 0;
-        margin-right: 2rem;
       }
     }
+
     &_third {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
-      width: 100%;
-      padding: 2rem;
+      box-sizing: border-box;
+      box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
       border-radius: 2rem;
       background: var(--color-white);
-      box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
-      box-sizing: border-box;
+      padding: 2rem;
+      width: 100%;
 
       @include mq(768) {
         padding: 3rem;
       }
-      @include mq(1440) {
+      @include mq(1200) {
+        padding: 4rem;
         width: 41.3rem;
         height: 27rem;
-        padding: 4rem;
       }
     }
 
     &_span {
-      color: var(--active-color);
       cursor: pointer;
+      color: var(--active-color);
     }
 
     &_number {
-      font-size: 4.8rem;
-      line-height: 110%;
-      font-weight: 700;
-      letter-spacing: -0.048rem;
       margin-bottom: 2rem;
       background: linear-gradient(
         355.5deg,
@@ -243,32 +241,38 @@ const scrollTo = () => {
       );
       background-clip: text;
       -webkit-background-clip: text;
+      font-weight: 700;
+      font-size: 4.8rem;
+      line-height: 110%;
+      letter-spacing: -0.048rem;
       -webkit-text-fill-color: transparent;
 
       @include mq(768) {
         letter-spacing: -0.072rem;
       }
-      @include mq(1440) {
+      @include mq(1200) {
         letter-spacing: -0.144rem;
       }
     }
+
     &_text {
       color: #13144bcc;
       font-size: 1.6rem;
-      letter-spacing: -0.048rem;
       line-height: 1.92rem;
+      letter-spacing: -0.048rem;
 
       @include mq(768) {
         font-size: 2rem;
         letter-spacing: -0.06rem;
       }
-      @include mq(1440) {
+      @include mq(1200) {
         font-size: 2.4rem;
-        letter-spacing: -0.072rem;
         line-height: 2.88rem;
+        letter-spacing: -0.072rem;
       }
     }
   }
+
   &__section {
     display: flex;
     flex-direction: column;
@@ -280,7 +284,7 @@ const scrollTo = () => {
       flex-direction: row;
       justify-content: space-between;
     }
-    @include mq(1440) {
+    @include mq(1200) {
       width: auto;
     }
   }
@@ -295,7 +299,7 @@ const scrollTo = () => {
   @include mq(1024) {
     padding: 0 calc(50% - 34.8rem) 16rem;
   }
-  @include mq(1440) {
+  @include mq(1200) {
     padding: 0 calc(50% - 64rem) 20rem;
   }
 }
@@ -303,112 +307,108 @@ const scrollTo = () => {
 .expectations {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
   border-radius: 4rem;
   background: var(--color-white);
-  box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
+  padding: 2rem;
 
   @include mq(768) {
+    border-radius: 5rem;
     padding: 4rem;
   }
 
-  @include mq(1440) {
-    padding: 4rem 6rem;
+  @include mq(1200) {
+    padding: 4rem 5.4rem;
   }
 
   &__title {
-    padding: 0 calc(50% - 10rem) 0;
-    color: var(--eggplant);
-    text-align: center;
-    font-size: 3rem;
-    line-height: 100%;
-    letter-spacing: -0.12rem;
     margin-bottom: 2rem;
+    padding: 0;
+    color: var(--eggplant);
 
     @include mq(768) {
-      padding: 0 calc(50% - 25rem) 0;
-      font-size: 4.8rem;
-      letter-spacing: -0.096rem;
       margin-bottom: 3rem;
     }
 
-    @include mq(1440) {
-      padding: 0;
-      font-size: 6.4rem;
-      letter-spacing: -0.13rem;
+    @include mq(1200) {
       margin-bottom: 5rem;
     }
   }
+
   &__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 
-    @include mq(1440) {
+    @include mq(1200) {
       flex-direction: row;
     }
   }
+
   &__info {
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: flex-end;
-    position: relative;
     margin-bottom: 2rem;
     width: 100%;
 
-    @include mq(1440) {
+    @include mq(1200) {
+      flex-shrink: 0;
       margin: 0 1rem 0 0;
+      //width: 58.1rem;
+      width: 49.5734%;
     }
 
     &_overlay {
       position: absolute;
+      right: 0;
       bottom: 0;
       left: 0;
-      right: 0;
+      border-radius: 2rem;
+      background: rgba(0, 0, 0, 0.3);
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 2rem;
     }
 
     &_title {
       position: absolute;
-      color: var(--color-white);
-      font-size: 2.4rem;
-      letter-spacing: -0.048rem;
-      line-height: 110%;
       z-index: 1;
       padding: 1.6rem;
+      color: var(--color-white);
+      font-size: 2.4rem;
+      line-height: 110%;
+      letter-spacing: -0.02em;
 
       @include mq(768) {
-        font-size: 3.6rem;
-        letter-spacing: -0.072rem;
         padding: 0 20rem 3rem 3rem;
+        font-size: 3.6rem;
       }
 
-      @include mq(1440) {
+      @include mq(1200) {
+        padding: 4rem;
         font-size: 4.8rem;
-        letter-spacing: -0.03rem;
-        padding: 3rem;
+        letter-spacing: -0.03em;
       }
     }
 
     > video {
-      height: 18.5rem;
       border-radius: 2rem;
       background: rgba(0, 0, 0, 0.3);
+      height: 18.5rem;
       object-fit: cover;
 
       @include mq(768) {
         height: 24.2rem;
       }
 
-      @include mq(1440) {
+      @include mq(1200) {
         height: 48rem;
       }
     }
   }
+
   &__advantages {
     display: flex;
     flex-wrap: wrap;
@@ -416,7 +416,6 @@ const scrollTo = () => {
 
     &_firstBlock {
       margin-bottom: 1.1rem;
-      overflow: hidden;
       background: var(
         --Radial,
         radial-gradient(
@@ -428,61 +427,64 @@ const scrollTo = () => {
           #13144b 100%
         )
       ) !important;
+      overflow: hidden;
 
       @include mq(768) {
         flex-direction: row !important;
         align-items: center;
       }
 
-      @include mq(1440) {
-        height: 28.3rem !important;
-        width: 100% !important;
-        padding: 4rem !important;
+      @include mq(1200) {
         align-items: flex-start;
+        background-image: url("data:image/svg+xml,%3Csvg width='582' height='283' viewBox='0 0 582 283' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='url(%23a)' d='M0 0h581.5v283H0z'/%3E%3Cdefs%3E%3CradialGradient id='a' cx='0' cy='0' r='1' gradientUnits='userSpaceOnUse' gradientTransform='matrix(234.51607 -157.99973 157.4935 233.76469 12.608 283)'%3E%3Cstop stop-color='%23FFB55C'/%3E%3Cstop offset='.5' stop-color='%23FF4236'/%3E%3Cstop offset='1' stop-color='%238E54F5'/%3E%3C/radialGradient%3E%3C/defs%3E%3C/svg%3E") !important;
+        background-size: cover;
+        padding: 4rem !important;
+        width: 100% !important;
+        height: 28.3rem !important;
       }
     }
 
     &_textInGradient {
       color: var(--color-white);
       font-size: 1.8rem;
-      letter-spacing: -0.036rem;
       line-height: 120%;
+      letter-spacing: -0.036rem;
 
       @include mq(768) {
         font-size: 2.4rem;
         letter-spacing: -0.048rem;
       }
 
-      @include mq(1440) {
+      @include mq(1200) {
         font-size: 3.2rem;
         letter-spacing: -0.072rem;
       }
     }
 
     &_text {
+      margin-top: 1.1rem;
       color: var(--eggplant);
       font-size: 1.3rem;
       letter-spacing: -0.026rem;
-      margin-top: 1.1rem;
 
       @include mq(768) {
         font-size: 1.6rem;
         letter-spacing: -0.032rem;
       }
 
-      @include mq(1440) {
+      @include mq(1200) {
+        margin-top: 2rem;
         font-size: 1.8rem;
         letter-spacing: -0.036rem;
-        margin-top: 2rem;
       }
     }
   }
 
   &__icon {
-    height: 2.3rem;
     width: 2.3rem;
+    height: 2.3rem;
 
-    @include mq(1440) {
+    @include mq(1200) {
       width: 3.4rem;
       height: 3.4rem;
     }
@@ -491,54 +493,55 @@ const scrollTo = () => {
 
 .advantage {
   display: flex;
-  padding: 1.6rem;
   flex-direction: column;
   border-radius: 2rem;
+  background: #f7f7f7;
+  padding: 1.6rem;
   width: 48%;
   height: 13rem;
-  background: #f7f7f7;
 
   @include mq(768) {
-    width: 49%;
     padding: 2rem;
+    width: 49%;
     height: 11.6rem;
   }
 
-  @include mq(1440) {
+  @include mq(1200) {
+    justify-content: flex-start;
     width: 18rem;
     height: 18.7rem;
-    justify-content: flex-start;
   }
 
   > img {
+    margin-bottom: 1.2rem;
     width: 2.4rem;
     height: 2.4rem;
-    margin-bottom: 1.2rem;
 
-    @include mq(1440) {
+    @include mq(1200) {
       width: 3.36rem;
       height: 3.36rem;
     }
   }
+
   &_lower {
     display: flex;
-    padding: 1.6rem;
     flex-direction: column;
     border-radius: 2rem;
+    background: #f7f7f7;
+    padding: 1.6rem;
     width: 48%;
     height: 11.4rem;
-    background: #f7f7f7;
 
     @include mq(768) {
-      width: 49%;
       padding: 2rem;
+      width: 49%;
       height: 11.6rem;
     }
 
-    @include mq(1440) {
+    @include mq(1200) {
+      justify-content: flex-start;
       width: 18.1rem;
       height: 18.7rem;
-      justify-content: flex-start;
     }
   }
 }
@@ -546,25 +549,25 @@ const scrollTo = () => {
 .laptop {
   display: block;
   position: relative;
-  left: 3.8rem;
   top: -1.5rem;
+  left: 3.8rem;
   width: 13rem;
   height: auto;
 
   @include mq(768) {
-    left: 3rem;
     top: -0.5rem;
+    left: 3rem;
   }
 
   @include mq(1024) {
     left: 2.4rem;
   }
 
-  @include mq(1440) {
-    left: 7.5rem;
+  @include mq(1200) {
     top: -3.8rem;
-    width: 27rem;
-    height: 27rem;
+    left: 8rem;
+    width: 29.4rem;
+    height: 26.5rem;
   }
 }
 </style>

@@ -46,6 +46,7 @@ const onInput = (event) => {
   if (type === 'tel') {
     let numbers = value.replace(/\D/g, '')
     let length = numbers.length
+    console.log(event.inputType)
     if (length < 12 && event.inputType !== 'deleteContentBackward') {
       formattedDigits.value =
         '+7 ' +
@@ -64,8 +65,12 @@ const onInput = (event) => {
     } else if (event.inputType === 'deleteContentBackward') {
       formattedDigits.value = formattedDigits.value.slice(0, -1)
       emit('update:modelValue', {
-        text: formattedDigits.value,
-        textLength: length,
+        text: value,
+        textLength: value.length,
+      })
+      console.log({
+        text: value,
+        textLength: value.length,
       })
     } else {
       event.target.value = formattedDigits.value
@@ -109,20 +114,20 @@ const labelClasses = computed(() => {
 }
 
 .input {
-  color: #13144b;
-  font-family: Onest, Helvetica, serif;
-  font-size: 1.3rem;
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: -0.026rem;
+  box-sizing: border-box;
+  margin-top: 1rem;
+  outline: none;
+  border: 0.1rem solid rgba(19, 20, 75, 0.2);
+  border-radius: 2rem;
   padding: 2rem;
   width: 100%;
   max-height: 5.4rem;
-  border-radius: 2rem;
-  border: 0.1rem solid rgba(19, 20, 75, 0.2);
-  margin-top: 1rem;
-  outline: none;
-  box-sizing: border-box;
+  color: #13144b;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.3rem;
+  font-family: Onest, Helvetica, serif;
+  letter-spacing: -0.026rem;
 
   @include mq(768) {
     // height: 4.9rem;
@@ -139,13 +144,13 @@ const labelClasses = computed(() => {
   position: absolute;
   top: 2.8rem;
   left: 2rem;
-  pointer-events: none;
-  transition: all 0.3s ease-out;
-  color: #13144b;
-  font-family: Onest, Helvetica, serif;
-  font-size: 1.4rem;
   opacity: 0.5;
+  transition: all 0.3s ease-out;
+  pointer-events: none;
+  color: #13144b;
+  font-size: 1.4rem;
   line-height: 140%;
+  font-family: Onest, Helvetica, serif;
   letter-spacing: -0.064rem;
 
   @include mq(768) {

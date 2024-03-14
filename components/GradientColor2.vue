@@ -3,8 +3,6 @@
     <div class="gradient__wrapper">
       <div class="gradient__bg gradient__bg--yellow"></div>
       <div class="gradient__bg gradient__bg--yellow2"></div>
-      <!--                <div class="gradient__bg gradient__bg&#45;&#45;purple"></div>-->
-      <!--                <div class="gradient__bg gradient__bg&#45;&#45;red"></div>-->
       <div class="gradient__red-purple"></div>
     </div>
 
@@ -60,7 +58,15 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@use '~/assets/styles/main';
+%fullscreen {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 @function getBGSizePercent($size-block) {
   // 3744 - размер врапера для фона на экране 1440
@@ -74,16 +80,16 @@ onMounted(() => {
   --page-size: v-bind(size);
   --size-wrapper: calc(var(--page-size) * 2.6);
   --animation--function: cubic-bezier(0.6, 0, 0.4, 1);
+  animation: appearance 1.5s ease forwards;
   //animation-fill-mode: forwards;
   //animation-iteration-count: 1;
   pointer-events: none;
-  animation: appearance 1.5s ease forwards;
 
   &._paused {
     .gradient__red-purple,
     .gradient__bg {
-      will-change: background;
       animation-play-state: paused;
+      will-change: background;
     }
   }
 
@@ -96,25 +102,26 @@ onMounted(() => {
 
   &__wrapper {
     position: absolute;
-    left: 50%;
     top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: v-bind(colorBack);
     width: var(--size-wrapper);
     height: var(--size-wrapper);
-    background-color: v-bind(colorBack);
-    transform: translate(-50%, -50%);
   }
 
   &__bg {
     @extend %fullscreen;
     animation-duration: 8s;
-    animation-iteration-count: infinite;
     animation-timing-function: var(--animation--function);
+    animation-iteration-count: infinite;
     background-repeat: no-repeat;
     //animation-delay: 1.5s;
     //animation: none !important;
 
     &--purple {
       z-index: 1;
+      animation-name: gradientPurple;
       background-image: radial-gradient(
         50% 50% at 50% 50%,
         #8f14ba 0%,
@@ -134,32 +141,32 @@ onMounted(() => {
         rgba(143, 20, 186, 0.07) 88.21%,
         rgba(143, 20, 186, 0) 100%
       );
+      background-size: getBGSizePercent(2800);
       background-position-x: 38.6653%;
       background-position-y: 32.839%;
-      background-size: getBGSizePercent(2800);
-      animation-name: gradientPurple;
 
       .state2 & {
+        background-size: getBGSizePercent(1800);
         background-position-x: 59.2593%;
         background-position-y: 64.4033%;
-        background-size: getBGSizePercent(1800);
       }
 
       .state3 & {
+        background-size: getBGSizePercent(1800);
         background-position-x: 38.6831%;
         background-position-y: 51.8519%;
-        background-size: getBGSizePercent(1800);
       }
 
       .state4 & {
+        background-size: getBGSizePercent(1800);
         background-position-x: 38.6831%;
         background-position-y: 51.8519%;
-        background-size: getBGSizePercent(1800);
       }
     }
 
     &--red {
       z-index: 2;
+      animation-name: gradientRed;
       background-image: radial-gradient(
         50% 50% at 50% 50%,
         #ff5030 0%,
@@ -179,32 +186,32 @@ onMounted(() => {
         rgba(215, 66, 99, 0.08) 92.49%,
         rgba(211, 65, 103, 0) 100%
       );
+      background-size: getBGSizePercent(2400);
       background-position-x: 79.2411%;
       background-position-y: 31.25%;
-      background-size: getBGSizePercent(2400);
-      animation-name: gradientRed;
 
       .state2 & {
+        background-size: getBGSizePercent(2000);
         background-position-x: 43.1193%;
         background-position-y: 31.6514%;
-        background-size: getBGSizePercent(2000);
       }
 
       .state3 & {
+        background-size: getBGSizePercent(2000);
         background-position-x: 37.3853%;
         background-position-y: 45.9862%;
-        background-size: getBGSizePercent(2000);
       }
 
       .state4 & {
+        background-size: getBGSizePercent(2490);
         background-position-x: 48.4051%;
         background-position-y: 44.4179%;
-        background-size: getBGSizePercent(2490);
       }
     }
 
     &--yellow {
       z-index: 3;
+      animation-name: gradientYellow;
       background-image: radial-gradient(
         50% 50% at 50% 50%,
         rgb(255, 168, 72) 0%,
@@ -224,10 +231,9 @@ onMounted(() => {
         rgba(255, 87, 50, 0.08) 92.59%,
         rgba(255, 80, 48, 0) 100%
       );
+      background-size: getBGSizePercent(1500);
       background-position-x: 78.0749%;
       background-position-y: 58.0214%;
-      background-size: getBGSizePercent(1500);
-      animation-name: gradientYellow;
 
       .state2 & {
         opacity: 0;
@@ -236,9 +242,9 @@ onMounted(() => {
 
       .state3 & {
         opacity: 1;
+        background-size: getBGSizePercent(1200);
         background-position-x: 25.6289%;
         background-position-y: 49.2138%;
-        background-size: getBGSizePercent(1200);
       }
 
       .state4 & {
@@ -248,7 +254,9 @@ onMounted(() => {
     }
 
     &--yellow2 {
+      opacity: 0;
       z-index: 4;
+      animation-name: gradientYellow2;
       background-image: radial-gradient(
         50% 50% at 50% 50%,
         rgb(255, 168, 72) 0%,
@@ -268,17 +276,15 @@ onMounted(() => {
         rgba(255, 87, 50, 0.08) 92.59%,
         rgba(255, 80, 48, 0) 100%
       );
+      background-size: getBGSizePercent(1500);
       background-position-x: 78.0749%;
       background-position-y: 58.0214%;
-      background-size: getBGSizePercent(1500);
-      animation-name: gradientYellow2;
-      opacity: 0;
 
       .state2 & {
         opacity: 1;
+        background-size: getBGSizePercent(1664);
         background-position-x: 73.6058%;
         background-position-y: 21.1538%;
-        background-size: getBGSizePercent(1664);
       }
 
       .state3 & {
@@ -288,9 +294,9 @@ onMounted(() => {
 
       .state4 & {
         opacity: 1;
+        background-size: getBGSizePercent(1200);
         background-position-x: 50%;
         background-position-y: 54.717%;
-        background-size: getBGSizePercent(1200);
       }
     }
   }
@@ -341,7 +347,11 @@ onMounted(() => {
   &__red-purple {
     //will-change: background;
     @extend %fullscreen;
-    background-repeat: no-repeat;
+
+    animation-duration: 8s;
+    animation-timing-function: var(--animation--function);
+    animation-iteration-count: infinite;
+    animation-name: gradientRedPurple;
     background-image: // red
       radial-gradient(
         50% 50% at 50% 50%,
@@ -388,11 +398,7 @@ onMounted(() => {
       79.2411% 31.25%,
       38.6653% 32.839%;
     background-size: getBGSizePercent(2400), getBGSizePercent(2800);
-
-    animation-duration: 8s;
-    animation-iteration-count: infinite;
-    animation-timing-function: var(--animation--function);
-    animation-name: gradientRedPurple;
+    background-repeat: no-repeat;
     //animation-delay: 1.5s;
     //animation: none !important;
 
@@ -401,26 +407,27 @@ onMounted(() => {
       animation-name: gradientPurple;
 
       .state2 & {
+        background-size: getBGSizePercent(1800);
         background-position-x: 59.2593%;
         background-position-y: 64.4033%;
-        background-size: getBGSizePercent(1800);
       }
 
       .state3 & {
+        background-size: getBGSizePercent(1800);
         background-position-x: 38.6831%;
         background-position-y: 51.8519%;
-        background-size: getBGSizePercent(1800);
       }
 
       .state4 & {
+        background-size: getBGSizePercent(1800);
         background-position-x: 38.6831%;
         background-position-y: 51.8519%;
-        background-size: getBGSizePercent(1800);
       }
     }
 
     &--red {
       z-index: 2;
+      animation-name: gradientRed;
       background-image: radial-gradient(
         50% 50% at 50% 50%,
         #ff5030 0%,
@@ -440,32 +447,32 @@ onMounted(() => {
         rgba(215, 66, 99, 0.08) 92.49%,
         rgba(211, 65, 103, 0) 100%
       );
+      background-size: getBGSizePercent(2400);
       background-position-x: 79.2411%;
       background-position-y: 31.25%;
-      background-size: getBGSizePercent(2400);
-      animation-name: gradientRed;
 
       .state2 & {
+        background-size: getBGSizePercent(2000);
         background-position-x: 43.1193%;
         background-position-y: 31.6514%;
-        background-size: getBGSizePercent(2000);
       }
 
       .state3 & {
+        background-size: getBGSizePercent(2000);
         background-position-x: 37.3853%;
         background-position-y: 45.9862%;
-        background-size: getBGSizePercent(2000);
       }
 
       .state4 & {
+        background-size: getBGSizePercent(2490);
         background-position-x: 48.4051%;
         background-position-y: 44.4179%;
-        background-size: getBGSizePercent(2490);
       }
     }
 
     &--yellow {
       z-index: 3;
+      animation-name: gradientYellow;
       background-image: radial-gradient(
         50% 50% at 50% 50%,
         rgb(255, 168, 72) 0%,
@@ -485,10 +492,9 @@ onMounted(() => {
         rgba(255, 87, 50, 0.08) 92.59%,
         rgba(255, 80, 48, 0) 100%
       );
+      background-size: getBGSizePercent(1500);
       background-position-x: 78.0749%;
       background-position-y: 58.0214%;
-      background-size: getBGSizePercent(1500);
-      animation-name: gradientYellow;
 
       .state2 & {
         opacity: 0;
@@ -497,9 +503,9 @@ onMounted(() => {
 
       .state3 & {
         opacity: 1;
+        background-size: getBGSizePercent(1200);
         background-position-x: 25.6289%;
         background-position-y: 49.2138%;
-        background-size: getBGSizePercent(1200);
       }
 
       .state4 & {
@@ -509,7 +515,9 @@ onMounted(() => {
     }
 
     &--yellow2 {
+      opacity: 0;
       z-index: 4;
+      animation-name: gradientYellow2;
       background-image: radial-gradient(
         50% 50% at 50% 50%,
         rgb(255, 168, 72) 0%,
@@ -529,17 +537,15 @@ onMounted(() => {
         rgba(255, 87, 50, 0.08) 92.59%,
         rgba(255, 80, 48, 0) 100%
       );
+      background-size: getBGSizePercent(1500);
       background-position-x: 78.0749%;
       background-position-y: 58.0214%;
-      background-size: getBGSizePercent(1500);
-      animation-name: gradientYellow2;
-      opacity: 0;
 
       .state2 & {
         opacity: 1;
+        background-size: getBGSizePercent(1664);
         background-position-x: 73.6058%;
         background-position-y: 21.1538%;
-        background-size: getBGSizePercent(1664);
       }
 
       .state3 & {
@@ -549,19 +555,18 @@ onMounted(() => {
 
       .state4 & {
         opacity: 1;
+        background-size: getBGSizePercent(1200);
         background-position-x: 50%;
         background-position-y: 54.717%;
-        background-size: getBGSizePercent(1200);
       }
     }
   }
 
   &__grey {
     position: absolute;
+    right: 0;
     bottom: -0.1rem;
     left: 0;
-    right: 0;
-    height: 38rem;
     transform: rotate(180deg);
     background: linear-gradient(
       180deg,
@@ -582,6 +587,7 @@ onMounted(() => {
       rgba(247, 247, 247, 0.07) 88.21%,
       rgba(247, 247, 247, 0) 100%
     );
+    height: 38rem;
 
     @include mq(1440) {
       height: 30rem;

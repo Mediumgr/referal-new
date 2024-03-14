@@ -1,7 +1,8 @@
 <template>
   <footer class="digital-laboratory">
     <GradientColor2 :gradientStyle="gradientStyle"></GradientColor2>
-    <h2 class="digital-laboratory__title">
+
+    <h2 class="digital-laboratory__title heading-h2">
       ПСБ цифровая <br />
       лаборатория
     </h2>
@@ -19,9 +20,9 @@ const gradientStyle = ref({
 <style lang="scss" scoped>
 .digital-laboratory {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: flex-end;
-  position: relative;
   z-index: 1;
   width: 100%;
   min-height: calc(var(--vh, 1vh) * 100);
@@ -29,26 +30,11 @@ const gradientStyle = ref({
 
   &__title {
     position: absolute;
-    width: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 4.8rem;
-    font-weight: 500;
-    line-height: 90%;
-    letter-spacing: -0.288rem;
-    text-align: center;
     margin: 0;
-
-    @include mq(768) {
-      font-size: 9.6rem;
-      letter-spacing: -0.576rem;
-    }
-
-    @include mq(1200) {
-      font-size: 15rem;
-      letter-spacing: -0.9rem;
-    }
+    width: 100%;
   }
 }
 </style>

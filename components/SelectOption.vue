@@ -1,6 +1,7 @@
 <template>
-  <p class="title">Часто задаваемые вопросы</p>
-  <section class="section">
+  <section class="select-option container">
+    <h2 class="title heading-h2">Часто задаваемые вопросы</h2>
+
     <div
       class="wrapper-dropdown"
       v-for="(n, index) in data"
@@ -8,7 +9,7 @@
       @click.stop="showHiddenText(index)"
     >
       <div class="wrapper-dropdown_select">
-        <p class="wrapper-dropdown_title">{{ data[index].title }}</p>
+        <p class="wrapper-dropdown_title heading-h5">{{ data[index].title }}</p>
         <svg-icon
           :class="['wrapper-dropdown_arrow', { active: checked[index] }]"
           name="dropdown_arrow"
@@ -25,6 +26,7 @@
 
 <script setup>
 import options from '~/assets/data/select-option.json'
+
 const data = options.content
 
 const hiddenWrapper = ref(null)
@@ -48,48 +50,38 @@ const showHiddenText = (index) => {
 </script>
 
 <style lang="scss" scoped>
-.title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.select-option {
   color: var(--eggplant);
-  font-size: 4.8rem;
-  line-height: 90%;
-  letter-spacing: -0.288rem;
-  padding: 8rem 0 6rem;
+  @include mq(375) {
+    padding-bottom: 12rem;
+  }
 
   @include mq(768) {
-    font-size: 9.6rem;
-    letter-spacing: -0.576rem;
-  }
-  @include mq(1024) {
-    padding: 12rem 18rem 8rem;
-  }
-  @include mq(1440) {
-    font-size: 15rem;
-    letter-spacing: -0.9rem;
-    padding: 30rem 10rem 8rem;
+    padding-bottom: 16rem;
   }
 }
-.section {
-  @include mq(375) {
-    padding: 0 calc(50% - 17.7rem) 12rem;
+
+.title {
+  padding-top: 8rem;
+  padding-bottom: 6rem;
+  color: var(--eggplant);
+
+  @include mq(1024) {
+    padding-top: 21rem;
+    padding-bottom: 8rem;
   }
-  @include mq(768) {
-    padding: 0 calc(50% - 34.4rem) 16rem;
-  }
-  @include mq(1440) {
-    padding: 0 calc(50% - 53rem) 16rem;
+
+  @include mq(1200) {
+    padding-top: 30rem;
   }
 }
 
 .wrapper-dropdown {
-  background: #fff;
   cursor: pointer;
   outline: none;
-  border-radius: 2rem;
   box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
+  border-radius: 2rem;
+  background: #fff;
   padding: 2.2rem 2rem;
 
   &:not(:last-child) {
@@ -114,19 +106,7 @@ const showHiddenText = (index) => {
   &_title {
     display: flex;
     align-items: center;
-    color: var(--eggplant);
-    font-size: 1.8rem;
-    letter-spacing: -0.036rem;
-
-    @include mq(768) {
-      font-size: 2.4rem;
-      letter-spacing: -0.048rem;
-    }
-    @include mq(1440) {
-      font-size: 3.2rem;
-      letter-spacing: -0.096rem;
-      line-height: 120%;
-    }
+    text-align: left;
   }
 
   &_arrow {
@@ -140,6 +120,7 @@ const showHiddenText = (index) => {
     &.active {
       transform: rotate(-180deg);
     }
+
     @include mq(768) {
       width: 7rem;
       height: 7rem;
@@ -147,24 +128,24 @@ const showHiddenText = (index) => {
   }
 
   &_hidden {
-    background: #fff;
-    overflow: hidden;
-    height: 0;
     transition: height 0.5s ease;
+    background: #fff;
+    height: 0;
+    overflow: hidden;
   }
 
   &_text {
+    padding-top: 1rem;
     color: #1b232f;
     font-weight: 400;
-    padding-top: 1rem;
     font-size: 1.3rem;
 
     @include mq(768) {
-      font-size: 1.8rem;
       padding: 1rem 6.5rem 0 0;
+      font-size: 1.8rem;
     }
 
-    @include mq(1440) {
+    @include mq(1200) {
       font-size: 2.4rem;
       line-height: 120%;
     }

@@ -1,6 +1,7 @@
 <template>
-  <div class="working__section">
-    <h2 ref="title" class="working__title">Наши проекты</h2>
+  <section class="working__section">
+    <h2 ref="title" class="working__title heading-h2">Наши проекты</h2>
+
     <div ref="frame" class="frame__wrapper">
       <!-- <div class="commonStyle working__divisions">Поддержка подразделений</div> -->
       <div class="commonStyle working__eco">
@@ -29,7 +30,7 @@
       </div>
       <div class="commonStyle working__credit">Сервисы оформления кредитов</div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>
@@ -87,8 +88,6 @@ onMounted(() => {
 .frame__wrapper {
   color: var(--eggplant);
   grid-row-gap: 1.5rem;
-  justify-items: center;
-  align-items: center;
   display: grid;
   grid-template-columns: 18rem auto;
   grid-template-areas:
@@ -97,13 +96,15 @@ onMounted(() => {
     'microServices microServices'
     'substitution services'
     'credit credit';
+  align-items: center;
+  justify-items: center;
 
   @include mq(768) {
+    grid-template-columns: 30rem auto;
     margin: 0 auto;
     width: 56rem;
-    grid-template-columns: 30rem auto;
   }
-  @include mq(1440) {
+  @include mq(1200) {
     width: 120rem;
     grid-row-gap: 1rem;
     grid-template-columns: repeat(3, auto);
@@ -116,32 +117,32 @@ onMounted(() => {
 
 .commonStyle {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem 1.4rem;
-  border-radius: 12rem;
-  text-align: center;
-  box-sizing: border-box;
-  background: var(--color-white);
-  box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
-  letter-spacing: -0.048rem;
-  color: #13144b;
-  position: relative;
-  z-index: 1;
   opacity: 0;
+  z-index: 1;
   transition: opacity 0.5s ease;
+  box-sizing: border-box;
+  box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.07);
+  border-radius: 12rem;
+  background: var(--color-white);
+  padding: 1.5rem 1.4rem;
+  color: #13144b;
+  letter-spacing: -0.048rem;
+  text-align: center;
 
   @include mq(768) {
-    font-size: 2rem;
-    letter-spacing: -0.06rem;
     padding: 2rem 3rem;
     width: auto;
+    font-size: 2rem;
+    letter-spacing: -0.06rem;
   }
-  @include mq(1440) {
-    font-size: 2.4rem;
-    letter-spacing: -0.096rem;
+  @include mq(1200) {
     padding: 4rem;
+    font-size: 2.4rem;
     line-height: 2.88rem;
+    letter-spacing: -0.096rem;
   }
 }
 
@@ -152,44 +153,33 @@ onMounted(() => {
     @include mq(768) {
       padding: 22rem 2rem 12rem;
     }
-    @include mq(1440) {
+    @include mq(1200) {
       padding: 28rem 2rem 16rem;
     }
   }
+
   &__title {
     position: sticky;
     top: 25rem;
     opacity: 0;
     transition: opacity 0.2s ease-out;
+    padding-bottom: 3rem;
+    color: var(--eggplant);
     font-weight: 500;
-    color: #13144b;
-    text-align: center;
-    font-size: 4.8rem;
-    font-style: normal;
-    line-height: 90%;
-    letter-spacing: -0.288rem;
-    padding: 0 0 3rem;
-
-    @include mq(768) {
-      font-size: 8rem;
-    }
-    @include mq(1440) {
-      font-size: 15rem;
-    }
   }
 
   &__bank {
     grid-area: bank;
-    @include mq(1440) {
+    @include mq(1200) {
       position: relative;
       left: 9rem;
     }
   }
 
   &__microServices {
-    grid-area: microServices;
     position: relative;
     left: 2rem;
+    grid-area: microServices;
   }
 
   &__commonWealth {
@@ -204,16 +194,16 @@ onMounted(() => {
     grid-area: services;
     min-width: 15rem;
 
-    @include mq(1440) {
+    @include mq(1200) {
       position: relative;
       left: -4.5rem;
     }
   }
 
   &__eco {
-    grid-area: eco;
     position: relative;
     left: 1rem;
+    grid-area: eco;
     @include mq(768) {
       left: 1.5rem;
     }
@@ -224,19 +214,20 @@ onMounted(() => {
   }
 
   &__projects {
-    min-width: 19.3rem;
     position: relative;
     left: 2rem;
     grid-area: projects;
+    min-width: 19.3rem;
 
     @include mq(768) {
-      min-width: 32rem;
       left: 2.5rem;
+      min-width: 32rem;
     }
-    @include mq(1440) {
+    @include mq(1200) {
       left: -5.7rem;
     }
   }
+
   &__credit {
     grid-area: credit;
   }

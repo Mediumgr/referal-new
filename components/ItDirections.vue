@@ -1,31 +1,32 @@
 <template>
-  <section class="direction">
-    <p class="direction__title" v-html="title"></p>
-    <div class="direction__container">
+  <section id="it-direction" class="it-direction">
+    <h2 class="it-direction__title heading-h2" v-html="title"></h2>
+
+    <div class="it-direction__container">
       <div
-        class="direction__wrapper"
+        class="it-direction__wrapper"
         v-for="(item, index) in items"
         :key="item"
         :style="getFlex(item)"
         @click.stop="show(index)"
       >
-        <div class="direction__select">
-          <p class="direction__name" v-html="item.name"></p>
+        <div class="it-direction__select">
+          <p class="it-direction__name" v-html="item.name"></p>
           <svg-icon
-            :class="['direction__arrow', { active: checked[index] }]"
+            :class="['it-direction__arrow', { active: checked[index] }]"
             name="it_arrow"
           ></svg-icon>
         </div>
 
         <div
-          class="direction__hidden-wrapper"
+          class="it-direction__hidden-wrapper"
           :style="getPadding(item, index)"
           ref="hiddenWrapper"
         >
-          <div class="direction__hidden_elements" ref="hiddenElements">
+          <div class="it-direction__hidden_elements" ref="hiddenElements">
             <template v-for="stack in item.stack" :key="stack">
-              <div class="direction__hidden-el" ref="el">
-                <p class="direction__text">
+              <div class="it-direction__hidden-el" ref="el">
+                <p class="it-direction__text">
                   {{ stack }}
                 </p>
               </div>
@@ -39,6 +40,7 @@
 
 <script setup>
 import itDirections from '@/assets/data/it-directions.json'
+
 const { title, items } = itDirections
 
 const hiddenWrapper = ref(null)
@@ -89,7 +91,7 @@ const getFlex = (el) => {
 
 const onResizeListener = () => {
   window.addEventListener('resize', () => {
-    desktop.value = window.matchMedia(`(min-width: 1440px)`).matches
+    desktop.value = window.matchMedia(`(min-width: 1200px)`).matches
     items.forEach((item) => {
       getFlex(item)
     })
@@ -97,14 +99,13 @@ const onResizeListener = () => {
 }
 
 onMounted(() => {
-  desktop.value = window.matchMedia(`(min-width: 1440px)`).matches
+  desktop.value = window.matchMedia(`(min-width: 1200px)`).matches
   onResizeListener()
 })
 </script>
 
 <style lang="scss" scoped>
-.direction {
-  padding: 12rem 2rem 14rem;
+.it-direction {
   background: var(
     --2,
     radial-gradient(
@@ -129,11 +130,11 @@ onMounted(() => {
     ),
     #13144b
   );
+  padding: 12rem 2rem 14rem;
   @include mq(768) {
     padding: 12rem 4rem 14rem;
   }
   @include mq(1024) {
-    padding: 12rem calc(50% - 34.8rem) 14rem;
     background: var(
       --1,
       radial-gradient(
@@ -158,38 +159,35 @@ onMounted(() => {
       ),
       #13144b
     );
+    padding: 12rem calc(50% - 34.8rem) 14rem;
   }
-  @include mq(1440) {
+  @include mq(1200) {
     padding: 25rem calc(50% - 64rem) 25rem;
   }
+
   &__title {
-    color: rgb(255, 255, 255);
-    font-size: 4.4rem;
-    line-height: 90%;
-    text-align: center;
     padding-bottom: 10rem;
-    @include mq(1440) {
-      font-size: 15rem;
-      line-height: 80%;
-    }
+    color: var(--color-white);
   }
+
   &__wrapper {
-    border-radius: 2rem;
-    padding: 1.6rem;
-    background: rgba(20, 20, 82, 0.6);
     margin-bottom: 0.8rem;
-    @include mq(1440) {
+    border-radius: 2rem;
+    background: rgba(20, 20, 82, 0.6);
+    padding: 1.6rem;
+    @include mq(1200) {
       display: flex;
+      flex-basis: 30.5rem;
       flex-direction: column;
       justify-content: space-between;
-      padding: 2rem;
-      flex-basis: 30.5rem;
-      min-height: 22rem;
       margin-bottom: 0rem;
+      padding: 2rem;
+      min-height: 22rem;
     }
   }
+
   &__container {
-    @include mq(1440) {
+    @include mq(1200) {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -197,72 +195,80 @@ onMounted(() => {
       grid-gap: 2rem;
     }
   }
-  &__hidden-wrapper {
-    overflow: hidden;
-    height: 0;
-    transition: height 0.5s ease;
 
-    @include mq(1440) {
-      height: auto;
+  &__hidden-wrapper {
+    transition: height 0.5s ease;
+    height: 0;
+    overflow: hidden;
+
+    @include mq(1200) {
       display: flex;
       justify-content: flex-start;
       align-items: flex-end;
+      height: auto;
     }
   }
+
   &__hidden_elements {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: flex-start;
+    align-items: center;
     grid-gap: 1rem;
     padding-top: 2rem;
 
-    @include mq(1440) {
+    @include mq(1200) {
       padding-top: 0;
     }
   }
+
   &__select {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
   &__arrow {
-    width: 3.2rem;
-    height: 3.2rem;
-    padding: 0.093rem;
-    border: 0.046rem solid rgba(255, 255, 255, 0.2);
-    border-radius: 2.32rem;
     transform: rotate(0deg);
     transition: transform 0.4s linear;
+    border: 0.046rem solid rgba(255, 255, 255, 0.2);
+    border-radius: 2.32rem;
+    padding: 0.093rem;
+    width: 3.2rem;
+    height: 3.2rem;
 
-    @include mq(1440) {
+    @include mq(1200) {
       display: none;
     }
+
     &.active {
       transform: rotate(180deg);
     }
   }
+
   &__name {
     color: rgb(255, 255, 255);
     font-size: 1.8rem;
     line-height: 2.2rem;
     letter-spacing: -0.02rem;
-    @include mq(1440) {
+    @include mq(1200) {
       font-size: 3.2rem;
       line-height: 3.84rem;
     }
   }
+
   &__text {
-    @include mq(1440) {
+    @include mq(1200) {
       font-size: 1.6rem;
       line-height: 2.24rem;
     }
   }
+
   &__hidden-el {
-    color: rgb(255, 255, 255);
     border: 0.1rem solid rgba(255, 255, 255, 0.2);
     border-radius: 5rem;
     padding: 0.5rem 1rem 0.5rem 1rem;
+    color: rgb(255, 255, 255);
   }
 }
 </style>

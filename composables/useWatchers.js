@@ -134,7 +134,7 @@ export const useWatchers = (options) => {
   watch(
     () => [recommenderName.value.text, candidateName.value.text],
     ([recommender, candidate]) => {
-      if (recommender === candidate) {
+      if ((recommender || candidate) && recommender === candidate) {
         errors.recommenderName = errors.candidateName = 'error'
       }
     },
@@ -143,7 +143,10 @@ export const useWatchers = (options) => {
   watch(
     () => [recommenderEmail.value.text, candidateEmail.value.text],
     ([recommenderEmail, candidateEmail]) => {
-      if (recommenderEmail === candidateEmail) {
+      if (
+        (recommenderEmail || candidateEmail) &&
+        recommenderEmail === candidateEmail
+      ) {
         errors.recommenderEmail = errors.candidateEmail = 'error'
       }
     },
@@ -152,7 +155,10 @@ export const useWatchers = (options) => {
   watch(
     () => [recommenderPhone.value.text, candidatePhone.value.text],
     ([recommenderPhone, candidatePhone]) => {
-      if (recommenderPhone === candidatePhone) {
+      if (
+        (recommenderPhone || candidatePhone) &&
+        recommenderPhone === candidatePhone
+      ) {
         errors.recommenderPhone = errors.candidatePhone = 'error'
       }
     },

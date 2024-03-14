@@ -14,9 +14,9 @@ a {
 }
 
 * {
-  padding: 0;
-  margin: 0;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 *:before,
@@ -26,10 +26,10 @@ a {
 
 html,
 body {
+  background: var(--bg);
+  scrollbar-color: rgb(225, 104, 5);
   /* Firefox scrollbar */
   scrollbar-width: 0.3rem;
-  scrollbar-color: rgb(225, 104, 5);
-  background: var(--bg);
 
   &::-webkit-scrollbar {
     width: 0.3rem;
@@ -53,7 +53,7 @@ html {
   text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: none;
 
-  @include mq(376, 767.98) {
+  @include mq(391, 767.98) {
     font-size: calc(10px + 13 * (100vw - 375px) / 447);
   }
 
@@ -79,15 +79,15 @@ html {
 }
 
 body {
-  font-family: Onest, Helvetica, serif;
-  font-size: 1.3rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 120%;
-  letter-spacing: -0.02em;
   margin: 0;
   background-color: var(--bg);
   color: var(--eggplant);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 120%;
+  font-family: Onest, Helvetica, serif;
+  letter-spacing: -0.02em;
 
   @include mq(768) {
     font-size: 1.6rem;
@@ -97,5 +97,23 @@ body {
   @include mq(1200) {
     line-height: 140%;
     letter-spacing: -0.04em;
+  }
+}
+
+.only-mobile {
+  @include mq(768) {
+    display: none;
+  }
+}
+
+.only-desktop {
+  @include mq(0, 1199) {
+    display: none;
+  }
+}
+
+.show-tablet-and-more {
+  @include mq(0, 767) {
+    display: none;
   }
 }
