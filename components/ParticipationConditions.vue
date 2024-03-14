@@ -437,7 +437,7 @@ const scrollTo = () => {
       @include mq(1200) {
         align-items: flex-start;
         background-image: url("data:image/svg+xml,%3Csvg width='582' height='283' viewBox='0 0 582 283' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='url(%23a)' d='M0 0h581.5v283H0z'/%3E%3Cdefs%3E%3CradialGradient id='a' cx='0' cy='0' r='1' gradientUnits='userSpaceOnUse' gradientTransform='matrix(234.51607 -157.99973 157.4935 233.76469 12.608 283)'%3E%3Cstop stop-color='%23FFB55C'/%3E%3Cstop offset='.5' stop-color='%23FF4236'/%3E%3Cstop offset='1' stop-color='%238E54F5'/%3E%3C/radialGradient%3E%3C/defs%3E%3C/svg%3E") !important;
-        background-size: cover;
+        background-size: cover !important;
         padding: 4rem !important;
         width: 100% !important;
         height: 28.3rem !important;
