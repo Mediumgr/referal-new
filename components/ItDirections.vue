@@ -170,6 +170,18 @@ onMounted(() => {
     color: var(--color-white);
     font-size: 4.5rem;
     line-height: 100%;
+
+    @include mq(425) {
+      font-size: 4rem;
+    }
+
+    @include mq(768) {
+      font-size: 9rem;
+    }
+
+    @include mq(1200) {
+      font-size: 15rem;
+    }
   }
 
   &__wrapper {
