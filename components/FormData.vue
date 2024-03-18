@@ -64,7 +64,8 @@
                 >
                   Я&nbsp;даю свое согласие на&nbsp;обработку своих персональных
                   данных ООО &#171;ПСБ Лаб&#187; и&nbsp;ПАО
-                  &#171;Промсвязьбанк&#187;. С&nbsp; &#171;<a
+                  &#171;Промсвязьбанк&#187;. С&nbsp;
+                  <a
                     :class="[
                       'link',
                       { errorLink: errors['recProcessing'] === 'error' },
@@ -72,8 +73,8 @@
                     href="/docs/confirm_recomend.docx"
                     target="_blank"
                     download
-                    >Согласием</a
-                  >
+                    >Согласием
+                  </a>
                   на&nbsp;обработку персональных данных Рекомендателя Программы
                   &#171;Приведи друга в&nbsp;ИТ&#187;&nbsp;ООО &#171;ПСБ
                   Лаб&#187; ознакомлен&#187;
@@ -156,7 +157,8 @@
                 >
                   Я&nbsp;даю свое согласие на&nbsp;обработку своих персональных
                   данных ООО &#171;ПСБ Лаб&#187; и&nbsp;ПАО
-                  &#171;Промсвязьбанк&#187;. С&nbsp; &#171;<a
+                  &#171;Промсвязьбанк&#187;. С&nbsp;
+                  <a
                     :class="[
                       'link',
                       { errorLink: errors['candProcessing'] === 'error' },
@@ -164,8 +166,8 @@
                     href="/docs/confirm_candidate.docx"
                     target="_blank"
                     download
-                    >Согласием</a
-                  >
+                    >Согласием
+                  </a>
                   на&nbsp;обработку персональных данных Рекомендателя Программы
                   &#171;Приведи друга в&nbsp;ИТ&#187;&nbsp;ООО &#171;ПСБ
                   Лаб&#187; ознакомлен&#187;
@@ -196,7 +198,7 @@
 </template>
 
 <script setup>
-const checked = ref([false, false, false, false, false])
+const checked = ref([true, true, true, true, true])
 let recommenderName = ref({ text: '' })
 let recommenderEmail = ref({ text: '' })
 let recommenderPhone = ref({ text: '', textLength: '' })

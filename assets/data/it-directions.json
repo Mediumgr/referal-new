@@ -1,5 +1,5 @@
 {
-  "title": "IT-направления </br> ПСБ",
+  "title": "ИТ-направления </br> ПСБ",
   "items": [
     {
       "name": "AQA",
@@ -27,7 +27,7 @@
         "SonarCube",
         "Ansible",
         "Salt",
-        "SI / CD",
+        "CI / CD",
         "Bash",
         "Python",
         "Linux",

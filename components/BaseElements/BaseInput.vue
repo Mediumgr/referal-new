@@ -38,19 +38,28 @@ const props = defineProps({
   },
 })
 
-let formattedDigits = ref('')
+let formattedDigits = ''
+let code = '+7 '
 
 const onInput = (event) => {
-  let value = event.target.value
-  let type = event.target.type
+  const { inputType, data, target } = event;
+  let value = target.value
+  let type = target.type
+  let numbers
+  let length
   if (type === 'tel') {
-    let numbers = value.replace(/\D/g, '')
-    let length = numbers.length
-    console.log(event.inputType)
-    if (length < 12 && event.inputType !== 'deleteContentBackward') {
-      formattedDigits.value =
-        '+7 ' +
-        numbers.slice(1, 4) +
+    numbers = value.replace(/\D/g, '')
+    length = numbers.length
+    const deleteContent = inputType === 'deleteContentBackward'
+    const isDigits = isNaN(+data) === false
+
+    if (length < 12 && !deleteContent && isDigits) {
+
+      const firstNumber = numbers.length > 1 ? numbers[1] : numbers[0];
+
+      formattedDigits =
+        code + firstNumber +
+        numbers.slice(2, 4) +
         ' ' +
         numbers.slice(4, 7) +
         ' ' +
@@ -59,21 +68,16 @@ const onInput = (event) => {
         numbers.slice(9, 11)
 
       emit('update:modelValue', {
-        text: formattedDigits.value,
+        text: formattedDigits,
         textLength: length,
       })
-    } else if (event.inputType === 'deleteContentBackward') {
-      formattedDigits.value = formattedDigits.value.slice(0, -1)
+    } else if (deleteContent) {
       emit('update:modelValue', {
         text: value,
-        textLength: value.length,
-      })
-      console.log({
-        text: value,
-        textLength: value.length,
+        textLength: length,
       })
     } else {
-      event.target.value = formattedDigits.value
+      event.target.value = formattedDigits
     }
   } else {
     emit('update:modelValue', {
@@ -125,12 +129,10 @@ const labelClasses = computed(() => {
   color: #13144b;
   font-style: normal;
   font-weight: 500;
-  font-size: 1.3rem;
   font-family: Onest, Helvetica, serif;
   letter-spacing: -0.026rem;
 
   @include mq(768) {
-    // height: 4.9rem;
     font-size: 1.6rem;
   }
 

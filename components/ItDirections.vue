@@ -168,6 +168,8 @@ onMounted(() => {
   &__title {
     padding-bottom: 10rem;
     color: var(--color-white);
+    font-size: 4.5rem;
+    line-height: 100%;
   }
 
   &__wrapper {
@@ -231,7 +233,7 @@ onMounted(() => {
   &__arrow {
     transform: rotate(0deg);
     transition: transform 0.4s linear;
-    border: 0.046rem solid rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
     border-radius: 2.32rem;
     padding: 0.093rem;
     width: 3.2rem;

@@ -8,7 +8,7 @@
           <p class="participation__content_number">01</p>
           <p class="participation__content_text">
             Твой друг&nbsp;&mdash; специалист <br />с&nbsp;опытом работы
-            в&nbsp;IT&nbsp;более <br />2&nbsp;лет в&nbsp;одном из&nbsp;
+            в&nbsp;ИТ&nbsp;более <br />2&nbsp;лет в&nbsp;одном из&nbsp;
             <span class="participation__content_span" @click.stop="scrollTo()">
               наших направлений
             </span>
@@ -104,7 +104,7 @@
 
 <script setup>
 const scrollTo = () => {
-  document.querySelector('.direction').scrollIntoView({
+  document.querySelector('.it-direction__title').scrollIntoView({
     behavior: 'smooth',
   })
 }
@@ -163,6 +163,7 @@ const scrollTo = () => {
       border-radius: 2rem;
       background: var(--color-white);
       padding: 2rem;
+      width: inherit;
 
       @include mq(768) {
         align-items: flex-start;

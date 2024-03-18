@@ -21,7 +21,7 @@
             >Получи 100&nbsp;000&nbsp;₽</span
           >
           <span class="recommend__sub-title heading-h4"
-            >Рекомендуй друга в IT</span
+            >Рекомендуй друга в ИТ</span
           >
         </h1>
 

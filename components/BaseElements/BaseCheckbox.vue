@@ -68,6 +68,7 @@ input {
 }
 .textLabel {
   color: var(--eggplant);
+  cursor: pointer;
   font-size: 1.2rem;
   line-height: 120%;
   letter-spacing: -0.026rem;

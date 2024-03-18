@@ -22,7 +22,7 @@
     <p
       :class="['resume__placeholder', { fileError: error === 'error' }]"
       ref="placeholderNode"
-      @click.stop="removeFile($event)"
+      @click.stop="removeFile()"
     >
       {{ resumePlaceholder }}
     </p>
@@ -79,17 +79,12 @@ const handleFile = () => {
   }
 }
 
-const removeFile = (event) => {
+const removeFile = () => {
+  attachResume()
   resumeTitle.value = 'Добавить резюме'
   resumePlaceholder.value = 'В\u00A0формате DOC, PDF не\u00A0тяжелее 10\u00A0MB'
-  inputNode.value.value = ''
-  file.value = ''
-  placeholderNode.value.classList.remove('fileError')
-  titleNode.value.classList.remove('fileError')
-  resumeNode.value.classList.remove('borderError')
-  if (event.target.classList.contains('remove')) {
-    placeholderNode.value.classList.remove('remove')
-  }
+  inputNode.value.value = file.value = ''
+  emit('attachedFile', file.value)
 }
 
 const attachResume = () => {
